@@ -17,7 +17,7 @@ class OwnershipController < ApplicationController
     end    
   end
 
-def modify
+def edit
 end
 
   private
