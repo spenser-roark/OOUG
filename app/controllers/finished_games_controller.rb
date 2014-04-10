@@ -1,0 +1,2 @@
+class FinishedGamesController < ApplicationController
+end

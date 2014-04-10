@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OOUG - Obscure or Otherwise Unknown Games</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <link rel="icon" type="image/ico" href="/assets/favicon.ico">
+  </head> 
+  
+  <body style="padding-botton: 70px">
+
+<%= render 'layouts/mainPageHeader' %>
+ 
+    <div class="container" style="max-width: 750px; background-color: white; padding-top: 60px; padding-bottom: 60px">
+
+      <%= yield %>
+
+    </div>
+
+
+<%= render 'layouts/mainPageFooter' %>
+
+  </body>
+</html>

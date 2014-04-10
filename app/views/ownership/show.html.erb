@@ -1,0 +1,10 @@
+<h1 class="game_title"><%= @game.games.eng_title %></h1>
+<h5 class="game_title"><%= @game.games.jap_title %></h5>
+<h5 class="game_title"><%= @game.games.region.region_title %></h5>
+
+<p><%= @game.notes %></p>
+<p>Box Condition: <%= @game.box_qualities.quality %></p>
+<p>Manual Condition: <%= @game.manual_qualities.quality %></p>
+<p>Inserts Condition: <%= @game.inserts_qualities.quality %></p>
+<p>Game Condition: <%= @game.game_qualities.quality %></p>
+<p>Spine Card Condition: <%= @game.spine_card_qualities.quality %></p>

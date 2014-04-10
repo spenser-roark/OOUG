@@ -1,0 +1,2 @@
+class AccessoriesOwnershipController < ApplicationController
+end

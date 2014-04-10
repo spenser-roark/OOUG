@@ -1,0 +1,2 @@
+class ConsoleOwnershipController < ApplicationController
+end

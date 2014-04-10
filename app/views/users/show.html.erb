@@ -1,0 +1,13 @@
+
+<h1 style="text-align: center">
+  <%= gravatar_for @user %>
+  <%= @user.alias %>
+</h1>
+
+<p>
+Number of games in your collection: <%= @game_count %> <br />
+number of consoles in your collection: <%= @console_count %> <br />
+Number of accessories in your collection: <%= @accessory_count %> <br />
+</p>
+
+<!-- <%= @user.alias %>, <%= @user.email %> -->

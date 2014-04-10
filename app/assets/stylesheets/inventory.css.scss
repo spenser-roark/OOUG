@@ -1,0 +1,58 @@
+// Place all the styles related to the Inventory controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sidebar
+{
+   color: #CCCCCC;
+   # position: fixed;
+   background: none repeat scroll 0 0 #1E1E1E;
+   height: 100%;
+   right: 0;
+   top: 0;
+   padding-left: 1%;
+   padding-right: 1%;
+   padding-top: 5%;
+
+}
+
+.sidebar ul
+{
+	list-style: none outside none;	
+}
+
+.sidebar ul li
+{
+	padding-top: 8px;
+	// line-height: 25px;
+
+}
+
+.sidebar a
+{
+	color: #999999;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.sidebar a:hover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.sideConsole
+{
+	height: 100%;
+	position: relative;
+}
+
+#game_info a, #console_info a, #region_info a
+{
+	text-decoration: none;
+	color: black;
+}
+
+#game_info a:hover, #console_info a:hover, #region_info a:hover
+{
+	font-weight: bold;
+}

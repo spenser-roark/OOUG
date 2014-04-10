@@ -1,0 +1,76 @@
+
+<% provide(:title, 'Test') %>
+
+<table class="">
+
+  <% @console.each do |game| 
+%>
+<tr>
+    <!--<td class="">
+      <%= #game.games.ean 
+%>
+    </td>
+-->
+<!--    <td class="">
+      <%= #game.games.jap_title 
+%>
+    </td>
+-->
+
+
+<!-- 
+<img src="<%= #game.games.image 
+%>" />
+-->
+    <td class="">
+      <%= game
+	  %>
+    </td>
+
+</tr>
+<% end 
+%>
+
+<table>
+
+<table class="">
+
+<% #@ownership.each do |game| %>
+
+<tr>
+    <!--<td class="">
+      <%= #game.games.ean 
+%>
+    </td>
+-->
+<!--    <td class="">
+      <%= #game.games.jap_title 
+%>
+    </td>
+-->
+
+
+<!-- 
+<img src="<%= #game.games.image 
+%>" />
+-->
+    <td class="">
+      <%= #game.games.eng_title 
+%>
+    </td>
+
+    <td class="">
+      <%= #game.games.console_general.eng_name
+	  %>
+    </td>
+
+    <td class="">
+      <%= #game.games.region.region_title 
+%>
+    </td>
+
+</tr>
+<% #end 
+%>
+
+<table>

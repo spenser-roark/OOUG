@@ -1,0 +1,434 @@
+// Place all the styles related to the MainPage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+
+/********************
+* CSS for OOUG.net
+*********************/
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.infoLeft {
+width: 635px;
+}
+
+.infoLeft .infoRight {
+
+    padding-top: 10px;
+}
+
+.infoRight {
+    margin-left: 15px;
+    width: 310px;
+    float: right;
+    height: 314px;
+}
+
+.footer {
+    border-top: 1px solid #E1E1E1;
+    overflow: hidden;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    min-height: 100%;
+    position: relative;
+    width: 980px;
+}
+
+#body
+{
+    background-image: url('../pics/blback2.png');
+    background-size: 100%;
+    /*background-position: bottom;
+    /*background-color: #CCFFFF;*/
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 1px;
+    background-repeat: no-repeat;
+}
+
+.bg
+{
+    height: auto;
+    left: 0;
+    min-height: 100%;
+    min-width: 768px;
+    position: fixed;
+    top: 0;
+
+}
+
+#information h3
+{
+/*color: ;*/
+padding-left: 10px;
+}
+
+#title
+{
+    background-image: url('pics/name.png');
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 580px;
+    height: 200px;
+    top: 25%;
+}
+
+#aboutMe p
+{
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+#aboutMe h4
+{
+    border-radius: 8px;
+    background-color: #bd9778;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+    font-size: 16px;
+    text-align: center;
+    min-width: 100px;
+    margin-top: 0px;
+}
+
+#aboutMe
+{
+    position: fixed;
+    left: 10%;
+    top: 50%;
+    border-radius: 8px;
+    background-color: #FFE0C4;
+    width: 20%;
+}
+
+#nav a:hover
+{
+    background-color: white;
+    color: black;    
+}
+
+#information p
+{
+    padding: 0px 0px 0px 20px;
+}
+
+#information
+{
+    border-radius: 8px;
+    border-radius: 8px;
+    position: absolute;
+    background-color: #dcccaa;
+    width: 40%;
+    min-width: 390px;
+    top: 200px;
+    right: 5%;
+    /*top right bottom left*/
+    margin: 0px 20px 0px 20px;
+}
+
+#nav
+{
+    background-color: black;
+    display: block;
+    height: 30px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    /*position: fixed;*/
+    top: -17px;
+    /*left: -30px;*/
+    width: 96%;
+    max-width: 100%;
+    /*z-index: 100;*/
+}
+
+#nav li
+{
+
+    color: white;
+    display: inline;
+    /*font-size: 15px;*/
+    font-weight: bold;
+    margin-left: -15px;
+}
+
+#nav li a
+{
+    font-family: "sans serif";
+    color: white;
+    border-right: #646464 solid 1px;
+    /*letter-spacing: 2px;*/
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+
+img.bg
+{
+    /*height: auto;*/
+    left: 0;
+    /*min-height: 100%;
+    min-width: 1024px;*/
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.updates
+{
+    margin-left: 100px;
+    margin-right: 100px;
+    text-indent: 35px;
+}
+
+.tab
+{
+    text-indent: 35px;
+}
+
+.games a
+{
+    /*letter-spacing: 5px;*/
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.index a
+{
+    /*letter-spacing: 5px;*/
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+
+.textcenter
+{
+    text-align: center;
+}
+
+.gameInfo
+{
+    position: relative;
+    width: 300px;
+    margin-left: auto;
+    margin-right: 100px;
+    background-color: cyan;
+    border-radius: 8px;
+    border-radius: 8px;
+    top: 30px;
+    /*bottom: 50px;*/
+}
+.gameInfo p
+{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paragraph
+{
+    font-family: "Times New Roman";
+}
+
+.gray table
+{ 
+    margin-left: auto;
+    margin-right: auto;
+    background: #C0C0C0;
+}
+
+.block
+{
+    margin-right: 400px;
+    left: 20px;
+    background: #66FF00;
+    border: solid;
+}
+
+.data
+{
+    position:relative;
+    
+    width: 350px;
+}
+
+.links
+{
+    position:fixed; 
+    
+    width: 250px;
+}
+
+.formbuttons
+{
+    background-color: gray;
+    border-radius: 30px;
+    width: 250px;
+    height: 30px;
+    padding-top: 10px;
+}
+
+.register
+{
+    background-color: #33BBDD;
+    border-radius: 8px;
+    width: 1000px;
+}
+
+.navi
+{
+    background-color: black;
+    display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    list-style-type: none;
+    height: 30px;
+    padding-top: 10px;
+    top: -20px;
+}
+
+.navi li
+{
+    /*padding: 10px;*/
+    border-right: #646464 solid 1px;
+    display: inline;
+    text-decoration: none;
+}
+
+.navi a:visited
+{
+    color: white;
+    text-decoration: none;
+}
+
+.navi a:link
+{
+    color: white;
+    text-decoration: none;
+}
+
+/*
+.navi a
+{
+    border-right: #646464 solid 1px;
+    color: white;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 0px;
+    display: inline;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: -5px;
+}
+*/
+/*
+  input.button
+{
+background: #ffff00;
+}*/
+
+/*input:hover
+{
+    font-size: 11px;
+    background: #FFFFFF;
+}*/
+
+/*body {
+    background-color: #FFFFFF;
+line-height: 125%;
+
+}*/
+
+#About h3 
+{
+    background-image:url('pics/aboutLine.png');
+    background-size: 100%;
+    /*background-repeat: no-repeat;
+      background-color: rgba(20,40,1000,.3);*/
+    font-family: "Arial", "times new roman";
+    font-size: 16px;
+}
+
+.indent
+{
+    text-indent: 3em;
+}
+
+#banner 
+{
+margin-top: 40px;
+  background-color: #000000;
+ /* text-align: center;*/
+  /*width: 1024;*/
+}
+
+#banner:visited
+    {
+      color: black;
+    }
+
+#gameList a:hover
+{
+    color: #664400;
+    font-size: 14px;
+}
+
+#gameList 
+{
+    font-size: small;
+    width: 50%;
+    letter-spacing: 3px;
+    font-family: helvetica;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#gameList a
+{
+color: #330099;
+}
+
+address
+{
+font-weight: bold;    
+}

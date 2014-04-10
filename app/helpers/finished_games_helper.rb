@@ -1,0 +1,2 @@
+module FinishedGamesHelper
+end

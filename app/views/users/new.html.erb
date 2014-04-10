@@ -1,0 +1,25 @@
+<% provide(:title, 'Sign up') %>
+<div class="row">
+  <div class="span4 offset2">
+
+<h1 style="text-align: center">Sign up</h1>
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :alias, class: "col-sm-2 control-label", style: "padding-right: 5px" %>
+      <%= f.text_field :alias, placeholder: "you will be known by this name"%>
+
+      <%= f.label :email, class: "col-sm-2 control-label", style: "padding-right: 5px" %>
+      <%= f.text_field :email, placeholder: "name@domain.tld" %>
+
+      <%= f.label :password, class: "col-sm-2 control-label", style: "padding-right: 5px" %>
+      <%= f.password_field :password, placeholder: "min of 8 characters please"%>
+
+      <%= f.label :password_confirmation, "Confirm Password", class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.password_field :password_confirmation, placeholder: "same as above" %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary btn-sm" %>
+    <% end %>
+</div>
+
+</div>
