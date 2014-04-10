@@ -14,7 +14,7 @@ Things you may want to cover:
 
 **Database creation**
 - mysql  Ver 14.14 Distrib 5.1.73, for debian-linux-gnu (i486) using readline 6.1
-- db.zip has all the sql files necessary to import
+- db/db.zip has all the sql files necessary to import
 
 **Database initialization**
 
