@@ -5,15 +5,16 @@ Ooug::Application.routes.draw do
   match '/signUp', to: 'users#new', via: 'get'
   match '/about', to: 'main_page#about', via: 'get'
   match '/contact', to: 'main_page#contact', via: 'get'
-  match '/inventory', to: 'inventory#home', via: 'get'
-  match '/viewYourItems', to: 'inventory#viewYourItems', via: 'get'
+  # match '/inventory', to: 'inventory#home', via: 'get'
+  # match '/viewYourItems', to: 'inventory#viewYourItems', via: 'get'
   # match '/logout', to: 'inventory#logout', via: 'get'
   match '/test', to: 'inventory#test', via: 'get'
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
 
-  get 'viewYourItems/:console_id' => 'inventory#viewYourItems'
+  get 'inventory/:id/:console_id' => 'inventory#show'
 
+  resources :inventory, only: [:show]
   resources :users
   resources :games
   resources :ownership
