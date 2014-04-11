@@ -11,8 +11,8 @@ Ooug::Application.routes.draw do
   match '/test', to: 'inventory#test', via: 'get'
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
-
-  get 'inventory/:id/:console_id' => 'inventory#show'
+  
+  get '/inventory/:id/:console_id' => 'inventory#show'
 
   resources :inventory, only: [:show]
   resources :users
