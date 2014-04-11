@@ -1,4 +1,6 @@
 class InventoryController < ApplicationController
+  # before_action :signed_in_user
+
   def home
     @games = Games.all
     @test = params[:console] 
@@ -33,4 +35,11 @@ class InventoryController < ApplicationController
     @image = Image.all
   end
 
+private 
+
+ # Before filters
+
+    def signed_in_user
+      redirect_to signIn_url, notice: "Please sign in." unless signed_in?
+    end
 end
