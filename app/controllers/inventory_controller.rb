@@ -31,14 +31,6 @@ class InventoryController < ApplicationController
     @image = Image.all
   end
 
-  def index
-    @remember_token = User.hash_token(cookies[:remember_token])
-    @user = User.find_by(remember_token: @remember_token)
-
-    @ownership = Ownership.where(user_id: @user).all
-    
-    # @image = Image.all
-  end
 
 
 private 

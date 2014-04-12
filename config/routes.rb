@@ -14,7 +14,7 @@ Ooug::Application.routes.draw do
   
   get '/inventory/:id/:console_id' => 'inventory#show'
 
-  resources :inventory, only: [:show, :index]
+  resources :inventory, only: [:show]
   resources :users
   resources :games
   resources :ownership
