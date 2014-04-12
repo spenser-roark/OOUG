@@ -15,7 +15,7 @@ class InventoryController < ApplicationController
   def show
 
     if (params.has_key?(:console_id))
-     @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
 
     else
       @ownership = Ownership.where(user_id: params[:id]).all
@@ -30,6 +30,16 @@ class InventoryController < ApplicationController
     @ownership = Ownership.where(user_id: 1).all
     @image = Image.all
   end
+
+  def index
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+
+    @ownership = Ownership.where(user_id: @user).all
+    
+    # @image = Image.all
+  end
+
 
 private 
 

@@ -10,13 +10,8 @@ class ApplicationController < ActionController::Base
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
-    if (params.has_key?(:console_id))
-      @console = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
+    @console = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
 
-    else
-      @console = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
-
-    end
   end
 
 private 

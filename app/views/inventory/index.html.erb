@@ -1,13 +1,4 @@
-<% 
-if (params.has_key?(:console_id))
-provide(:title, 'All your ' + params[:console_id] + ' games') 
-
-else
-provide(:title, 'All Games In Your Collection') 
-
-end
-
-%>
+<% provide(:title, 'All Games In Your Collection') %>
 
 <table class="">
 <% @ownership.each do |game| %>

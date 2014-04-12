@@ -1,0 +1,12 @@
+<div class="browse_list" id="game_info">
+<ul>
+  <% @console.each do |console| 
+%>
+
+<li><%= link_to console, browse_path(console) %> </li>
+
+<% end
+%>
+
+</ul>
+</div>

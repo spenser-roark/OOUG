@@ -60,7 +60,7 @@ private
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to current_user, notice: "There is no " + current_user.alias + " only Zool."  unless current_user?(@user)
+      redirect_to current_user, notice: "There is no " + current_user.alias + " only Zool.\nBut seriously, you can only look at your info, not someone else's"  unless current_user?(@user)
     end 
 
 end
