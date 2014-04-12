@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  before_action :signed_in_user, only: [:edit, :show, :update]
+  before_action :correct_user,   only: [:edit, :update, :show]
+
+
   def show
     @user = User.find(params[:id])
     @game_count = Ownership.where(user_id: @user.id).all.count
@@ -25,10 +30,37 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
 private 
 
   def user_params
     params.require(:user).permit(:alias, :email, :password, :password_confirmation)
   end
+
+# Before filters
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signIn_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to current_user, notice: "There is no " + current_user.alias + " only Zool.\nBut seriously, you can only look at your info, not someone else's"  unless current_user?(@user)
+    end 
 
 end
