@@ -5,7 +5,7 @@ class BrowseController < ApplicationController
   end
 
   def show
-    
+    @console_games = Games.joins(:console_general).where(:console_general => {:eng_name => params[:id]})
   end
 
 end

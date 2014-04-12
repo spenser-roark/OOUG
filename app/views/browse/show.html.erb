@@ -1,0 +1,13 @@
+<div class="browse_list" id="game_info">
+<ul>
+  <% @console_games.each do |game|
+%>
+
+<li><%= link_to game.eng_title, '#' #games_path(game) 
+%> </li>
+
+<% end
+%>
+
+</ul>
+</div>
