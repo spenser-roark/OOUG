@@ -9,6 +9,7 @@ class OwnershipController < ApplicationController
 
   def new
     @ownership = Ownership.new
+    @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
   end
   
   def create

@@ -2,3 +2,18 @@
 <h5 class="game_title"><%= @game.jap_title %></h5>
 <h5 class="game_title"><%= @game.region.region_title %></h5>
 
+<%= #form_for(:ownership, url: current_game(@game)) do |f| 
+%>
+
+<%= # f.submit "Add To Collection", class: "btn btn-inverse"
+%>
+
+<%= # link_to "Add", root_path, :onclick => 'return openPopup(this);'
+%>
+
+<%= link_to new_ownership_path, class: "span4 offset2" do %>
+<div class="btn btn-small btn-inverse">
+  Add To Collection
+</div>
+
+<% end %>

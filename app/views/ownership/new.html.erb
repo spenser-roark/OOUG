@@ -1,0 +1,36 @@
+<% provide(:title, "Add Game") %>
+<div class="row">
+  <div class="span4 offset2">
+    <%= # options_for_conditions([['Great', 1], ['Good', 2]], 2) 
+%>
+    <%= form_for(:ownership, url: ownership_path(250)) do |f| %>
+
+      <%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.text_field :box_condition %>
+
+      <%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.select( :game_condition, options_for_select(@quality_array)) %>
+
+      <%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.select( :game_condition, options_for_select(@quality_array)) %>
+
+      <%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.select( :game_condition, options_for_select(@quality_array)) %>
+
+      <%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.select( :game_condition, options_for_select(@quality_array)) %>
+
+      <%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.select( :game_condition, options_for_select(@quality_array)) %>
+
+
+      <%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+      <%= f.select( :game_condition, options_for_select(@quality_array)) %>
+
+      <br />
+      <%= f.submit "Add", class: "btn btn-primary btn-sm" %>
+    <% end %>
+
+</div>
+
+</div>
