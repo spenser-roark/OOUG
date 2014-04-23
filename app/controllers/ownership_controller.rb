@@ -4,16 +4,18 @@ class OwnershipController < ApplicationController
 
   def show
     @game = Ownership.find_by(id: params[:id])
+    @user = User.find_by(email: params[:session][:email].downcase)
     # @box_condition = Ownership.where(id: params[:id]).joins(:quality)
   end
 
   def new
     @ownership = Ownership.new
     @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
+    @quality_array.insert(0, "")
   end
   
   def create
-    @ownership = Ownership.new(game_params)    
+    @ownership = Ownership.new(ownership_params)    
     if @ownership.save
       redirect_to @ownership
     else
@@ -28,7 +30,7 @@ class OwnershipController < ApplicationController
 
   private
   def ownership_params
-    # params.require(:games).permit(:ean, :eng_title, :jap_title, :system, :region, :image)
+    params.require(:games).permit(:ean, :eng_title, :jap_title, :system, :region, :image)
   end
 
  # Before filters
