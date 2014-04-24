@@ -1,0 +1,57 @@
+<script>
+
+$('#ownership_tabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+</script>
+
+<% provide(:title, "Add Game") %>
+
+<ul class="nav nav-tabs" id="ownership_tabs">
+  <li class="active"><a href="#condition" data-toggle="tab">Cosmetic Condition</a></li>
+  <li><a href="#something" data-toggle="tab"><%= @user.alias %> </a></li>
+  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane active" id="condition">
+    <div class="row">
+      <div class="span4 offset2">
+	<%= form_for(:ownership, url: ownership_path(250)) do |f| %>
+
+	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :game_condition, options_for_select(@quality_array, "0")) %>
+
+	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :manual_condition, options_for_select(@quality_array, "0")) %>
+
+	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :inserts_condition, options_for_select(@quality_array)) %>
+
+	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :spine_card_condition, options_for_select(@quality_array)) %>
+
+	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
+
+	<br />
+	<%= f.submit "Add", class: "btn btn-primary btn-sm" %>
+	<% end %>
+
+      </div>
+    </div>
+</div>
+
+  <div class="tab-pane fade in" id="something">
+    <div class="row">
+      <div class="span4 offset2">
+	
+	Something
+      </div>
+    </div>
+  </div>    
+  
+</div>
