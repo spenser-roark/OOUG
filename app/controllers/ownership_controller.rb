@@ -4,7 +4,7 @@ class OwnershipController < ApplicationController
 
   def show
     @game = Ownership.find_by(id: params[:id])
-    @user = User.find_by(email: params[:session][:email].downcase)
+    @user = User.find_by(remember_token: cookies[:remember_token])
     # @box_condition = Ownership.where(id: params[:id]).joins(:quality)
   end
 

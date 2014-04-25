@@ -1,26 +1,18 @@
-<script>
-
-$('#ownership_tabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
-
-</script>
-
 <% provide(:title, "Add Game") %>
 
 <ul class="nav nav-tabs" id="ownership_tabs">
   <li class="active"><a href="#condition" data-toggle="tab">Cosmetic Condition</a></li>
-  <li><a href="#something" data-toggle="tab"><%= @user.alias %> </a></li>
-  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+  <li><a href="#something" data-toggle="tab">Personal Notes & Images </a></li>
+  <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
 </ul>
 
+<%= form_for(:ownership, url: ownership_path(250)) do |f| %>
 <div class="tab-content">
 
   <div class="tab-pane active" id="condition">
     <div class="row">
       <div class="span4 offset2">
-	<%= form_for(:ownership, url: ownership_path(250)) do |f| %>
+
 
 	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :game_condition, options_for_select(@quality_array, "0")) %>
@@ -37,10 +29,6 @@ $('#ownership_tabs a').click(function (e) {
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
 
-	<br />
-	<%= f.submit "Add", class: "btn btn-primary btn-sm" %>
-	<% end %>
-
       </div>
     </div>
 </div>
@@ -48,10 +36,30 @@ $('#ownership_tabs a').click(function (e) {
   <div class="tab-pane fade in" id="something">
     <div class="row">
       <div class="span4 offset2">
+
+	<%= f.label :notes, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.text_area(:notes, cols: 500, rows: 5) %>
+
 	
-	Something
+	<%= f.label "Images to be implemented later, sorry :(", class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<span class="disabled btn btn-sm">Browse<spana>
+      </div>
+    </div>
+  </div>    
+
+  <div class="tab-pane fade in" id="misc">
+    <div class="row">
+      <div class="span4 offset2">
+
+	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]])) %>
+
+	<br />
+
+	<%= f.submit "Add", class: "btn btn-primary btn-sm" %>
       </div>
     </div>
   </div>    
   
 </div>
+<% end %>
