@@ -11,4 +11,10 @@ class Ownership < ActiveRecord::Base
   belongs_to :spine_card_qualities, :class_name => "Quality", :foreign_key => "spine_card_condition"
 
   Ownership.joins(:games, :user, :quality)
+
+  # validates :box_qualities, presence: true
+  # validates :box_condition, presence: true
+
+  # validates :games, :user, uniqueness: true
+
 end

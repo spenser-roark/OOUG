@@ -1,12 +1,17 @@
-<% provide(:title, "Add Game") %>
+<% provide(:title, "Add " + @game.eng_title + " To Your Collection") %>
+
+<h1 class="game_title"><%= @game.eng_title %></h1>
+<h5 class="game_title"><%= @game.jap_title %></h5>
+<h5 class="game_title"><%= @game.region.region_title %></h5>
+
 
 <ul class="nav nav-tabs" id="ownership_tabs">
   <li class="active"><a href="#condition" data-toggle="tab">Cosmetic Condition</a></li>
-  <li><a href="#something" data-toggle="tab">Personal Notes & Images </a></li>
+  <li><a href="#notes" data-toggle="tab">Personal Notes & Images </a></li>
   <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
 </ul>
 
-<%= form_for(:ownership, url: ownership_path(250)) do |f| %>
+<%= form_for(:ownership, url: "/ownership") do |f| %>
 <div class="tab-content">
 
   <div class="tab-pane active" id="condition">
@@ -29,11 +34,13 @@
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
 
+	<%= f.text_field :games_id, value: @game.id,  class: "readonly" , style: "visibility: hidden"%>
+	
       </div>
     </div>
 </div>
 
-  <div class="tab-pane fade in" id="something">
+  <div class="tab-pane fade in" id="notes">
     <div class="row">
       <div class="span4 offset2">
 
