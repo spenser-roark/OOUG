@@ -7,6 +7,10 @@ module OwnershipHelper
     # @ownership = Ownership.find_by(games_id: 1)
      end
 
+  def current_ownership(id)
+    @current_ownership ||= Ownership.find_by(id: id)
+  end
+
   # def options_for_conditions([['Great', 1], ['Good', 2]], 2)
   # end
 

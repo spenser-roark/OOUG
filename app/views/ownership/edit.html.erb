@@ -1,4 +1,4 @@
-<% provide(:title, "Add " + @game.eng_title + " To Your Collection") %>
+<% provide(:title, "Edit " + @game.eng_title) %>
 
 <h1 class="game_title"><%= @game.eng_title %></h1>
 <h5 class="game_title"><%= @game.jap_title %></h5>
@@ -8,10 +8,10 @@
 <ul class="nav nav-tabs" id="ownership_tabs">
   <li class="active"><a href="#condition" data-toggle="tab">Cosmetic Condition</a></li>
   <li><a href="#notes" data-toggle="tab">Personal Notes & Images </a></li>
-  <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
+  <li><a href="#misc" data-toggle="tab">Misc & Save</a></li>
 </ul>
 
-<%= form_for(:ownership, url: "/ownership") do |f| %>
+<%= form_for(@ownership) do |f| %>
 <div class="tab-content">
 
   <div class="tab-pane active" id="condition">
@@ -20,19 +20,19 @@
 
 
 	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :game_condition, options_for_select(@quality_array, "0")) %>
+	<%= f.select( :game_condition, options_for_select(@quality_array, selected = @ownership.game_condition)) %>
 
 	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :manual_condition, options_for_select(@quality_array, "0")) %>
+	<%= f.select( :manual_condition, options_for_select(@quality_array, selected = @ownership.manual_condition)) %>
 
 	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :inserts_condition, options_for_select(@quality_array)) %>
+	<%= f.select( :inserts_condition, options_for_select(@quality_array, selected = @ownership.inserts_condition)) %>
 
 	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :spine_card_condition, options_for_select(@quality_array)) %>
+	<%= f.select( :spine_card_condition, options_for_select(@quality_array, selected = @ownership.spine_card_condition)) %>
 
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
+	<%= f.select( :box_condition, options_for_select(@quality_array, selected = @ownership.box_condition)) %>
 
 	<%= f.text_field :games_id, value: @game.id,  class: "readonly" , style: "visibility: hidden"%>
 	
@@ -59,11 +59,11 @@
       <div class="span4 offset2">
 
 	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]])) %>
+	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]], selected = @ownership.complete)) %>
 
 	<br />
 
-	<%= f.submit "Add", class: "btn btn-primary btn-sm" %>
+	<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
       </div>
     </div>
   </div>    

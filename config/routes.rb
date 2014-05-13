@@ -8,13 +8,15 @@ Ooug::Application.routes.draw do
   match '/test', to: 'inventory#test', via: 'get'
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
-  
-  get '/inventory/:id/:console_id' => 'inventory#show'
+  match '/deleteGame', to: 'ownership#destroy',     via: 'delete'
 
+  get '/inventory/:id/:console_id' => 'inventory#show'
+  get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
+  
   resources :inventory, only: [:show]
   resources :users
   resources :games
-  resources :ownership
+  resources :ownership, only: [:show, :update, :edit, :create, :destroy]
   resources :browse
 
   resources :sessions, only: [:new, :create, :destroy]
