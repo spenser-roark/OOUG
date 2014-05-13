@@ -47,8 +47,10 @@ class OwnershipController < ApplicationController
   end
 
   def destroy
+    @ownership = Ownership.find(params[:ownership][:id])
+    @game = Games.find(Ownership.find(params[:ownership][:id]).games_id)
+
     Ownership.delete(params[:ownership][:id])
-    
     redirect_to inventory_path(current_user)
   end
 
