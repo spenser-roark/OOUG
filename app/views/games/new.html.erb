@@ -1,0 +1,47 @@
+<% provide(:title, "Add A New Game") %>
+<div class="row span10" style="margin-top: 100px">
+  <div class="">
+
+    <%= form_for(:games, url: games_path, :html => {:class => "form-horizontal"}) do |f| %>
+
+    <div class="control-group pull-left">
+      <%= f.label :ean, "EAN",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
+      </div>
+    </div>
+
+    <div class="control-group pull-right">
+      <%= f.label :jap_title, "Japanese Title",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :jap_title, class: "input-medium" %>
+      </div>
+    </div>
+
+    <div class="control-group pull-right">
+      <%= f.label :eng_title, "English Title",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :eng_title, class: "input-medium" %>
+      </div>
+    </div>
+
+    <div class="control-group pull-left">
+      <%= f.label :region, class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.select( :region_id, options_for_select(@region_array)) %>
+      </div>
+    </div>
+
+    <div class="control-group offset2">
+      <%= f.label :ConsoleGeneral, "Console", class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.select( :console_general_id, options_for_select(@console_array)) %>
+      </div>
+    </div>
+    
+    <div class="offset4">
+      <%= f.submit "Create Game", class: "btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+</div>
+</div>
