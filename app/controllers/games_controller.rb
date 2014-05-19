@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
 
+  before_action :signed_in_user, only: [:new]
+
   def show
     @game = Games.find(params[:id])
   end
@@ -29,5 +31,14 @@ class GamesController < ApplicationController
   def game_params
     params.require(:games).permit(:ean, :eng_title, :jap_title, :console_general_id, :region_id, :image)
   end
+
+ # Before filters
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signIn_url, notice: "Please sign in."
+      end
+    end
+
   
 end
