@@ -18,6 +18,7 @@ Ooug::Application.routes.draw do
   resources :games
   resources :ownership, only: [:show, :update, :edit, :create, :destroy]
   resources :browse
+  resources :search, only: [:show]
 
   resources :sessions, only: [:new, :create, :destroy]
 
