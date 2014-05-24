@@ -4,20 +4,16 @@
 <h5 class="game_title"><%= (@game.jap_title ? @game.jap_title : "" );%></h5>
 <h5 class="game_title"><%= @game.region.region_title %></h5>
 <h6 class="game_title"><%= @game.ean %></h6>
-<%= #form_for(:ownership, url: current_game(@game)) do |f| 
-%>
 
-<%= # f.submit "Add To Collection", class: "btn btn-inverse"
-%>
-
-<%= # link_to "Add", root_path, :onclick => 'return openPopup(this);'
-%>
-
-<%= unless !signed_in? 
-link_to new_ownership_path, class: "span4 offset2" do %>
+<% if signed_in? && !in_collection(@game) %>
+<%=    link_to new_ownership_path, class: "span4 offset2" do %>
 <div class="btn btn-small btn-inverse">
   Add To Collection
 </div>
+<% end %>
 
-<% end 
-end %>
+<% else %>
+<%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "offset2 btn btn-small btn-inverse" %>
+
+<% end %>
+
