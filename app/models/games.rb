@@ -10,6 +10,12 @@ class Games < ActiveRecord::Base
 
 validates :ean, presence: true, length: {minimum: 12},
 uniqueness: { case_sensitive: false}
+
+validates :region_id, presence: true
+
+validates :eng_title, presence: true
+
+validates :console_general_id, presence: true
  
   Games.joins(:region, :console_general, :image)
 end

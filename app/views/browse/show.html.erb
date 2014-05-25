@@ -1,8 +1,10 @@
-<% provide(:title, @console_games.first.console_general.eng_name) %>
+<% provide(:title, @console_name.eng_name) %>
 
 <% if signed_in? %>
 <%= link_to "Can't find a game?", new_game_path, class: "pull-right" %>
 <% end %>
+
+
 
 <div class="browse_list" id="game_info">
 <ul>
