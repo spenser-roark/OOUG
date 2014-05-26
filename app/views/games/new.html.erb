@@ -1,8 +1,9 @@
 <% provide(:title, "Add A New Game") %>
+<%= render 'shared/game_error_messages' %> 
 <div class="row span10" style="margin-top: 100px">
   <div class="">
 
-    <%= form_for(:games, url: games_path, :html => {:class => "form-horizontal"}) do |f| %>
+    <%= form_for(@game, url: games_path, :html => {:class => "form-horizontal"}) do |f| %>
 
     <div class="control-group pull-left">
       <%= f.label :ean, "EAN",class: "control-label", style: ""%>
@@ -12,9 +13,9 @@
     </div>
 
     <div class="control-group pull-right">
-      <%= f.label :jap_title, "Japanese Title",class: "control-label", style: ""%>
+      <%= f.label :jap_title, "Japanese Title",class: "control-label", style: "#{'display:none' if @game.region == 0}"%>
       <div class="controls">
-	<%= f.text_field :jap_title, class: "input-medium" %>
+	<%= f.text_field :jap_title, class: "input-medium", style: "#{'display:none' if @game.region == 0}" %>
       </div>
     </div>
 
