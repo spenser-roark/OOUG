@@ -30,7 +30,7 @@ end
     </td>
 
     <td id="region_info">
-      <%= game.games.region.region_title 
+      <%= link_to game.games.region.region_title, region_path(game.games.region.region_id)
 %>
     </td>
 
