@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  before_action :signed_in_user, only: [:new]
+  before_action :signed_in_user, only: [:new, :show]
 
   def show
     @game = Games.find(params[:id])
