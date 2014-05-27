@@ -2,7 +2,7 @@
 
 <h1 class="game_title"><%= @game.eng_title %></h1>
 <h5 class="game_title"><%= (@game.jap_title ? @game.jap_title : "" );%></h5>
-<h5 class="game_title"><%= link_to @game.region.region_title, region_path(@game.region), id: "region-title"  %></h5>
+<h5 class="game_title"><%= @game.region.region_title %></h5>
 <h6 class="game_title"><%= @game.ean %></h6>
 
 <% if signed_in? && !in_collection(@game) %>
