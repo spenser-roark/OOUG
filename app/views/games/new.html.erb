@@ -5,17 +5,17 @@
 
     <%= form_for(@game, url: games_path, :html => {:class => "form-horizontal"}) do |f| %>
 
-    <div class="control-group pull-left">
-      <%= f.label :ean, "EAN",class: "control-label", style: ""%>
+    <div class="control-group offset2" id="games_region_div">
+      <%= f.label :region, class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
+	<%= f.select( :region_id, options_for_select(@region_array, :selected => "")) %>
       </div>
     </div>
 
-    <div class="control-group pull-right">
-      <%= f.label :jap_title, "Japanese Title",class: "control-label", style: "#{'display:none' if @game.region == 0}"%>
+    <div class="control-group" id="games_jap_title_div">
+      <%= f.label :jap_title, "Japanese Title",class: "control-label", id: "jap_title_title"%>
       <div class="controls">
-	<%= f.text_field :jap_title, class: "input-medium", style: "#{'display:none' if @game.region == 0}" %>
+	<%= f.text_field :jap_title, class: "input-medium"%>
       </div>
     </div>
 
@@ -26,10 +26,10 @@
       </div>
     </div>
 
-    <div class="control-group pull-left">
-      <%= f.label :region, class: "control-label", style: ""%>
+    <div class="control-group">
+      <%= f.label :ean, "EAN",class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.select( :region_id, options_for_select(@region_array)) %>
+	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
       </div>
     </div>
 
@@ -46,3 +46,27 @@
     <% end %>
 </div>
 </div>
+
+<script type="text/javascript">
+      $("#games_jap_title").hide();
+      $("#jap_title_title").hide();
+</script>
+
+    <script type="text/javascript">
+      $("#games_region_id").change(function() {
+      if ($("#games_region_id").val()=="1")
+      {
+      $("#games_jap_title").show();
+      $("#jap_title_title").show();
+      $("#games_jap_title_div").attr('class', 'control-group pull-right');
+      $("#games_region_div").attr('class', 'control-group pull-left');
+      }
+      else
+      {
+      $("#games_jap_title").hide();
+      $("#jap_title_title").hide();
+      $("#games_jap_title_div").attr('class', 'control-group');
+      $("#games_region_div").attr('class', 'control-group offset2');
+      }
+      });
+    </script>

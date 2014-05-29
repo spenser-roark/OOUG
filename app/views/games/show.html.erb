@@ -5,7 +5,8 @@
 <h5 class="game_title"><%= link_to @game.region.region_title, region_path(@game.region), id: "region-title"  %></h5>
 <h6 class="game_title"><%= @game.ean %></h6>
 
-<% if signed_in? && !in_collection(@game) %>
+<% if signed_in? %>
+<% if !in_collection(@game) %>
 <%=    link_to new_ownership_path, class: "span4 offset2" do %>
 <div class="btn btn-small btn-inverse">
   Add To Collection
@@ -16,4 +17,4 @@
 <%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "offset2 btn btn-small btn-inverse" %>
 
 <% end %>
-
+<% end %>
