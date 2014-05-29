@@ -5,8 +5,8 @@
   <%= @user.alias %>
 </h1>
 
-<p>
-Number of games in your collection: <%= @game_count %> <br />
+<p id="game_info">
+Number of games in your collection: <%= link_to @game_count, inventory_path(current_user) %> <br />
 number of consoles in your collection: <%= @console_count %> <br />
 Number of accessories in your collection: <%= @accessory_count %> <br />
 </p>
