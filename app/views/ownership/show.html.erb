@@ -10,4 +10,4 @@
 <p>Spine Card Condition: <%= @game.spine_card_qualities.quality %></p>
 
 <%= link_to "Edit Game", edit_ownership_path(current_ownership(params[:id])), class: "btn btn-primary btn-sm"%>
-<%= link_to "Remove From Collection", @game, :confirm => 'Remove from collection?' , class: "btn btn-primary btn-sm" %>
+<%= link_to "Remove From Collection", @game, :confirm => 'Remove from collection?' , class: "btn btn-primary btn-sm", method: "delete" %>
