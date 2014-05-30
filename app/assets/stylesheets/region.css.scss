@@ -14,3 +14,8 @@ font-weight: bold;
 #region-title:focus {
 font-weight: bold;
 }
+
+tr.spaceUnder > td
+{
+  padding-bottom: 2em;
+}

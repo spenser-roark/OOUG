@@ -1,0 +1,19 @@
+<h1 class="game_title">Region Manipulation</h1>
+
+<%= link_to "New Region?", new_region_path, class: "pull-right" %>
+
+<table>
+<% @region.each do |region| %>
+<tr class="spaceUnder">
+    <td id="game_info" style="width: 20%; vertical-align: text-top">
+      <%= link_to region.region_title, region_path(region.region_id) %>
+    </td>
+
+    <td id="">
+      <%= region.region_country %>
+    </td>
+
+</tr>
+<% end %>
+
+<table>

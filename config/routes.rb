@@ -9,7 +9,8 @@ Ooug::Application.routes.draw do
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
   match '/deleteGame', to: 'ownership#destroy',     via: 'delete'
-
+  match '/deleteRegion', to: 'region#destroy',     via: 'delete'
+  
   get '/inventory/:id/:console_id' => 'inventory#show'
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
   

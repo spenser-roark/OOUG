@@ -9,8 +9,5 @@
 <p>Game Condition: <%= @game.game_qualities.quality %></p>
 <p>Spine Card Condition: <%= @game.spine_card_qualities.quality %></p>
 
-<%= form_for(:ownership, url: deleteGame_path, method: "delete") do |f| %>
-<%= f.text_field :id, value: params[:id],  class: "readonly disabled" , style: "visibility: hidden"%>
 <%= link_to "Edit Game", edit_ownership_path(current_ownership(params[:id])), class: "btn btn-primary btn-sm"%>
-<%= f.submit "Remove From Collection", :confirm => 'Remove from collection?' , class: "btn btn-primary btn-sm" %>
-<% end %>
+<%= link_to "Remove From Collection", @game, :confirm => 'Remove from collection?' , class: "btn btn-primary btn-sm" %>
