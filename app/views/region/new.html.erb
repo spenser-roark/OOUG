@@ -1,0 +1,27 @@
+<% provide(:title, "New Region? That's weird, but I trust you") %>
+<%= render 'shared/region_error_messages' %> 
+<div class="row" style="margin-top: 100px">
+  <div class="">
+
+    <%= form_for(@region, url: "/region", :html => {:class => "form-horizontal"}) do |f| %>
+
+    <div class="control-group pull-left">
+      <%= f.label :region_title, "Region Name",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :region_title, class: "input-medium"%>
+      </div>
+    </div>
+
+    <div class="control-group pull-right">
+      <%= f.label :region_country, "Countries Included",class: "control-label", placeholder: "Each country separated by a comma please"%>
+      <div class="controls">
+	<%= f.text_area :region_country, class: "input-medium" %>
+      </div>
+    </div>
+
+    <div class="offset4">
+      <%= f.submit "Add Region", class: "btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+</div>
+</div>

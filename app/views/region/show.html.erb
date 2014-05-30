@@ -1,6 +1,9 @@
 <% provide(:title, @region.region_title) %>
 
 <h1 class="game_title"><%= @region.region_title %></h1>
-<h5 class="game_title"><%= @region.region_country %></h5>
 
-<h6 class="game_title"><%= @region.description %></h6>
+<h6 class="game_title"><%= @region.region_country %></h6>
+
+<%= link_to "Edit Region Info", edit_region_path, class: "btn btn-primary btn-sm" %>
+
+<%= link_to "Remove Region", @region , class: "btn btn-primary btn-sm", confirm: "Really? Delete this region?", method: "delete" %>

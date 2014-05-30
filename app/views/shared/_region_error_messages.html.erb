@@ -1,0 +1,12 @@
+<% if @region.errors.any? %>
+  <div id="error_explanation" style="margin-bottom: -100px">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@region.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @region.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
