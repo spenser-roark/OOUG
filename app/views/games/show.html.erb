@@ -7,7 +7,7 @@
 
 <% if signed_in? %>
 <% if !in_collection(@game) %>
-<%=    link_to new_ownership_path, class: "span4 offset2" do %>
+<%=    link_to new_ownership_path, class: "span2 offset2" do %>
 <div class="btn btn-small btn-inverse">
   Add To Collection
 </div>
@@ -18,3 +18,5 @@
 
 <% end %>
 <% end %>
+
+<%= link_to "Edit Game Info", edit_game_path, class: "btn btn-small btn-inverse" %>

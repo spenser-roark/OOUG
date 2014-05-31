@@ -44,7 +44,7 @@ class RegionController < ApplicationController
   
   def correct_user
     @user = User.find(1)
-    redirect_to current_user unless current_user?(@user)
+    redirect_to root_path unless current_user?(@user)
   end 
 
   def region_params
