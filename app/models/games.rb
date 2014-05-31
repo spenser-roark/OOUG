@@ -5,6 +5,20 @@ class Games < ActiveRecord::Base
   has_many :ownership
   has_many :users, through: :ownerships
 
+  def japanese?
+    region_id == 1
+  end
+
+  def clearJap
+    self.jap_title = ""
+  end
+
+  def notJap
+    region_id != 1
+  end
+
+  before_save :clearJap, :if => :notJap
+
   # scope :with_ownerships, -> { joins(:ownership) }
   # scope :with_certain_owner, -> { |owner_id| joins(:ownership).where(user_id: owner_id) }
 
@@ -18,15 +32,6 @@ class Games < ActiveRecord::Base
   validates :console_general_id, presence: true
 
   validates :jap_title, presence: true, :if => :japanese?
-
-  def japanese?
-    region_id == 1
-  end
-
-
-  if (:region_id != 1)
-    before_save { self.jap_title = "" }
-  end
 
   Games.joins(:region, :console_general, :image)
 end

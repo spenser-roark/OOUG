@@ -8,7 +8,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Games.new
-    @region_array = Region.all.map {|region| [region.region_title + " - " + region.region_country, region.region_id]}
+    @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
@@ -17,7 +17,7 @@ class GamesController < ApplicationController
 
   def edit
     @game = Games.find(params[:id])
-    @region_array = Region.all.map {|region| [region.region_title + " - " + region.region_country, region.region_id]}
+    @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
@@ -26,7 +26,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    @region_array = Region.all.map {|region| [region.region_title + " - " + region.region_country, region.region_id]}
+    @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
@@ -43,7 +43,7 @@ class GamesController < ApplicationController
   end
   
   def create
-    @region_array = Region.all.map {|region| [region.region_title + " - " + region.region_country, region.region_id]}
+    @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
