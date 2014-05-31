@@ -4,6 +4,12 @@
 
 <h6 class="game_title"><%= @region.region_country %></h6>
 
+<% if signed_in? %>    
+<% if current_user?(User.find(1)) %>
+
 <%= link_to "Edit Region Info", edit_region_path, class: "btn btn-primary btn-sm" %>
 
 <%= link_to "Remove Region", @region , class: "btn btn-primary btn-sm", confirm: "Really? Delete this region?", method: "delete" %>
+
+<% end %>
+<% end %>

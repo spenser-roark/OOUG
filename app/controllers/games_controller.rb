@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  before_action :signed_in_user, only: [:new]
+  before_action :signed_in_user, only: [:new, :edit]
 
   def show
     @game = Games.find(params[:id])
@@ -13,6 +13,32 @@ class GamesController < ApplicationController
 
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
+  end
+
+  def edit
+    @game = Games.find(params[:id])
+    @region_array = Region.all.map {|region| [region.region_title + " - " + region.region_country, region.region_id]}
+    @region_array.insert(0, "")
+
+    @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
+    @console_array.insert(0, "")
+    
+  end
+
+  def update
+    @region_array = Region.all.map {|region| [region.region_title + " - " + region.region_country, region.region_id]}
+    @region_array.insert(0, "")
+
+    @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
+    @console_array.insert(0, "")
+
+    @game = Games.find(params[:id])
+    if @game.update_attributes(game_params)
+      redirect_to @game
+    else
+      # flash.now[:error] = "Some fields were left blank"
+      render "edit"
+    end    
 
   end
   
