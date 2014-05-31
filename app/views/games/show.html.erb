@@ -14,9 +14,11 @@
 <% end %>
 
 <% else %>
-<%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "offset2 btn btn-small btn-inverse" %>
+<%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "span2 btn btn-small btn-inverse" %>
 
 <% end %>
 <% end %>
 
-<%= link_to "Edit Game Info", edit_game_path, class: "btn btn-small btn-inverse" %>
+<%= link_to "Edit Game Info", edit_game_path, class: "span2 btn btn-small btn-inverse" %>
+
+<%= link_to "Remove From System", @game , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this game?", method: "delete" %>

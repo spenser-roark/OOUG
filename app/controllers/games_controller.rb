@@ -57,7 +57,12 @@ class GamesController < ApplicationController
       render "new"
     end    
   end
-  
+
+  def destroy
+    Games.delete(params[:id])
+    redirect_to browse_index_path
+  end
+
   private
   
   def game_params
