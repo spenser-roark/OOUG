@@ -9,5 +9,5 @@
 <p>Game Condition: <%= @game.game_qualities.quality %></p>
 <p>Spine Card Condition: <%= @game.spine_card_qualities.quality %></p>
 
-<%= link_to "Edit Game", edit_ownership_path(current_ownership(params[:id])), class: "btn btn-primary btn-sm"%>
-<%= link_to "Remove From Collection", @game, :confirm => 'Remove from collection?' , class: "btn btn-primary btn-sm", method: "delete" %>
+<%= link_to "Edit Game", edit_ownership_path(current_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2"%>
+<%= link_to "Remove From Collection", @game, :confirm => 'Remove from collection?' , class: "btn btn-inverse btn-small span2", method: "delete" %>
