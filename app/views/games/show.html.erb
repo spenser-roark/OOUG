@@ -17,4 +17,8 @@
 
 <%= link_to "Edit Game Info", edit_game_path, class: "span2 btn btn-small btn-inverse" %>
 
+<% if signed_in? %>    
+<% if admin? %>
 <%= link_to "Remove From System", @game , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this game?", method: "delete" %>
+<% end %>
+<% end %>

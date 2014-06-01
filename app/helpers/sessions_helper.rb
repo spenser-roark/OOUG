@@ -10,8 +10,12 @@ module SessionsHelper
     @current_user = user
   end
 
- def current_user?(user)
+  def current_user?(user)
     user == current_user
+  end
+
+  def admin?
+    current_user.admin == 1
   end
 
   def signed_in?

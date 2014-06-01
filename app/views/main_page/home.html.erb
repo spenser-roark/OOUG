@@ -1,13 +1,11 @@
 <h1 style="text-align: center; font-family: Arial Black; margin-top: 15%">OOUG</h1>
 
-
-<form class="navbar-form navbar-left" role="search" style="text-align: center">
-   <div class="input-prepend">
-<span class="icon-search"></span>  
-
-<f.input type="text" id="search" class="span2 search-query" placeholder="Search for a game">
+<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
+<div class="input-prepend">
+  <span class="icon-search"></span>  
+  <%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
 </div>
-</form>
+<% end %>
 
 <p style="text-align: center; font-family: arial;">
   We collect games, because we love games

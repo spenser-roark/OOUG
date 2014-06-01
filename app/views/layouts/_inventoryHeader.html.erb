@@ -9,7 +9,7 @@
             <ul class="nav pull-right">
 
 	      <% if signed_in? %>    
-              <% if current_user?(User.find(1)) %>
+              <% if admin? %>
 	      <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Admin <b class="caret"></b>
@@ -36,12 +36,13 @@
 	      <% end %>
 
 
- 	      <li style="padding-top: 5px" ><form rolesA="search">
-		  <div class="input-prepend span1">
-		    <span class="icon-search"></span>
-		    <input type="text" class="search-query span2" placeholder="Search for a game">
-		  </div>
-		</form>
+ 	      <li style="padding-top: 5px" >
+		<%= form_tag search_index_path, class: "navbar-form", method: "get" do %>
+		<div class="input-prepend span1">
+		  <span class="icon-search"></span>  
+		  <%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
+		</div>
+		<% end %>
 	      </li>
             </ul>
           </nav>
