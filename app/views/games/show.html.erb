@@ -1,23 +1,20 @@
 <% provide(:title, @game.eng_title) %>
 
 <h1 class="game_title"><%= @game.eng_title %></h1>
-<h5 class="game_title"><%= @game.jap_title %></h5>
-<h5 class="game_title"><%= @game.region.region_title %></h5>
+<h5 class="game_title"><%= (@game.jap_title ? @game.jap_title : "" );%></h5>
+<h5 class="game_title"><%= link_to @game.region.region_title, region_path(@game.region), id: "region-title"  %></h5>
+<h6 class="game_title"><%= @game.ean %></h6>
 
-<%= #form_for(:ownership, url: current_game(@game)) do |f| 
-%>
+<% if signed_in? %>
+<% if !in_collection(@game) %>
+<%= link_to "Add To Collection", new_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
 
-<%= # f.submit "Add To Collection", class: "btn btn-inverse"
-%>
+<% else %>
+<%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "span2 btn btn-small btn-inverse offset2" %>
 
-<%= # link_to "Add", root_path, :onclick => 'return openPopup(this);'
-%>
+<% end %>
+<% end %>
 
-<%= unless !signed_in? 
-link_to new_ownership_path, class: "span4 offset2" do %>
-<div class="btn btn-small btn-inverse">
-  Add To Collection
-</div>
+<%= link_to "Edit Game Info", edit_game_path, class: "span2 btn btn-small btn-inverse" %>
 
-<% end 
-end %>
+<%= link_to "Remove From System", @game , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this game?", method: "delete" %>

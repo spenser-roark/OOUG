@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+#ignore assets
+/public/assets/*
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
@@ -27,3 +30,4 @@ doc/
 .DS_Store
 .idea
 .secret
+/public/assets/*

@@ -1,0 +1,21 @@
+// Place all the styles related to the region controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#region-title {
+text-decoration: none;
+color: #000000;
+}
+
+#region-title:hover {
+font-weight: bold;
+}
+
+#region-title:focus {
+font-weight: bold;
+}
+
+tr.spaceUnder > td
+{
+  padding-bottom: 2em;
+}
