@@ -1,46 +1,46 @@
-        <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container" style="max-width: 750px">
-	  <nav>
-            <ul class="nav pull-left">
-              <li><%= link_to "OOUG",    root_path %></li>
-	      <li><%= link_to "About",    about_path %></li>
-	      <li><%= link_to "Contact",    contact_path %></li>
-	      <li><%= link_to "Wiki",    '#' %></li>
-	      <li><%= link_to "Browse",    browse_index_path %></li>
-	      <li> 
-	      </li>
-	    </ul>
-            <ul class="nav pull-right">
-	      <% if signed_in? %>
-              <% if admin? %>
-	      <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Admin <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Region", region_index_path %></li>
-	       </ul> 
-	      <% end %>
-	      <!-- <li><%= link_to "Users", '#' %></li> -->
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container" style="max-width: 750px">
+      <nav>
+        <ul class="nav pull-left">
+          <li><%= link_to "OOUG",    root_path %></li>
+	  <li><%= link_to "About",    about_path %></li>
+	  <li><%= link_to "Contact",    contact_path %></li>
+	  <li><%= link_to "Wiki",    '#' %></li>
+	  <li><%= link_to "Browse",    browse_index_path %></li>
+	  <li> 
+	  </li>
+	</ul>
+        <ul class="nav pull-right">
+	  <% if signed_in? %>
+          <% if admin? %>
+	  <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Admin <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Region", region_index_path %></li>
+	    </ul> 
+	    <% end %>
+	    <!-- <li><%= link_to "Users", '#' %></li> -->
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
 	      <li><%= link_to "Inventory",    inventory_path(current_user) %></li>
-                 <li class="divider"></li> 
-	      	<li><%= link_to "Logout", signOut_path, method: "delete" %></li>
-	       </ul> 
-              <% else %>
-              <li><%= link_to "Sign in", signIn_path %></li>
-	      <li><%= link_to "Sign up", signUp_path %></li>
-	      <% end %>
+              <li class="divider"></li> 
+	      <li><%= link_to "Logout", signOut_path, method: "delete" %></li>
+	    </ul> 
+            <% else %>
+          <li><%= link_to "Sign in", signIn_path %></li>
+	  <li><%= link_to "Sign up", signUp_path %></li>
+	  <% end %>
 
-            </ul>
-          </nav>
-        </div>
-      </div>
-     </header>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
