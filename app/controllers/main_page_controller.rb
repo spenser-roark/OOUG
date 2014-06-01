@@ -1,5 +1,6 @@
 class MainPageController < ApplicationController
   def home
+    @search
   end
 
   def contact
