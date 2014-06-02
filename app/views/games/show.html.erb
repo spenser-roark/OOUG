@@ -15,7 +15,9 @@
 <% end %>
 <% end %>
 
+<% if signed_in? %>
 <%= link_to "Edit Game Info", edit_game_path, class: "span2 btn btn-small btn-inverse" %>
+<% end %>
 
 <% if signed_in? %>    
 <% if admin? %>
