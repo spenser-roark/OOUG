@@ -5,6 +5,8 @@ class SearchController < ApplicationController
     wildcard_search = "%#{@search}%"
 
     @results = Games.where("eng_title like :search", search: wildcard_search).all
+
+    @count = @results.count;
   end
 
 end
