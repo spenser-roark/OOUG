@@ -4,26 +4,40 @@
 <%= link_to "Can't find a game?", new_game_path, class: "pull-right" %>
 <% end %>
 
+<% if admin? %>
+<!-- <h1>Test <%= @count %></h1> -->
+<% end %>
+
+
+<% @num = 0 %>
 <% if !@results.blank? %>
-<table class="search_results">
-  <% @results.each do |result| %>
-  <tr>
+<div class="tab-content">
+  <table class="search_results">
+    <% @results.each do |result| %>
+    <% @num+=1 %>
+    <% if @num % 10 == 0 %>
+    <div class="tab-pane" id="<%=@num/10%>">
+      <% end %>
+	<tr>
+	  <td id="game_info">
+	    <%= link_to result.eng_title,  result%>
+	  </td>
 
-    <td id="game_info">
-      <%= link_to result.eng_title,  result%>
-    </td>
+	  <td id="console_info">
+	    <%= result.console_general.eng_name %>
+	  </td>
 
-    <td id="console_info">
-      <%= result.console_general.eng_name %>
-    </td>
+	  <td id="region_info">
+	    <%= link_to result.region.region_title, region_path(result.region.region_id) %>
+	  </td>
 
-    <td id="region_info">
-      <%= link_to result.region.region_title, region_path(result.region.region_id) %>
-    </td>
-
-  </tr>
-  <% end %>
-</table>
+	</tr>
+	<% if @num + 2 % 10 == 0%>
+    </div>
+    <% end %>
+    <% end %>
+  </table>
+</div>
 
 <% else %>
 <h6>Sorry, we couldn't find anything</h6>
