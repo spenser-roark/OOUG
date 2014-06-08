@@ -22,6 +22,7 @@ Ooug::Application.routes.draw do
   resources :browse
   resources :search, only: [:index]
   resources :add_game, only: [:new, :create]
+  resources :stats, only: [:show, :index]
 
   resources :sessions, only: [:new, :create, :destroy]
 
