@@ -4,11 +4,6 @@
 <%= link_to "Can't find a game?", new_game_path, class: "pull-right" %>
 <% end %>
 
-<% if admin? %>
-<!-- <h1>Test <%= @count %></h1> -->
-<% end %>
-
-
 <% @num = 0 %>
 <% if !@results.blank? %>
 <div class="tab-content">

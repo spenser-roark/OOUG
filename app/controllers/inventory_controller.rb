@@ -1,7 +1,7 @@
 class InventoryController < ApplicationController
   before_action :signed_in_user, only: [:edit, :show, :update]
-  before_action :correct_user,   only: [:edit, :update, :show]
 
+  before_action :correct_user,   only: [:edit, :update, :show]
 
   def home
     @games = Games.all
