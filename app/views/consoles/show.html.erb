@@ -1,0 +1,27 @@
+<% provide(:name, @console.eng_name) %>
+
+<h1 class="console_title"><%= @console.eng_name %></h1>
+<h5 class="console_title"><%= (@console.jap_name ? @console.jap_name : "" );%></h5>
+<h5 class="console_title"><%= link_to @console.region.region_title, region_path(@console.region), id: "region-title"  %></h5>
+<h6 class="console_title"><%= @console.console_ean %></h6>
+
+<% if signed_in? %>
+<% if !in_collection(@console) %>
+<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
+
+<% else %>
+<%= # link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset2" 
+%>
+
+<% end %>
+<% end %>
+
+<% if signed_in? %>
+<%= link_to "Edit Console Info", edit_console_path, class: "span2 btn btn-small btn-inverse" %>
+<% end %>
+
+<% if signed_in? %>    
+<% if admin? %>
+<%= link_to "Remove From System", @console , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this console?", method: "delete" %>
+<% end %>
+<% end %>
