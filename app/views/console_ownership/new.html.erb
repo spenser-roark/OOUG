@@ -1,0 +1,72 @@
+<% provide(:title, "Add " + @game.eng_title + " To Your Collection") %>
+
+<h1 class="game_title"><%= @game.eng_title %></h1>
+<h5 class="game_title"><%= @game.jap_title %></h5>
+<h5 class="game_title"><%= @game.region.region_title %></h5>
+
+
+<ul class="nav nav-tabs" id="ownership_tabs">
+  <li class="active"><a href="#condition" data-toggle="tab">Cosmetic Condition</a></li>
+  <li><a href="#notes" data-toggle="tab">Personal Notes & Images </a></li>
+  <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
+</ul>
+
+<%= form_for(:ownership, url: "/ownership") do |f| %>
+<div class="tab-content">
+
+  <div class="tab-pane active" id="condition">
+    <div class="row">
+      <div class="span4 offset2">
+
+
+	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :game_condition, options_for_select(@quality_array, "0")) %>
+
+	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :manual_condition, options_for_select(@quality_array, "0")) %>
+
+	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :inserts_condition, options_for_select(@quality_array)) %>
+
+	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :spine_card_condition, options_for_select(@quality_array)) %>
+
+	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
+
+	<%= f.text_field :games_id, value: @game.id,  class: "readonly" , style: "visibility: hidden"%>
+	
+      </div>
+    </div>
+</div>
+
+  <div class="tab-pane fade in" id="notes">
+    <div class="row">
+      <div class="span4 offset2">
+
+	<%= f.label :notes, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.text_area(:notes, cols: 500, rows: 5) %>
+
+	
+	<%= f.label "Images to be implemented later, sorry :(", class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<span class="disabled btn btn-sm">Browse<spana>
+      </div>
+    </div>
+  </div>    
+
+  <div class="tab-pane fade in" id="misc">
+    <div class="row">
+      <div class="span4 offset2">
+
+	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]])) %>
+
+	<br />
+
+	<%= f.submit "Add", class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>    
+  
+</div>
+<% end %>

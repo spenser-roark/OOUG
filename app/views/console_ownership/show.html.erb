@@ -1,0 +1,12 @@
+<h1 class="console_title"><%= @console.consoles.eng_name %></h1>
+<h5 class="console_title"><%= @console.consoles.jap_name %></h5>
+<h5 class="console_title"><%= @console.consoles.region.region_title %></h5>
+
+<p><%= @console.notes %></p>
+<p>Box Condition: <%= @console.box_qualities.quality %></p>
+<p>Manual Condition: <%= @console.manual_qualities.quality %></p>
+<p>Inserts Condition: <%= @console.inserts_qualities.quality %></p>
+<p>Console Condition: <%= @console.console_qualities.quality %></p>
+
+<%= link_to "Edit Console", edit_ownership_path(current_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2"%>
+<%= link_to "Remove From Collection", @console, :confirm => 'Remove from collection?' , class: "btn btn-inverse btn-small span2", method: "delete" %>
