@@ -17,6 +17,7 @@ Ooug::Application.routes.draw do
   resources :inventory, only: [:show]
   resources :users
   resources :games
+  resources :consoles
   resources :region
   resources :ownership, only: [:show, :update, :edit, :create, :destroy]
   resources :browse
