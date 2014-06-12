@@ -37,7 +37,7 @@ class OwnershipController < ApplicationController
   def update
     @ownership = Ownership.find(params[:id])
     @game = Games.find(Ownership.find(params[:id]).games_id)
-    if @ownership.update_attributes(user_id: current_user().id, games_id: params[:ownership][:games_id], own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: params[:ownership][:spine_card_condition], count: 1)
+    if @ownership.update_attributes(user_id: current_user().id, games_id: Ownership.find(params[:id]).games_id, own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: params[:ownership][:spine_card_condition], count: 1)
       flash[:success] = @game.eng_title + " Successfully Updated"
       redirect_to @ownership
    else

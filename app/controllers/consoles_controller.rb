@@ -6,7 +6,7 @@ class ConsolesController < ApplicationController
   end
 
   def new
-    @game = Games.new
+    @console = Consoles.new
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 

@@ -6,12 +6,11 @@
 <h6 class="console_title"><%= @console.console_ean %></h6>
 
 <% if signed_in? %>
-<% if !in_collection(@console) %>
-<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
+<% if !in_console_collection(@console) %>
+<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% else %>
-<%= # link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset2" 
-%>
+<%= link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% end %>
 <% end %>

@@ -26,17 +26,25 @@ class ConsoleOwnershipController < ApplicationController
   end
 
   def edit
-    @ownership = Ownership.find(params[:id])
-    @game = Games.find(Ownership.find(params[:id]).games_id)
+    @ownership = ConsoleOwnership.find(params[:id])
+    @console = Consoles.find(ConsoleOwnership.find(params[:id]).consoles_id)
     @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
     @quality_array.insert(0, "")
   end
 
   def update
-    @ownership = Ownership.find(params[:id])
-    @game = Games.find(Ownership.find(params[:id]).games_id)
-    if @ownership.update_attributes(user_id: current_user().id, games_id: params[:ownership][:games_id], own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: params[:ownership][:spine_card_condition], count: 1)
-      flash[:success] = @game.eng_title + " Successfully Updated"
+    @ownership = ConsoleOwnership.find(params[:id])
+    @console = Consoles.find(ConsoleOwnership.find(params[:id]).consoles_id)
+    if @ownership.update_attributes(user_id: current_user().id, 
+                                    consoles_id: ConsoleOwnership.find(params[:id]).consoles_id, 
+                                    own: 1, 
+                                    complete: params[:console_ownership][:complete], 
+                                    box_condition: params[:console_ownership][:box_condition], 
+                                    console_condition: params[:console_ownership][:console_condition], 
+                                    manual_condition: params[:console_ownership][:manual_condition], 
+                                    inserts_condition: params[:console_ownership][:inserts_condition], 
+                                    notes: params[:console_ownership][:notes])
+      flash[:success] = @console.eng_name + " Successfully Updated"
       redirect_to @ownership
    else
     render 'edit'
@@ -45,13 +53,13 @@ class ConsoleOwnershipController < ApplicationController
   end
 
   def destroy
-    Ownership.delete(params[:id])
+    ConsoleOwnership.delete(params[:id])
     redirect_to inventory_path(current_user)
   end
 
   private
   def ownership_params
-    params.require(:ownership).permit(:ean, :eng_title, :jap_title, :system, :region, :image)
+    params.require(:ownership).permit(:ean, :eng_name, :jap_name, :system, :region, :image)
   end
 
   def delete_params

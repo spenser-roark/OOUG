@@ -2,7 +2,7 @@ class Consoles < ActiveRecord::Base
 
   belongs_to :console_general
   belongs_to :region
-  belongs_to :image
+#  belongs_to :image
   has_many :console_ownership
   has_many :users, through: :console_ownerships
 
@@ -25,13 +25,13 @@ class Consoles < ActiveRecord::Base
 
   validates :region_id, presence: true
 
-  validates :eng_title, presence: true
+  validates :eng_name, presence: true
 
   validates :console_general_id, presence: true
 
   validates :jap_title, presence: true, :if => :japanese?
 
 
-Consoles.joins(:region, :console_general, :image)
+Consoles.joins(:region, :console_general)
 
 end
