@@ -1,6 +1,6 @@
 module ConsolesHelper
 
-  def current_console(console)
+  def current_console=(console)
     @current_console = Console.find_by(id: console.id)
   end
 

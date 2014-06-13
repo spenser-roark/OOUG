@@ -39,6 +39,8 @@
 	<%= f.select( :console_general_id, options_for_select(@console_array)) %>
       </div>
     </div>
+
+<% current_console(@console)%>
     
     <div class="offset4">
       <%= f.submit "Create Game", class: "btn btn-primary btn-sm" %>

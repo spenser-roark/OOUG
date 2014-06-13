@@ -7,8 +7,8 @@ class ConsoleOwnershipController < ApplicationController
   end
 
   def new
-    @ownership = Ownership.new
-    @game = Games.find_by(id: params[:id])
+    @ownership = ConsoleOwnership.new
+    @console = Consoles.find_by(id: params[:id])
     @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
     @quality_array.insert(0, "")
   end
@@ -16,8 +16,15 @@ class ConsoleOwnershipController < ApplicationController
   def create
     @user = User.find_by(remember_token: cookies[:remember_token])
 
-    @ownership = Ownership.new(user_id: current_user().id, games_id: params[:ownership][:games_id], own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: params[:ownership][:spine_card_condition], count: 1)
-
+    @ownership = ConsoleOwnership.new(user_id: current_user().id, 
+                                    consoles_id: params[:console_ownership][:consoles_id],
+                                    own: 1, 
+                                    complete: params[:console_ownership][:complete], 
+                                    box_condition: params[:console_ownership][:box_condition], 
+                                    console_condition: params[:console_ownership][:console_condition], 
+                                    manual_condition: params[:console_ownership][:manual_condition], 
+                                    inserts_condition: params[:console_ownership][:inserts_condition], 
+                                    notes: params[:console_ownership][:notes])
     if @ownership.save
       redirect_to @ownership
     else

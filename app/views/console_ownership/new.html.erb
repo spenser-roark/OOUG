@@ -1,8 +1,8 @@
-<% provide(:title, "Add " + @game.eng_title + " To Your Collection") %>
+<% provide(:title, "Add " + @console.eng_name + " To Your Collection") %>
 
-<h1 class="game_title"><%= @game.eng_title %></h1>
-<h5 class="game_title"><%= @game.jap_title %></h5>
-<h5 class="game_title"><%= @game.region.region_title %></h5>
+<h1 class="console_title"><%= @console.eng_name %></h1>
+<h5 class="console_title"><%= @console.jap_name %></h5>
+<h5 class="console_title"><%= @console.region.region_title %></h5>
 
 
 <ul class="nav nav-tabs" id="ownership_tabs">
@@ -11,7 +11,7 @@
   <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
 </ul>
 
-<%= form_for(:ownership, url: "/ownership") do |f| %>
+<%= form_for(@ownership, url: {action: "create"}) do |f| %>
 <div class="tab-content">
 
   <div class="tab-pane active" id="condition">
@@ -19,8 +19,8 @@
       <div class="span4 offset2">
 
 
-	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :game_condition, options_for_select(@quality_array, "0")) %>
+	<%= f.label :console_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :console_condition, options_for_select(@quality_array, "0")) %>
 
 	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :manual_condition, options_for_select(@quality_array, "0")) %>
@@ -28,14 +28,11 @@
 	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :inserts_condition, options_for_select(@quality_array)) %>
 
-	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :spine_card_condition, options_for_select(@quality_array)) %>
-
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
 
-	<%= f.text_field :games_id, value: @game.id,  class: "readonly" , style: "visibility: hidden"%>
-	
+	<%= f.hidden_field :consoles_id, value: @console.id,  class: "readonly"%>
+
       </div>
     </div>
 </div>
