@@ -11,7 +11,7 @@
   <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
 </ul>
 
-<%= form_for(:ownership, url: "/ownership") do |f| %>
+<%= form_for(@ownership, url: {action: "create"}) do |f| %>
 <div class="tab-content">
 
   <div class="tab-pane active" id="condition">
