@@ -1,0 +1,16 @@
+<% provide(:name, @console.eng_name) %>
+
+<h1 class="console_title"><%= @console.eng_name %></h1>
+<h5 class="console_title"><%= (@console.jap_name ? @console.jap_name : "" );%></h5>
+
+<% if signed_in? %>
+<% if admin? %>
+<%= link_to "Edit Console Info", edit_console_general_path, class: "span2 btn btn-small btn-inverse offset2" %>
+<% end %>
+<% end %>
+
+<% if signed_in? %>
+<% if admin? %>
+<%= link_to "Remove From System", @console , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this console?", method: "delete" %>
+<% end %>
+<% end %>

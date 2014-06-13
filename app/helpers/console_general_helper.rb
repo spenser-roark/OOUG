@@ -1,0 +1,2 @@
+module ConsoleGeneralHelper
+end

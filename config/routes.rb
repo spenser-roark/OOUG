@@ -20,6 +20,7 @@ Ooug::Application.routes.draw do
   resources :users
   resources :games
   resources :consoles
+  resources :console_general
   resources :console_ownership, only: [:show, :update, :edit, :create, :destroy, :new]
   resources :region
   resources :ownership, only: [:show, :update, :edit, :create, :destroy, :new]

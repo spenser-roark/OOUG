@@ -1,0 +1,28 @@
+<% provide(:title, "Whatever you screwed up, make it right yo") %>
+<%= # render 'shared/region_error_messages' 
+%>
+
+<h1 class="console_title"><%= @console.eng_name %></h1>
+<h5 class="console_title"><%= (@console.jap_name ? @console.jap_name : "" );%></h5>
+
+    <%= form_for(@console, :html => {:class => "form-horizontal"}) do |f| %>
+
+    <div class="control-group pull-left">
+      <%= f.label :eng_name, "English Name",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :eng_name, class: "input-medium"%>
+      </div>
+    </div>
+
+    <div class="control-group pull-left">
+      <%= f.label :jap_name, "Japanese Name",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :jap_name, class: "input-medium"%>
+      </div>
+    </div>
+
+
+    <div class="offset4">
+      <%= f.submit "Save Changes", class: "btn btn-primary btn-sm" %>
+      </div>
+    <% end %>

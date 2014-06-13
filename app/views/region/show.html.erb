@@ -7,9 +7,9 @@
 <% if signed_in? %>    
 <% if admin? %>
 
-<%= link_to "Edit Region Info", edit_region_path, class: "btn btn-primary btn-sm" %>
+<%= link_to "Edit Region Info", edit_region_path, class: "span2 btn btn-small btn-inverse offset2" %>
 
-<%= link_to "Remove Region", @region , class: "btn btn-primary btn-sm", confirm: "Really? Delete this region?", method: "delete" %>
+<%= link_to "Remove Region", @region , class: "span2 btn btn-inverse btn-small", confirm: "Really? Delete this region?", method: "delete" %>
 
 <% end %>
 <% end %>
