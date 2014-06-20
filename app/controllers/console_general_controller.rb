@@ -8,6 +8,10 @@ class ConsoleGeneralController < ApplicationController
     @console = ConsoleGeneral.new
   end
 
+  def index
+    @console = ConsoleGeneral.all
+  end
+
   def edit
     @console = ConsoleGeneral.find(params[:id])
   end
@@ -35,7 +39,7 @@ class ConsoleGeneralController < ApplicationController
 
   def destroy
     ConsoleGeneral.delete(params[:id])
-    redirect_to root_path
+    redirect_to console_general_index_path
   end
 
   private
