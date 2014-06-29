@@ -1,7 +1,7 @@
 class InventoryController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :show, :update]
+  before_action :signed_in_user, only: [:edit, :show, :update, :games]
 
-  before_action :correct_user,   only: [:edit, :update, :show]
+  before_action :correct_user,   only: [:edit, :update, :show, :games]
 
   def home
     @games = Games.all
@@ -22,6 +22,28 @@ class InventoryController < ApplicationController
 
     end
     
+    @image = Image.all
+  end
+
+  def games
+    if (params.has_key?(:console_id))
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+
+    else
+      @ownership = Ownership.where(user_id: params[:id]).all
+
+    end
+    @image = Image.all
+  end
+
+  def consoles
+    if (params.has_key?(:console_id))
+      @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+
+    else
+      @ownership = ConsoleOwnership.where(user_id: params[:id]).all
+
+    end
     @image = Image.all
   end
 

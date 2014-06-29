@@ -6,7 +6,7 @@
 </h1>
 
 <p id="game_info">
-Number of games in your collection: <%= link_to @game_count, inventory_path(current_user) %> <br />
+Number of games in your collection: <%= link_to @game_count, inventory_games_path(current_user) %> <br />
 number of consoles in your collection: <%= @console_count %> <br />
 Number of accessories in your collection: <%= @accessory_count %> <br />
 </p>
