@@ -1,17 +1,17 @@
-<% provide(:title, "Edit " + @game.eng_title) %>
+<% provide(:title, "Add " + @console.eng_name + " To Your Collection") %>
 
-<h1 class="game_title"><%= @game.eng_title %></h1>
-<h5 class="game_title"><%= @game.jap_title %></h5>
-<h5 class="game_title"><%= @game.region.region_title %></h5>
+<h1 class="console_title"><%= @console.eng_name %></h1>
+<h5 class="console_title"><%= @console.jap_name %></h5>
+<h5 class="console_title"><%= @console.region.region_title %></h5>
 
 
 <ul class="nav nav-tabs" id="ownership_tabs">
   <li class="active"><a href="#condition" data-toggle="tab">Cosmetic Condition</a></li>
   <li><a href="#notes" data-toggle="tab">Personal Notes & Images </a></li>
-  <li><a href="#misc" data-toggle="tab">Misc & Save</a></li>
+  <li><a href="#misc" data-toggle="tab">Misc & Add</a></li>
 </ul>
 
-<%= form_for(@ownership) do |f| %>
+<%= form_for(@ownership, url: {action: "create"}) do |f| %>
 <div class="tab-content">
 
   <div class="tab-pane active" id="condition">
@@ -19,20 +19,19 @@
       <div class="span4 offset2">
 
 
-	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :game_condition, options_for_select(@quality_array, selected = @ownership.game_condition)) %>
+	<%= f.label :console_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :console_condition, options_for_select(@quality_array, "0")) %>
 
 	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :manual_condition, options_for_select(@quality_array, selected = @ownership.manual_condition)) %>
+	<%= f.select( :manual_condition, options_for_select(@quality_array, "0")) %>
 
 	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :inserts_condition, options_for_select(@quality_array, selected = @ownership.inserts_condition)) %>
-
-	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :spine_card_condition, options_for_select(@quality_array, selected = @ownership.spine_card_condition)) %>
+	<%= f.select( :inserts_condition, options_for_select(@quality_array)) %>
 
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :box_condition, options_for_select(@quality_array, selected = @ownership.box_condition)) %>
+	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
+
+	<%= f.hidden_field :consoles_id, value: @console.id,  class: "readonly"%>
 
       </div>
     </div>
@@ -57,11 +56,11 @@
       <div class="span4 offset2">
 
 	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]], selected = @ownership.complete)) %>
+	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]])) %>
 
 	<br />
 
-	<%= f.submit "Save", class: "btn btn-primary btn-sm" %>
+	<%= f.submit "Add", class: "btn btn-primary btn-sm" %>
       </div>
     </div>
   </div>    

@@ -1,8 +1,8 @@
-<% provide(:title, "Edit " + @game.eng_title) %>
+<% provide(:title, "Edit " + @console.eng_name) %>
 
-<h1 class="game_title"><%= @game.eng_title %></h1>
-<h5 class="game_title"><%= @game.jap_title %></h5>
-<h5 class="game_title"><%= @game.region.region_title %></h5>
+<h1 class="console_title"><%= @console.eng_name %></h1>
+<h5 class="console_title"><%= @console.jap_name %></h5>
+<h5 class="console_title"><%= @console.region.region_title %></h5>
 
 
 <ul class="nav nav-tabs" id="ownership_tabs">
@@ -19,17 +19,14 @@
       <div class="span4 offset2">
 
 
-	<%= f.label :game_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :game_condition, options_for_select(@quality_array, selected = @ownership.game_condition)) %>
+	<%= f.label :console_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.select( :console_condition, options_for_select(@quality_array, selected = @ownership.console_condition)) %>
 
 	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :manual_condition, options_for_select(@quality_array, selected = @ownership.manual_condition)) %>
 
 	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :inserts_condition, options_for_select(@quality_array, selected = @ownership.inserts_condition)) %>
-
-	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :spine_card_condition, options_for_select(@quality_array, selected = @ownership.spine_card_condition)) %>
 
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :box_condition, options_for_select(@quality_array, selected = @ownership.box_condition)) %>

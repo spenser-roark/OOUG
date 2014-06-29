@@ -13,12 +13,17 @@ Ooug::Application.routes.draw do
   
   get '/inventory/:id/:console_id' => 'inventory#show'
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
-  
+  get '/console_ownership/new/:id' => 'console_ownership#new', as: 'new_console_ownership'
+  get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships_path'
+
   resources :inventory, only: [:show]
   resources :users
   resources :games
+  resources :consoles
+  resources :console_general
+  resources :console_ownership, only: [:show, :update, :edit, :create, :destroy, :new]
   resources :region
-  resources :ownership, only: [:show, :update, :edit, :create, :destroy]
+  resources :ownership, only: [:show, :update, :edit, :create, :destroy, :new]
   resources :browse
   resources :search, only: [:index]
   resources :add_game, only: [:new, :create]

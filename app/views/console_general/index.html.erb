@@ -1,0 +1,19 @@
+<h1 class="game_title">Console General Manipulation</h1>
+
+<%= link_to "New Console?", new_console_general_path, class: "pull-right" %>
+
+<table>
+<% @console.each do |console| %>
+<tr class="spaceUnder">
+    <td id="game_info" style="width: 20%; vertical-align: text-top">
+      <%= link_to console.eng_name, console_general_path(console.console_id) %>
+    </td>
+
+    <td id="">
+      <%= console.jap_name %>
+    </td>
+
+</tr>
+<% end %>
+
+<table>

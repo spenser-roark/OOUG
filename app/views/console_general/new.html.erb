@@ -1,0 +1,29 @@
+<% provide(:title, "Add A New Game") %>
+<%= render 'shared/console_general_error_messages' 
+
+%> 
+<div class="row" style="margin-top: 100px">
+  <div class="">
+
+    <%= form_for(@console, url: {action: "create"}, :html => {:class => "form-horizontal"}) do |f| %>
+
+    <div class="pull-left">
+      <%= f.label :jap_name, "Japanese Title",class: "control-label", id: "jap_title_title"%>
+      <div class="controls">
+	<%= f.text_field :jap_name, class: "input-medium"%>
+      </div>
+    </div>
+
+      <div class="pull-right">
+	<%= f.label :eng_name, "English Title",class: "control-label", style: ""%>
+	<div class="controls">
+	  <%= f.text_field :eng_name, class: "input-medium" %>
+	</div>
+      </div>
+
+    <div class="offset4">
+      <%= f.submit "Create Console", class: "btn btn-primary btn-small" %>
+      </div>
+    <% end %>
+</div>
+</div>
