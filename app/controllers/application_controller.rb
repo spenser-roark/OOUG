@@ -7,11 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :sidebar_consoles
 
   def sidebar_consoles
-    @remember_token = User.hash_token(cookies[:remember_token])
-    @user = User.find_by(remember_token: @remember_token)
-
-    @console = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
-
   end
 
 private 

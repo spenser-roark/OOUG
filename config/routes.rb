@@ -1,20 +1,25 @@
 Ooug::Application.routes.draw do
   
-  # match '/signIn', to: 'users#signIn', via: 'get'
   match '/home', to: 'main_page#home', via: 'get'
   match '/signUp', to: 'users#new', via: 'get'
   match '/about', to: 'main_page#about', via: 'get'
   match '/contact', to: 'main_page#contact', via: 'get'
-  match '/test', to: 'inventory#test', via: 'get'
+  match '/inventory/test', to: 'inventory#test', via: 'get'
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
-  #match '/deleteGame', to: 'ownership#destroy',     via: 'delete'
-  #match '/deleteRegion', to: 'region#destroy',     via: 'delete'
-  
+
+  get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
+  get '/inventory/games/:id/:console_id' => 'inventory#games'
+
+  get '/inventory/consoles/:id' => 'inventory#consoles', as: 'inventory_consoles'
+  get '/inventory/consoles/:id/:console_id' => 'inventory#consoles'
+
+
   get '/inventory/:id/:console_id' => 'inventory#show'
+
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
   get '/console_ownership/new/:id' => 'console_ownership#new', as: 'new_console_ownership'
-  get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships_path'
+  get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships'
 
   resources :inventory, only: [:show]
   resources :users
