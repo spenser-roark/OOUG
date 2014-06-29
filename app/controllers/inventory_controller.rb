@@ -26,6 +26,9 @@ class InventoryController < ApplicationController
   end
 
   def games
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+
     if (params.has_key?(:console_id))
       @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
 
@@ -34,9 +37,13 @@ class InventoryController < ApplicationController
 
     end
     @image = Image.all
+    @gameConsoles = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
   end
 
   def consoles
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+
     if (params.has_key?(:console_id))
       @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).where(:console_general => {:eng_name => params[:console_id]})
 
@@ -45,6 +52,8 @@ class InventoryController < ApplicationController
 
     end
     @image = Image.all
+
+@consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
   end
 
   def test
