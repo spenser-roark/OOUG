@@ -7,10 +7,10 @@
 
 <% if signed_in? %>
 <% if !in_console_collection(@console) %>
-<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset1" %>
+<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
 
 <% else %>
-<%= link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset1" %>
+<%= link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset2" %>
 
 <% end %>
 <% end %>

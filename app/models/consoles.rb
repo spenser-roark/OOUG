@@ -11,7 +11,7 @@ class Consoles < ActiveRecord::Base
   end
 
   def clearJap
-    self.jap_title = ""
+    self.jap_name = ""
   end
 
   def notJap
@@ -20,7 +20,7 @@ class Consoles < ActiveRecord::Base
 
   before_save :clearJap, :if => :notJap
 
-  validates :ean, presence: true, length: {minimum: 12},
+  validates :console_ean, presence: true, length: {minimum: 12},
   uniqueness: { case_sensitive: false}
 
   validates :region_id, presence: true
@@ -29,7 +29,7 @@ class Consoles < ActiveRecord::Base
 
   validates :console_general_id, presence: true
 
-  validates :jap_title, presence: true, :if => :japanese?
+  validates :jap_name, presence: true, :if => :japanese?
 
 
 Consoles.joins(:region, :console_general)

@@ -1,14 +1,14 @@
-<% provide(:title, "Edit " + @game.eng_title) %>
-<%= render 'shared/game_error_messages' %> 
+<% provide(:title, "Edit " + @console.eng_name) %>
+<%= render 'shared/console_error_messages' %> 
 
-<h1 class="game_title"><%= @game.eng_title %></h1>
+<h1 class="game_title"><%= @console.eng_name %></h1>
 
 <div class="row span10" style="margin-top: 100px">
   <div class="">
 
-    <%= form_for(@game, :html => {:class => "form-horizontal"}) do |f| %>
+    <%= form_for(@console, :html => {:class => "form-horizontal"}) do |f| %>
 
-    <% if @game.region.region_id != 1 %>
+    <% if @console.region.region_id != 1 %>
     <div class="control-group offset2" id="games_region_div">
 
       <% else %>
@@ -16,41 +16,41 @@
 	<% end %>
       <%= f.label :region, class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.select( :region_id, options_for_select(@region_array, :selected => @game.region.region_id)) %>
+	<%= f.select( :region_id, options_for_select(@region_array, :selected => @console.region.region_id)) %>
       </div>
     </div>
 
-    <% if @game.region.region_id != 1 %>
+    <% if @console.region.region_id != 1 %>
     <div class="control-group" id="games_jap_title_div">
 
       <% else %>
       <div class="control-group pull-right" id="games_jap_title_div">
       <% end %>
 
-      <%= f.label :jap_title, "Japanese Title",class: "control-label", id: "jap_title_title"%>
+      <%= f.label :jap_name, "Japanese Title",class: "control-label", id: "jap_title_title"%>
       <div class="controls">
-	<%= f.text_field :jap_title, class: "input-medium"%>
+	<%= f.text_field :jap_name, class: "input-medium"%>
       </div>
     </div>
 
     <div class="control-group pull-right">
-      <%= f.label :eng_title, "English Title",class: "control-label", style: ""%>
+      <%= f.label :eng_name, "English Title",class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.text_field :eng_title, class: "input-medium" %>
+	<%= f.text_field :eng_name, class: "input-medium" %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :ean, "EAN",class: "control-label", style: ""%>
+      <%= f.label :console_ean, "EAN",class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
+	<%= f.text_field :console_ean, class: "input-medium", :maxlength=>"14" %>
       </div>
     </div>
 
     <div class="control-group offset2">
       <%= f.label :ConsoleGeneral, "Console", class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.select( :console_general_id, options_for_select(@console_array, :selected => @game.console_general.console_id)) %>
+	<%= f.select( :console_general_id, options_for_select(@console_array, :selected => @console.console_general.console_id)) %>
       </div>
     </div>
     
@@ -102,7 +102,7 @@
   });
 </script>
 
-<% if @game.region.region_id == 1 %>
+<% if @console.region.region_id == 1 %>
 
 <script>
   $("#games_jap_title").show();

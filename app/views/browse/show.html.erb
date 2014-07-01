@@ -4,15 +4,14 @@
 <%= link_to "Can't find a game?", new_game_path, class: "pull-right" %>
 <% end %>
 
+<h1 style="text-align: center"><%= params[:id] %> Games</h1>
 
-
-<div class="browse_list" id="game_info">
+<div class="browse_list offset3" id="game_info">
 <ul>
   <% @console_games.each do |game|
 %>
 
-<li><%= link_to game.eng_title, current_game(game)
-%> </li>
+<li><%= link_to game.eng_title, current_game(game) %> </li>
 
 <% end
 %>
