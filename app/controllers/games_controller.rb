@@ -60,6 +60,7 @@ class GamesController < ApplicationController
 
   def destroy
     Games.delete(params[:id])
+    Ownership.where(games_id: params[:id]).destroy_all
     redirect_to browse_index_path
   end
 

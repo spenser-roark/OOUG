@@ -10,7 +10,7 @@
 <ul>
   <% @console_games.each do |game| %>
 
-<li><%= link_to game.eng_name, current_console(game) %> </li>
+<li><%= link_to game.eng_name, current_console(game) %> <span style="font-size: 10px"><%= game.region.region_title %></span> </li>
 
 <% end %>
 

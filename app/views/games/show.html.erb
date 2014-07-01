@@ -21,6 +21,6 @@
 
 <% if signed_in? %>    
 <% if admin? %>
-<%= link_to "Remove From System", @game , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this game?", method: "delete" %>
+<%= link_to "Remove From System", @game , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this game? This is mostly reserved for testing games or games that really need to be deleted. This will delete all instances of this game. No one will have this in their collection. I'll ask one more time. Are you sure you want to delete this game?", method: "delete" %>
 <% end %>
 <% end %>
