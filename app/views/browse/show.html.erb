@@ -11,7 +11,7 @@
   <% @console_games.each do |game|
 %>
 
-<li><%= link_to game.eng_title, current_game(game) %> </li>
+<li><%= link_to game.eng_title, current_game(game) %> <span style="font-size: 10px"><%= game.region.region_title %></span> </li>
 
 <% end
 %>

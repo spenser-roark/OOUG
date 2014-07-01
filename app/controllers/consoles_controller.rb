@@ -63,6 +63,7 @@ class ConsolesController < ApplicationController
 
   def destroy
     Consoles.delete(params[:id])
+    ConsoleOwnership.where(consoles_id: params[:id]).destroy_all
     redirect_to browse_consoles_path
   end
 
