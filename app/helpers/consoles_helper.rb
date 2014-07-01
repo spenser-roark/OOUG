@@ -8,4 +8,9 @@ module ConsolesHelper
     @inCollection = ConsoleOwnership.find_by(user_id: current_user().id, consoles_id: console.id)
   end
 
+  def current_console(console)
+    @current_console = Consoles.find_by(id: console.id)
+  end
+
+
 end

@@ -1,6 +1,10 @@
 class ConsolesController < ApplicationController
   before_action :signed_in_user, only: [:new, :edit]
 
+  def index
+    @console = ConsoleGeneral.order("eng_name").uniq.pluck(:eng_name)
+  end
+
   def show
     @console = Consoles.find(params[:id])
   end
@@ -31,9 +35,9 @@ class ConsolesController < ApplicationController
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
 
-    @game = Games.find(params[:id])
-    if @game.update_attributes(game_params)
-      redirect_to @game
+    @console = Consoles.find(params[:id])
+    if @console.update_attributes(console_params)
+      redirect_to @console
     else
       # flash.now[:error] = "Some fields were left blank"
       render "edit"
@@ -48,9 +52,9 @@ class ConsolesController < ApplicationController
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
 
-    @game = Games.new(game_params)    
-    if @game.save
-      redirect_to @game
+    @console = Consoles.new(console_params)
+    if @console.save
+      redirect_to @console
     else
       # flash.now[:error] = "Some fields were left blank"
       render "new"
@@ -58,14 +62,14 @@ class ConsolesController < ApplicationController
   end
 
   def destroy
-    Games.delete(params[:id])
-    redirect_to browse_index_path
+    Consoles.delete(params[:id])
+    redirect_to browse_consoles_path
   end
 
   private
   
-  def game_params
-    params.require(:games).permit(:ean, :eng_title, :jap_title, :console_general_id, :region_id, :image)
+  def console_params
+    params.require(:consoles).permit(:console_ean, :eng_name, :jap_name, :console_general_id, :region_id)
   end
 
  # Before filters
