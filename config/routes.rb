@@ -14,14 +14,11 @@ Ooug::Application.routes.draw do
   get '/inventory/consoles/:id' => 'inventory#consoles', as: 'inventory_consoles'
   get '/inventory/consoles/:id/:console_id' => 'inventory#consoles'
 
-
-  get '/inventory/:id/:console_id' => 'inventory#show'
-
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
   get '/console_ownership/new/:id' => 'console_ownership#new', as: 'new_console_ownership'
   get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships'
 
-  resources :inventory, only: [:show]
+  resources :inventory, only: [:games, :consoles]
   resources :users
   resources :games
   resources :browse_consoles

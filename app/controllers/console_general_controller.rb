@@ -1,5 +1,7 @@
 class ConsoleGeneralController < ApplicationController
 
+  before_action :correct_user, only: [:index, :new, :update, :edit, :create, :destroy]
+
   def show
     @console = ConsoleGeneral.find(params[:id])
   end
@@ -51,13 +53,17 @@ class ConsoleGeneralController < ApplicationController
     params.require(:console_general).permit(:id, :ean, :eng_title, :jap_title, :system, :region, :image)
   end
 
- # Before filters
+  private
+
+  def correct_user
+    redirect_to root_path unless admin?
+  end 
+
     def signed_in_user
       unless signed_in?
         store_location
         redirect_to signIn_url, notice: "Please sign in."
       end
     end
-
 
 end

@@ -1,6 +1,8 @@
 class OwnershipController < ApplicationController
 
-  before_action :signed_in_user, only: [:edit, :show, :update, :new]
+  before_action :signed_in_user
+
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   def show
     @game = Ownership.find_by(id: params[:id])
@@ -60,7 +62,6 @@ class OwnershipController < ApplicationController
     params.require(:ownership).permit(:id, :ean, :eng_title, :jap_title, :system, :region, :image)
   end
 
-
  # Before filters
     def signed_in_user
       unless signed_in?
@@ -69,5 +70,9 @@ class OwnershipController < ApplicationController
       end
     end
 
+    def correct_user
+      @user = User.find(Ownership.find(params[:id]).user_id)
+      redirect_to current_user, notice: "Sorry, you can't edit someone else's inventory"  unless current_user?(@user)
+    end 
 
 end

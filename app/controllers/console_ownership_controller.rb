@@ -1,5 +1,7 @@
 class ConsoleOwnershipController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :show, :update, :new]
+  before_action :signed_in_user
+
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   def show
     @console = ConsoleOwnership.find_by(id: params[:id])
@@ -80,4 +82,10 @@ class ConsoleOwnershipController < ApplicationController
         redirect_to signIn_url, notice: "Please sign in."
       end
     end
+
+    def correct_user
+      @user = User.find(ConsoleOwnership.find(params[:id]).user_id)
+      redirect_to current_user, notice: "Sorry, you can't edit someone else's inventory"  unless current_user?(@user)
+    end 
+
 end

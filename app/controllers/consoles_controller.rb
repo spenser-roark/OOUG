@@ -1,5 +1,5 @@
 class ConsolesController < ApplicationController
-  before_action :signed_in_user, only: [:new, :edit]
+  before_action :signed_in_user, only: [:new, :edit, :update]
 
   def index
     @console = ConsoleGeneral.order("eng_name").uniq.pluck(:eng_name)
