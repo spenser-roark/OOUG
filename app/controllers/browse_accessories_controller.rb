@@ -1,0 +1,2 @@
+class BrowseAccessoriesController < ApplicationController
+end
