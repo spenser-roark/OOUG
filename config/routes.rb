@@ -1,5 +1,5 @@
 Ooug::Application.routes.draw do
-  
+
   match '/home', to: 'main_page#home', via: 'get'
   match '/signUp', to: 'users#new', via: 'get'
   match '/about', to: 'main_page#about', via: 'get'
@@ -14,17 +14,26 @@ Ooug::Application.routes.draw do
   get '/inventory/consoles/:id' => 'inventory#consoles', as: 'inventory_consoles'
   get '/inventory/consoles/:id/:console_id' => 'inventory#consoles'
 
+  get '/inventory/accessories/:id' => 'inventory#accessories', as: 'inventory_accessories'
+  get '/inventory/accessories/:id/:console_id' => 'inventory#accessories'
+
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
   get '/console_ownership/new/:id' => 'console_ownership#new', as: 'new_console_ownership'
-  get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships'
+  #get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships'
 
+  get '/accessories_ownership/new/:id' => 'accessories_ownership#new', as: 'new_accessories_ownership'
+  #get '/accessories_ownership/new/:id' => 'accessories_ownership#new', as: 'ownerships'
+  
   resources :inventory, only: [:games, :consoles]
   resources :users
   resources :games
   resources :browse_consoles
+  resources :browse_accessories
   resources :consoles
+  resources :accessories
   resources :console_general
   resources :console_ownership, only: [:show, :update, :edit, :create, :destroy, :new]
+  resources :accessories_ownership, only: [:show, :update, :edit, :create, :destroy, :new]
   resources :region
   resources :ownership, only: [:show, :update, :edit, :create, :destroy, :new]
   resources :browse
