@@ -1,0 +1,39 @@
+<%= render 'layouts/inventoryAccessorySideBar' %>
+
+<div class="container inventory_games" style="position: static">
+<% 
+if (params.has_key?(:console_id))
+provide(:title, 'All your ' + params[:console_id] + ' games') 
+
+else
+provide(:title, 'All accessories In Your Collection') 
+
+end
+
+%>
+
+<table class="">
+<% @ownership.each do |game| %>
+
+<tr>
+ <td class="">
+<%= # game.games.image
+%>
+    </td>
+
+    <td id="game_info">
+      <%= link_to game.accessories.eng_title, ownership_accessory(game.accessories.id) %>
+    </td>
+
+    <td id="console_info">
+      <%= link_to game.accessories.console_general.eng_name, console_general_path(game.accessories.console_general.id) %>
+    </td>
+
+    <td id="region_info">
+      <%= link_to game.accessories.region.region_title, region_path(game.accessories.region.region_id) %>
+    </td>
+
+</tr>
+<% end %>
+</table>
+</div>

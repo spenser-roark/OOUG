@@ -1,0 +1,26 @@
+<% provide(:name, @accessory.eng_title) %>
+
+<h1 class="accessory_title"><%= @accessory.eng_title %></h1>
+<h5 class="accessory_title"><%= (@accessory.jap_title ? @accessory.jap_title : "" );%></h5>
+<h5 class="accessory_title"><%= link_to @accessory.region.region_title, region_path(@accessory.region), id: "region-title"  %></h5>
+<h6 class="accessory_title"><%= @accessory.accessories_ean %></h6>
+
+<% if signed_in? %>
+<% if !in_accessory_collection(@accessory) %>
+<%= link_to "Add To Collection", new_accessories_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
+
+<% else %>
+<%= link_to "You Own This", accessories_ownership_path(ownership_accessory(@accessory)), class: "span2 btn btn-small btn-inverse offset2" %>
+
+<% end %>
+<% end %>
+
+<% if signed_in? %>
+<%= link_to "Edit Accessory Info", edit_accessory_path, class: "span2 btn btn-small btn-inverse" %>
+<% end %>
+
+<% if signed_in? %>    
+<% if admin? %>
+<%= link_to "Remove From System", @accessory , class: "span2 btn btn-small btn-inverse", confirm: "Really? Delete this accessory? This is mostly reserved for testing accessories or accessories that really need to be deleted. This will delete all instances of this accessory. No one will have this in their collection. I'll ask one more time. Are you sure you want to delete this accessory?", method: "delete" %>
+<% end %>
+<% end %>

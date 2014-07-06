@@ -56,6 +56,22 @@ class InventoryController < ApplicationController
 @consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
   end
 
+  def accessories
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+
+    if (params.has_key?(:console_id))
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+
+    else
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).all
+
+    end
+    @image = Image.all
+
+    @accessoryConsoles = AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
+  end
+
   def test
     @user = User.find_by(params[:id])
     @ownership = Ownership.where(user_id: 1).all

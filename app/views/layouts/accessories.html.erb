@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OOUG - Obscure or Otherwise Unknown Games - <%= yield(:title) %></title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="icon" type="image/ico" href="/assets/favicon.ico">    
+  </head>
+
+
+  <body>
+
+    <%= render 'layouts/generalHeader' %>
+    <div class="container" style="background-color: white; padding-top: 60px; ">
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+
+    <%= render 'layouts/generalFooter' %>
+
+    </div>
+  </body>
+</html>

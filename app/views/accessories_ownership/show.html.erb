@@ -1,0 +1,12 @@
+<h1 class="accessory_title"><%= @accessory.accessories.eng_title %></h1>
+<h5 class="accessory_title"><%= @accessory.accessories.jap_title %></h5>
+<h5 class="accessory_title"><%= @accessory.accessories.region.region_title %></h5>
+
+<p><%= @accessory.notes %></p>
+<p>Box Condition: <%= @accessory.box_qualities.quality %></p>
+<p>Manual Condition: <%= @accessory.manual_qualities.quality %></p>
+<p>Inserts Condition: <%= @accessory.inserts_qualities.quality %></p>
+<p>Accessory Condition: <%= @accessory.accessories_qualities.quality %></p>
+
+<%= link_to "Edit Accessory", edit_accessories_ownership_path(current_accessory_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2"%>
+<%= link_to "Remove From Collection", @accessory, :confirm => 'Remove from collection?' , class: "btn btn-inverse btn-small span2", method: "delete" %>

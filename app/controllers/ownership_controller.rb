@@ -50,7 +50,7 @@ class OwnershipController < ApplicationController
 
   def destroy
     Ownership.delete(params[:id])
-    redirect_to inventory_path(current_user)
+    redirect_to inventory_games_path(current_user)
   end
 
   private

@@ -63,7 +63,7 @@ class ConsoleOwnershipController < ApplicationController
 
   def destroy
     ConsoleOwnership.delete(params[:id])
-    redirect_to inventory_path(current_user)
+    redirect_to inventory_consoles_path
   end
 
   private

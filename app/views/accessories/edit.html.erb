@@ -1,0 +1,111 @@
+<% provide(:title, "Edit " + @accessory.eng_title) %>
+<%= render 'shared/accessory_error_messages' %> 
+
+<h1 class="accessory_title"><%= @accessory.eng_title %></h1>
+
+<div class="row span10" style="margin-top: 100px">
+  <div class="">
+
+    <%= form_for(@accessory, :html => {:class => "form-horizontal"}) do |f| %>
+
+    <% if @accessory.region.region_id != 1 %>
+    <div class="control-group offset2" id="accessories_region_div">
+
+      <% else %>
+      <div class="control-group pull-left" id="accessories_region_div">
+	<% end %>
+      <%= f.label :region, class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.select( :region_id, options_for_select(@region_array, :selected => @accessory.region.region_id)) %>
+      </div>
+    </div>
+
+    <% if @accessory.region.region_id != 1 %>
+    <div class="control-group" id="accessories_jap_title_div">
+
+      <% else %>
+      <div class="control-group pull-right" id="accessories_jap_title_div">
+      <% end %>
+
+      <%= f.label :jap_title, "Japanese Title",class: "control-label", id: "jap_title_title"%>
+      <div class="controls">
+	<%= f.text_field :jap_title, class: "input-medium"%>
+      </div>
+    </div>
+
+    <div class="control-group pull-right">
+      <%= f.label :eng_title, "English Title",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :eng_title, class: "input-medium" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :accessories_ean, "EAN",class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.text_field :accessories_ean, class: "input-medium", :maxlength=>"14" %>
+      </div>
+    </div>
+
+    <div class="control-group offset2">
+      <%= f.label :ConsoleGeneral, "Console", class: "control-label", style: ""%>
+      <div class="controls">
+	<%= f.select( :console_general_id, options_for_select(@console_array, :selected => @accessory.console_general.console_id)) %>
+      </div>
+    </div>
+    
+    <div class="offset4">
+      <%= f.submit "Save Changes", class: "btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("#accessories_jap_title").hide();
+  $("#jap_title_title").hide();
+</script>
+
+<script type="text/javascript">
+  $("#accessories_region_id").change(function() {
+  if ($("#accessories_region_id").val()=="1")
+  {
+  $("#accessories_jap_title").show();
+  $("#jap_title_title").show();
+  $("#accessories_jap_title_div").attr('class', 'control-group pull-right');
+  $("#accessories_region_div").attr('class', 'control-group pull-left');
+  }
+  else
+  {
+  $("#accessories_jap_title").hide();
+  $("#jap_title_title").hide();
+  $("#accessories_jap_title_div").attr('class', 'control-group');
+  $("#accessories_region_div").attr('class', 'control-group offset2');
+  }
+  });
+
+  $("#accessories_region_id").ready(function() {
+  if ($("#accessories_region_id").val()=="1")
+  {
+  $("#accessories_jap_title").show();
+  $("#jap_title_title").show();
+  $("#accessories_jap_title_div").attr('class', 'control-group pull-right');
+  $("#accessories_region_div").attr('class', 'control-group pull-left');
+  }
+  else
+  {
+  $("#accessories_jap_title").hide();
+  $("#jap_title_title").hide();
+  $("#accessories_jap_title_div").attr('class', 'control-group');
+  $("#accessories_region_div").attr('class', 'control-group offset2');
+  }
+  });
+</script>
+
+<% if @accessory.region.region_id == 1 %>
+
+<script>
+  $("#accessories_jap_title").show();
+  $("#jap_title_title").show();
+</script>
+<% end %>

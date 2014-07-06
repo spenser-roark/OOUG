@@ -1,0 +1,18 @@
+<% provide(:title, @console_name.eng_name) %>
+
+<% if signed_in? %>
+<%= link_to "Can't find an accessory?", new_accessory_path, class: "pull-right" %>
+<% end %>
+
+<h1 style="text-align: center"><%= params[:id] %> Accessories</h1>
+
+<div class="browse_list offset3" id="game_info">
+<ul>
+  <% @accessory_games.each do |game| %>
+
+<li><%= link_to game.eng_title, current_accessory(game) %> <span style="font-size: 10px"><%= game.region.region_title %></span> </li>
+
+<% end %>
+
+</ul>
+</div>

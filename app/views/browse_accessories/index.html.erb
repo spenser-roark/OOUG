@@ -1,0 +1,14 @@
+<% provide(:title, "Browse") %>
+
+<h1 style="text-align: center">All Accessories</h1>
+
+<div class="browse_list offset3" id="game_info">
+<ul>
+  <% @console.each do |console| %>
+
+<li><%= link_to console, browse_accessory_path(console) %></li>
+
+<% end %>
+
+</ul>
+</div>
