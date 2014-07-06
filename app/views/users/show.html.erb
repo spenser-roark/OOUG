@@ -8,7 +8,7 @@
 <p id="game_info">
 Number of games in your collection: <%= link_to @game_count, inventory_games_path(current_user) %> <br />
 number of consoles in your collection: <%= link_to @console_count, inventory_consoles_path(current_user) %> <br />
-Number of accessories in your collection: <%= @accessory_count %> <br />
+Number of accessories in your collection: <%= link_to @accessory_count, inventory_accessories_path(current_user) %> <br />
 </p>
 
 <!-- <%= @user.alias %>, <%= @user.email %> -->
