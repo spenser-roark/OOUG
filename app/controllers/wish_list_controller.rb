@@ -1,2 +1,0 @@
-class WishListController < ApplicationController
-end
