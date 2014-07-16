@@ -12,6 +12,13 @@ end
 
 %>
 
+<% if (@ownership.empty?) %>
+
+<p style="text-align: center">
+  No accessories added yet? <%= link_to "Browse The Accessories Collection", browse_accessories_path %> and add some accessories!
+</p>
+<% end %>
+
 <table class="">
 <% @ownership.each do |game| %>
 

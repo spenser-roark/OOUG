@@ -1,22 +1,20 @@
-
-<div class="sidebar pull-right" style="">
+<% if (!@ownership.empty?) %>
+<div class="sidebar pull-right">
   <div class="sideConsole">
 
 <div class="content .navbar-inverse">
-  <%= # link_to (gravatar_for @user), '#' 
-%>
 <ul>
+
 <li><%= link_to "All Games",  inventory_games_path(current_user) %></li>
 
-  <% @gameConsoles.each do |game| 
-%>
+  <% @gameConsoles.each do |game| %>
 
 <li><%= link_to game, inventory_games_path(current_user) + '/' + game %> </li>
 
-<% end
-%>
+<% end %>
 
 </ul>
 </div>  
 </div>
 </div>
+<% end %>
