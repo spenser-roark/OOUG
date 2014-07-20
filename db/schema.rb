@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402232034) do
+ActiveRecord::Schema.define(version: 20140708174321) do
 
   create_table "accessories", force: true do |t|
-    t.integer "ean"
+    t.text    "accessories_ean"
     t.text    "eng_title",          limit: 16777215
     t.text    "jap_title",          limit: 16777215
     t.integer "console_general_id"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140402232034) do
   add_index "accessories", ["console_general_id"], name: "system", using: :btree
   add_index "accessories", ["region_id"], name: "region", using: :btree
 
-  create_table "accessories_ownership", id: false, force: true do |t|
+  create_table "accessories_ownership", force: true do |t|
     t.integer "user_id",           default: 0, null: false
     t.integer "accessories_id",    default: 0, null: false
     t.boolean "own"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20140402232034) do
     t.text "jap_name"
   end
 
-  create_table "console_ownership", id: false, force: true do |t|
-    t.integer "user_id",           default: 0, null: false
-    t.integer "console_id",        default: 0, null: false
+  create_table "console_ownership", force: true do |t|
+    t.integer "user_id",           null: false
+    t.integer "consoles_id",       null: false
     t.boolean "own"
     t.boolean "complete"
     t.integer "box_condition"
@@ -55,31 +55,45 @@ ActiveRecord::Schema.define(version: 20140402232034) do
     t.text    "notes"
   end
 
-  add_index "console_ownership", ["console_id"], name: "console_id", using: :btree
+  add_index "console_ownership", ["consoles_id"], name: "console_id", using: :btree
 
-  create_table "consoles", primary_key: "console_id", force: true do |t|
+  create_table "consoles", force: true do |t|
     t.text    "console_ean"
     t.text    "eng_name"
     t.text    "jap_name"
-    t.integer "region",      default: 1
-    t.integer "system"
+    t.integer "region_id"
+    t.integer "console_general_id"
   end
 
-  add_index "consoles", ["region"], name: "region", using: :btree
-  add_index "consoles", ["system"], name: "system", using: :btree
+  add_index "consoles", ["console_general_id"], name: "system", using: :btree
+  add_index "consoles", ["region_id"], name: "region", using: :btree
 
   create_table "games", force: true do |t|
-    t.text    "ean",                limit: 16777215
-    t.text    "eng_title",          limit: 16777215
-    t.text    "jap_title",          limit: 16777215
-    t.integer "console_general_id"
-    t.integer "region_id"
+    t.text    "ean",                limit: 16777215, null: false
+    t.text    "eng_title",          limit: 16777215, null: false
+    t.text    "jap_title",          limit: 16777215, null: false
+    t.integer "console_general_id",                  null: false
+    t.integer "region_id",                           null: false
     t.integer "image_id"
   end
 
   add_index "games", ["console_general_id"], name: "system", using: :btree
   add_index "games", ["image_id"], name: "image", using: :btree
   add_index "games", ["region_id"], name: "region", using: :btree
+
+  create_table "games_wish_list", force: true do |t|
+    t.integer "users_id", limit: 8, null: false
+    t.integer "games_id", limit: 8, null: false
+    t.text    "notes"
+  end
+
+  add_index "games_wish_list", ["games_id"], name: "games_id", using: :btree
+  add_index "games_wish_list", ["users_id"], name: "user_id", using: :btree
+
+  create_table "games_wish_lists", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "image", primary_key: "image_id", force: true do |t|
     t.string   "mime_type",                                    null: false
@@ -116,17 +130,17 @@ ActiveRecord::Schema.define(version: 20140402232034) do
 
   add_index "one_hundred_percent", ["game_id"], name: "game_id", using: :btree
 
-  create_table "ownership", id: false, force: true do |t|
-    t.integer "user_id",              default: 0, null: false
-    t.integer "games_id"
-    t.boolean "own"
-    t.boolean "complete"
-    t.integer "box_condition"
-    t.integer "game_condition"
-    t.integer "manual_condition"
-    t.integer "inserts_condition"
+  create_table "ownership", force: true do |t|
+    t.integer "user_id",                          null: false
+    t.integer "games_id",             default: 0, null: false
+    t.integer "own",                  default: 0, null: false
+    t.integer "complete",             default: 0, null: false
+    t.integer "box_condition",        default: 6, null: false
+    t.integer "game_condition",       default: 6, null: false
+    t.integer "manual_condition",     default: 6, null: false
+    t.integer "inserts_condition",    default: 6, null: false
     t.text    "notes"
-    t.integer "spine_card_condition"
+    t.integer "spine_card_condition", default: 6, null: false
     t.integer "count",                default: 1, null: false
   end
 
@@ -153,6 +167,8 @@ ActiveRecord::Schema.define(version: 20140402232034) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "admin",           default: 0, null: false
+    t.integer  "dev",             default: 0, null: false
   end
 
   add_index "users", ["alias"], name: "index_users_on_alias", unique: true, using: :btree
@@ -168,7 +184,7 @@ ActiveRecord::Schema.define(version: 20140402232034) do
     t.boolean "modify_permission"
   end
 
-  create_table "wish_list", id: false, force: true do |t|
+  create_table "wish_list", force: true do |t|
     t.integer "user_id",            default: 0,  null: false
     t.string  "ean",     limit: 14, default: "", null: false
     t.text    "notes"

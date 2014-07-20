@@ -7,16 +7,25 @@
 
 <% if signed_in? %>
 <% if !in_collection(@game) %>
-<%= link_to "Add To Collection", new_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
+<%= link_to "Add To Collection", new_ownership_path, class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% else %>
-<%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "span2 btn btn-small btn-inverse offset2" %>
+<%= link_to "You Own This", ownership_path(ownership_game(@game)), class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% end %>
 <% end %>
 
 <% if signed_in? %>
 <%= link_to "Edit Game Info", edit_game_path, class: "span2 btn btn-small btn-inverse" %>
+<% end %>
+
+<% if signed_in? %>
+<% if !in_wish_list(@game) %>
+<%= link_to "Add To Wish List", new_games_wish_list_path, class: "span2 btn btn-small btn-inverse" %>
+
+<% else %>
+<%= link_to "Already Wishing", games_wish_list_path(wish_list_game(@game)), class: "span2 btn btn-small btn-inverse" %>
+<% end %>
 <% end %>
 
 <% if signed_in? %>    

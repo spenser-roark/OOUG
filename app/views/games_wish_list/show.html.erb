@@ -1,0 +1,11 @@
+<div class="container inventory_games" style="background-color: white; padding-top: 60px;">
+<h1 class="game_title"><%= @game.games.eng_title %></h1>
+<h5 class="game_title"><%= @game.games.jap_title %></h5>
+<h5 class="game_title"><%= @game.games.region.region_title %></h5>
+
+<p><%= @game.notes %></p>
+
+<%= link_to "Edit Game", edit_games_wish_list_path(current_games_wish_list_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2" %>
+<%= link_to "Remove From Wish List", @game, :confirm => 'Remove from wish list?' , class: "btn btn-inverse btn-small span2", method: "delete" 
+%>
+</div>

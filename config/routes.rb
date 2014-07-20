@@ -19,14 +19,15 @@ Ooug::Application.routes.draw do
 
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
   get '/console_ownership/new/:id' => 'console_ownership#new', as: 'new_console_ownership'
-  #get '/console_ownership/new/:id' => 'console_ownership#new', as: 'ownerships'
 
   get '/accessories_ownership/new/:id' => 'accessories_ownership#new', as: 'new_accessories_ownership'
-  #get '/accessories_ownership/new/:id' => 'accessories_ownership#new', as: 'ownerships'
-  
+
+  get '/games_wish_list/new/:id' => 'games_wish_list#new', as: 'new_games_wish_list'
+
   resources :inventory, only: [:games, :consoles]
   resources :users
   resources :games
+  resources :games_wish_list
   resources :browse_consoles
   resources :browse_accessories
   resources :consoles

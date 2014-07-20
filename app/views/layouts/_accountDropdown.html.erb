@@ -17,6 +17,16 @@
       <li><%= link_to "Accessories Collection",    inventory_accessories_path(current_user) %></li>
     </ul>
 
+    <li id="fat-menu" class="dropdown-submenu">    
+    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Wish Lists
+    </a>
+
+    <ul class="dropdown-menu dropdown">
+      <li><%= link_to "Games", "/games_wish_list" %></li>
+    </ul>
+
+
     <li class="divider"></li> 
     <li><%= link_to "Logout", signOut_path, method: "delete" %></li>
   </ul>

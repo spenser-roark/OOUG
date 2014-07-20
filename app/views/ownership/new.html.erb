@@ -33,7 +33,7 @@
 
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
-
+	
 	<%= f.text_field :games_id, value: @game.id,  class: "readonly" , style: "visibility: hidden"%>
 	
       </div>
