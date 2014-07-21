@@ -1,5 +1,9 @@
 class GamesWishListController < ApplicationController
 
+  before_action :signed_in_user
+
+  before_action :correct_user,   only: [:edit, :update, :show, :destroy, :edit]
+
   def show
     @wish_list = GamesWishList.find_by(user_id: params[:id])
     @game = GamesWishList.find(params[:id])
@@ -69,8 +73,8 @@ class GamesWishListController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(Ownership.find(params[:id]).user_id)
-      redirect_to current_user, notice: "Sorry, you can't edit someone else's inventory"  unless current_user?(@user)
+      @user = User.find(GamesWishList.find(params[:id]).user_id)
+      redirect_to current_user, notice: "Sorry, you can't edit someone else's wish list"  unless current_user?(@user)
     end 
 
 
