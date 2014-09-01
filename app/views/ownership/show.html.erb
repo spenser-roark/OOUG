@@ -9,5 +9,7 @@
 <p>Game Condition: <%= @game.game_qualities.quality %></p>
 <p>Spine Card Condition: <%= @game.spine_card_qualities.quality %></p>
 
+<h5 class="game_title">You marked this game as <%= (@game.complete == 1 ? "complete" : "Incomplete")%></h5>
+
 <%= link_to "Edit Game", edit_ownership_path(current_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2"%>
 <%= link_to "Remove From Collection", @game, :confirm => 'Remove from collection?' , class: "btn btn-inverse btn-small span2", method: "delete" %>

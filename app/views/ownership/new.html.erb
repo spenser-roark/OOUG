@@ -59,7 +59,7 @@
       <div class="span4 offset2">
 
 	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]])) %>
+	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]], selected = 1)) %>
 
 	<br />
 

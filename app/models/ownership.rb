@@ -16,5 +16,7 @@ class Ownership < ActiveRecord::Base
   validates :inserts_qualities, presence: true
   validates :spine_card_qualities, presence: true
 
+
+
   Ownership.joins(:games, :user, :quality)
 end
