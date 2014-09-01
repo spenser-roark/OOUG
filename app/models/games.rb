@@ -22,7 +22,7 @@ class Games < ActiveRecord::Base
   # scope :with_ownerships, -> { joins(:ownership) }
   # scope :with_certain_owner, -> { |owner_id| joins(:ownership).where(user_id: owner_id) }
 
-  validates :ean, presence: true, length: {minimum: 12},
+  validates :ean, presence: true,
   uniqueness: { case_sensitive: false}
 
   validates :region_id, presence: true
