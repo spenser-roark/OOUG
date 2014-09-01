@@ -14,7 +14,15 @@
     <div class="tab-pane" id="<%=@num/10%>">
       <% end %>
 	<tr>
+
 	  <td id="game_info">
+	  <% if signed_in? %>
+	  <% if in_collection(result) %>
+	  <span class="icon-ok-sign" title="You Own This"></span>  
+	  <% end %>
+	  <% end %>
+
+
 	    <%= link_to result.eng_title,  result%>
 	  </td>
 
