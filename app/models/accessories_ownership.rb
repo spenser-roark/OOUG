@@ -14,6 +14,6 @@ class AccessoriesOwnership < ActiveRecord::Base
   validates :manual_qualities, presence: true
   validates :inserts_qualities, presence: true
 
-  AccessoriesOwnership.joins(:accessories, :user)
+  AccessoriesOwnership.joins(:accessories, :user, :quality)
 
 end

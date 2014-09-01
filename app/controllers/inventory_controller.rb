@@ -30,7 +30,7 @@ class InventoryController < ApplicationController
     @user = User.find_by(remember_token: @remember_token)
 
     if (params.has_key?(:console_id))
-      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order("eng_title").where(:console_general => {:eng_name => params[:console_id]})
 
     else
       @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order("eng_title").all
@@ -45,10 +45,10 @@ class InventoryController < ApplicationController
     @user = User.find_by(remember_token: @remember_token)
 
     if (params.has_key?(:console_id))
-      @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = ConsoleOwnership.where(user_id: params[:id]).all
+      @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").all
 
     end
     @image = Image.all
@@ -61,10 +61,10 @@ class InventoryController < ApplicationController
     @user = User.find_by(remember_token: @remember_token)
 
     if (params.has_key?(:console_id))
-      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order("eng_name").where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = AccessoriesOwnership.where(user_id: params[:id]).all
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order("eng_name").all
 
     end
     @image = Image.all

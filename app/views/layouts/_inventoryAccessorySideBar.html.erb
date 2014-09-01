@@ -1,22 +1,20 @@
-
 <div class="sidebar pull-right" style="">
   <div class="sideConsole">
 
-<div class="content .navbar-inverse">
-  <%= # link_to (gravatar_for @user), '#' 
-%>
-<ul>
-<li><%= link_to "All Accessories",  inventory_accessories_path(current_user) %></li>
+    <div class="content .navbar-inverse">
+      <%= # link_to (gravatar_for @user), '#' 
+	  %>
 
-  <% @accessoryConsoles.each do |game| 
-%>
+      <ul>
+	<li><%= link_to "All Accessories",  inventory_accessories_path(current_user) %></li>
 
-<li><%= link_to game, inventory_consoles_path(current_user) + '/' + game %> </li>
+	<% @accessoryConsoles.each do |game| %>
 
-<% end
-%>
+	<li><%= link_to game, inventory_accessories_path(current_user) + '/' + game %> </li>
 
-</ul>
-</div>  
-</div>
+	<% end %>
+
+      </ul>
+    </div>  
+  </div>
 </div>
