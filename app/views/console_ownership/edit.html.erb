@@ -53,8 +53,10 @@
     <div class="row">
       <div class="span4 offset2">
 
+	<% complete = (@ownership.complete ? 1 : 0) %>
+
 	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]], selected = @ownership.complete)) %>
+	<%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]], selected = complete)) %>
 
 	<br />
 

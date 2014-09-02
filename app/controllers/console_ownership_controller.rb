@@ -21,7 +21,7 @@ class ConsoleOwnershipController < ApplicationController
     @ownership = ConsoleOwnership.new(user_id: current_user().id, 
                                     consoles_id: params[:console_ownership][:consoles_id],
                                     own: 1, 
-                                    complete: params[:console_ownership][:complete], 
+                                    complete: params[:console_ownership][:complete],
                                     box_condition: params[:console_ownership][:box_condition], 
                                     console_condition: params[:console_ownership][:console_condition], 
                                     manual_condition: params[:console_ownership][:manual_condition], 

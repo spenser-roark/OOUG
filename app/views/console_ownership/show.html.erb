@@ -8,5 +8,7 @@
 <p>Inserts Condition: <%= @console.inserts_qualities.quality %></p>
 <p>Console Condition: <%= @console.console_qualities.quality %></p>
 
+<h5 class="game_title">You marked this console as <%= (@console.complete ? "complete" : "Incomplete")%></h5>
+
 <%= link_to "Edit Console", edit_console_ownership_path(current_console_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2"%>
 <%= link_to "Remove From Collection", @console, :confirm => 'Remove from collection?' , class: "btn btn-inverse btn-small span2", method: "delete" %>
