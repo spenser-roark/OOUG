@@ -8,7 +8,7 @@
 <p>Inserts Condition: <%= @accessory.inserts_qualities.quality %></p>
 <p>Accessory Condition: <%= @accessory.accessories_qualities.quality %></p>
 
-<h5 class="game_title">You marked this console as <%= (@accessory.complete ? "complete" : "Incomplete")%></h5>
+<h5 class="game_title">You marked this accessory as <%= (@accessory.complete ? "complete" : "Incomplete")%></h5>
 
 <%= link_to "Edit Accessory", edit_accessories_ownership_path(current_accessory_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2"%>
 <%= link_to "Remove From Collection", @accessory, :confirm => 'Remove from collection?' , class: "btn btn-inverse btn-small span2", method: "delete" %>
