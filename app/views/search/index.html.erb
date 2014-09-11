@@ -1,47 +1,50 @@
 <% provide(:title, @search) %>
+<div class="tab-content">
 
 <% if signed_in? %>
 <%= link_to "Can't find a game?", new_game_path, class: "pull-right" %>
 <% end %>
 
 <% @num = 0 %>
-<% if !@results.blank? %>
-<div class="tab-content">
-  <table class="search_results">
-    <% @results.each do |result| %>
-    <% @num+=1 %>
-    <% if @num % 10 == 0 %>
-    <div class="tab-pane" id="<%=@num/10%>">
-      <% end %>
-	<tr>
+<% if !@results1.blank? %>
 
-	  <td id="game_info">
-	  <% if signed_in? %>
-	  <% if in_collection(result) %>
-	  <span class="icon-ok-sign" title="You Own This"></span>  
+    <div class="tab-pane active" id="condition">
+	<table class="search_results">
+	  <% @results1.each do |result| %>
+	  <% @num+=1 %>
+	  <% if @num % 10 == 0 %>
+	  <div class="tab-pane" id="<%=@num/10%>">
+	    <% end %>
+	    <tr>
+
+	      <td id="game_info">
+		<% if signed_in? %>
+		<% if in_collection(result) %>
+		<span class="icon-ok-sign" title="You Own This"></span>  
+		<% end %>
+		<% end %>
+
+		
+		<%= link_to result.eng_title,  result%>
+	      </td>
+	      
+	      <td id="console_info">
+		<%= result.console_general.eng_name %>
+	      </td>
+	      
+	      <td id="region_info">
+		<%= link_to result.region.region_title, region_path(result.region.region_id) %>
+	      </td>
+	      
+	    </tr>
+	    <% if @num + 2 % 10 == 0%>
+	  </div>
 	  <% end %>
 	  <% end %>
-
-
-	    <%= link_to result.eng_title,  result%>
-	  </td>
-
-	  <td id="console_info">
-	    <%= result.console_general.eng_name %>
-	  </td>
-
-	  <td id="region_info">
-	    <%= link_to result.region.region_title, region_path(result.region.region_id) %>
-	  </td>
-
-	</tr>
-	<% if @num + 2 % 10 == 0%>
+	</table>
     </div>
-    <% end %>
-    <% end %>
-  </table>
-</div>
 
+</div>
 <% else %>
 <h6>Sorry, we couldn't find anything</h6>
 

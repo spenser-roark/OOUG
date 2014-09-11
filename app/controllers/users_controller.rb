@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     @game_count = Ownership.where(user_id: @user.id).all.count
     @console_count = ConsoleOwnership.where(user_id: @user.id).all.count
     @accessory_count = AccessoriesOwnership.where(user_id: @user.id).all.count
+
+    
+
   end
 
   def new
