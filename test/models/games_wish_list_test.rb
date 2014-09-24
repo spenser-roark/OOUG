@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WishListControllerTest < ActionController::TestCase
+class GamesWishListTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

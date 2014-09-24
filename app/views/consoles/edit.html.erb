@@ -9,10 +9,10 @@
     <%= form_for(@console, :html => {:class => "form-horizontal"}) do |f| %>
 
     <% if @console.region.region_id != 1 %>
-    <div class="control-group offset2" id="games_region_div">
+    <div class="control-group offset2" id="consoles_region_div">
 
       <% else %>
-      <div class="control-group pull-left" id="games_region_div">
+      <div class="control-group pull-left" id="consoles_region_div">
 	<% end %>
       <%= f.label :region, class: "control-label", style: ""%>
       <div class="controls">
@@ -21,13 +21,13 @@
     </div>
 
     <% if @console.region.region_id != 1 %>
-    <div class="control-group" id="games_jap_title_div">
+    <div class="control-group" id="consoles_jap_name_div">
 
       <% else %>
-      <div class="control-group pull-right" id="games_jap_title_div">
+      <div class="control-group pull-right" id="consoles_jap_name_div">
       <% end %>
 
-      <%= f.label :jap_name, "Japanese Title",class: "control-label", id: "jap_title_title"%>
+      <%= f.label :jap_name, "Japanese Title",class: "control-label", id: "jap_name_name"%>
       <div class="controls">
 	<%= f.text_field :jap_name, class: "input-medium"%>
       </div>
@@ -62,42 +62,42 @@
 </div>
 
 <script type="text/javascript">
-  $("#games_jap_title").hide();
-  $("#jap_title_title").hide();
+  $("#consoles_jap_name").hide();
+  $("#jap_name_name").hide();
 </script>
 
 <script type="text/javascript">
-  $("#games_region_id").change(function() {
-  if ($("#games_region_id").val()=="1")
+  $("#consoles_region_id").change(function() {
+  if ($("#consoles_region_id").val()=="1")
   {
-  $("#games_jap_title").show();
-  $("#jap_title_title").show();
-  $("#games_jap_title_div").attr('class', 'control-group pull-right');
-  $("#games_region_div").attr('class', 'control-group pull-left');
+  $("#consoles_jap_name").show();
+  $("#jap_name_name").show();
+  $("#consoles_jap_name_div").attr('class', 'control-group pull-right');
+  $("#consoles_region_div").attr('class', 'control-group pull-left');
   }
   else
   {
-  $("#games_jap_title").hide();
-  $("#jap_title_title").hide();
-  $("#games_jap_title_div").attr('class', 'control-group');
-  $("#games_region_div").attr('class', 'control-group offset2');
+  $("#consoles_jap_name").hide();
+  $("#jap_name_name").hide();
+  $("#consoles_jap_name_div").attr('class', 'control-group');
+  $("#consoles_region_div").attr('class', 'control-group offset2');
   }
   });
 
-  $("#games_region_id").ready(function() {
-  if ($("#games_region_id").val()=="1")
+  $("#consoles_region_id").ready(function() {
+  if ($("#consoles_region_id").val()=="1")
   {
-  $("#games_jap_title").show();
-  $("#jap_title_title").show();
-  $("#games_jap_title_div").attr('class', 'control-group pull-right');
-  $("#games_region_div").attr('class', 'control-group pull-left');
+  $("#consoles_jap_name").show();
+  $("#jap_name_name").show();
+  $("#consoles_jap_name_div").attr('class', 'control-group pull-right');
+  $("#consoles_region_div").attr('class', 'control-group pull-left');
   }
   else
   {
-  $("#games_jap_title").hide();
-  $("#jap_title_title").hide();
-  $("#games_jap_title_div").attr('class', 'control-group');
-  $("#games_region_div").attr('class', 'control-group offset2');
+  $("#consoles_jap_name").hide();
+  $("#jap_name_name").hide();
+  $("#consoles_jap_name_div").attr('class', 'control-group');
+  $("#consoles_region_div").attr('class', 'control-group offset2');
   }
   });
 </script>
@@ -105,7 +105,7 @@
 <% if @console.region.region_id == 1 %>
 
 <script>
-  $("#games_jap_title").show();
-  $("#jap_title_title").show();
+  $("#consoles_jap_name").show();
+  $("#jap_consoles_consoles").show();
 </script>
 <% end %>

@@ -1,0 +1,19 @@
+<% provide(:title, "Add " + @overgame.eng_title + " To Your Wish List") %>
+<%= #render 'shared/game_error_messages' 
+%> 
+<div class="container inventory_games" style="background-color: white; padding-top: 60px;">
+<h1 class="game_title"><%= @overgame.eng_title %></h1>
+<h5 class="game_title"><%= (@overgame.jap_title ? @overgame.jap_title : "" );%></h5>
+
+<div class="row offset2">
+    <%= form_for(@game, url: {action: "create"}) do |f| %>
+	<%= f.label :notes, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.text_area(:notes, cols: 500, rows: 3) %>
+
+	<%= f.text_field :games_id, value: @overgame.id,  class: "readonly" , style: "visibility: hidden"%>
+<br />
+      <%= f.submit "Add To Wish List", class: "btn btn-inverse btn-small" %>
+    <% end %>
+</div>
+
+</div>

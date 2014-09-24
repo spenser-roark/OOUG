@@ -11,6 +11,12 @@ provide(:title, 'All consoles In Your Collection')
 end
 
 %>
+<% if (@ownership.empty?) %>
+
+<p style="text-align: center">
+  No consoles added yet? <%= link_to "Browse The Collection Collection", browse_consoles_path %> and add some consoles!
+</p>
+<% end %>
 
 <table class="">
 <% @ownership.each do |game| %>
