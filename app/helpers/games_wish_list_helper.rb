@@ -13,4 +13,10 @@ module GamesWishListHelper
     @ownership_game = GamesWishList.find_by(user_id: current_user, games_id: game)
   end
 
+  def current_user
+    remember_token = User.hash_token(cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: remember_token)
+  end
+
+
 end

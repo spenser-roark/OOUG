@@ -17,6 +17,17 @@ class GamesWishListController < ApplicationController
     @game = GamesWishList.joins(:user).where(:users => {:id => current_user()})
 
     @gameConsoles = GamesWishList.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
+
+    if (params.has_key?(:console_id))
+      @game = GamesWishList.where(user_id: current_user().id).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+
+    else
+      @game = GamesWishList.joins(:user).where(:users => {:id => current_user()})
+
+    end
+    
+    @image = Image.all
+
   end
 
   def new
@@ -57,7 +68,7 @@ class GamesWishListController < ApplicationController
 
   private
   def wish_list_params
-    params.require(:GamesWishList).permit(:user_id, :games_id, :notes)
+    params.require(:games_wish_list).permit(@user.id, :games_id, :notes)
   end
 
   def delete_params

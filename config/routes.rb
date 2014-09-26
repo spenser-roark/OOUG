@@ -1,4 +1,6 @@
 Ooug::Application.routes.draw do
+  # You can have the root of your site routed with "root"
+  root 'main_page#home'
 
   match '/home', to: 'main_page#home', via: 'get'
   match '/signUp', to: 'users#new', via: 'get'
@@ -24,6 +26,9 @@ Ooug::Application.routes.draw do
 
   get '/games_wish_list/new/:id' => 'games_wish_list#new', as: 'new_games_wish_list'
 
+  
+  #get '/games_wish_list/:console_id' => 'games_wish_list#index', as: 'games_wish_list'
+
   resources :inventory, only: [:games, :consoles]
   resources :users
   resources :games
@@ -46,9 +51,6 @@ Ooug::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'main_page#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

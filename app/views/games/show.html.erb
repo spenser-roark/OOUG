@@ -20,11 +20,12 @@
 <% end %>
 
 <% if signed_in? %>
-<% if !in_wish_list(@game) %>
+<% if (!in_wish_list(@game))%>
 <%= link_to "Add To Wish List", new_games_wish_list_path, class: "span2 btn btn-small btn-inverse" %>
 
 <% else %>
-<%= link_to "Already Wishing", games_wish_list_path(wish_list_game(@game)), class: "span2 btn btn-small btn-inverse" %>
+<%= link_to "Already on your wish list", games_wish_list_path(wish_list_game(@game)), class: "span2 btn btn-small btn-inverse" 
+%>
 <% end %>
 <% end %>
 
