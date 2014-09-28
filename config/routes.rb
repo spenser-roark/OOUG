@@ -10,6 +10,8 @@ Ooug::Application.routes.draw do
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
 
+  get '/users/gruff' => 'users#gruff', as: 'gruff'
+
   get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
   get '/inventory/games/:id/:console_id' => 'inventory#games'
 
@@ -25,7 +27,6 @@ Ooug::Application.routes.draw do
   get '/accessories_ownership/new/:id' => 'accessories_ownership#new', as: 'new_accessories_ownership'
 
   get '/games_wish_list/new/:id' => 'games_wish_list#new', as: 'new_games_wish_list'
-
   
   #get '/games_wish_list/:console_id' => 'games_wish_list#index', as: 'games_wish_list'
 

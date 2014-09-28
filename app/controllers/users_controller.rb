@@ -4,14 +4,31 @@ class UsersController < ApplicationController
 
   before_action :correct_user,   only: [:edit, :update, :show]
 
+  def gruff
+    @user = User.find_by(remember_token: @remember_token)
+    @ownership = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
+
+    g = Gruff::Pie.new(400)
+    g.title = "Console Comparison Collection"
+
+    @ownership.each do |console|
+      g.data console.eng_name, [Ownership.where(user_id: @user).joins(:games).where(console_general_id: console)]
+    end
+
+    g.data 'N64', [20, 23, 19, 8]
+    g.data 'Ps2', [50, 19, 99, 29]
+    g.theme = Gruff::Themes::PASTEL
+    g.hide_title = true
+    
+    send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
+  end
+
   def show
     @user = User.find(params[:id])
     @game_count = Ownership.where(user_id: @user.id).all.count
     @console_count = ConsoleOwnership.where(user_id: @user.id).all.count
     @accessory_count = AccessoriesOwnership.where(user_id: @user.id).all.count
-
     
-
   end
 
   def new
