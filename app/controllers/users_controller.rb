@@ -5,18 +5,22 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :show]
 
   def gruff
-    #@user = User.find_by(remember_token: @remember_token)
-    #consoleNames = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+    consoleNames = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
 
     g = Gruff::Pie.new(400)
     g.title = "Console Comparison Collection"
 
-    #@ownership = Ownership.where(user_id: @user).joins(:games => :console_general)
+    @ownership = Ownership.where(user_id: @user).joins(:games => :console_general)
 
-    #dataset = Hash[ *consoleNames.collect {|v| [v, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => v})]}.flatten ]
-    #dataset.each do |data|
-    #  g.data(data[0], data[1])
-    #end
+    dataset = {}
+
+    # dataset = Hash[ *consoleNames.collect {|v| [v, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => v})]}.flatten ]
+    # consoleNames.each do |console|
+    #  dataset[console.to_s] ||= {}
+    #  dataset[console.to_s].merge!(Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}))
+    # end
 
     g.data 'N64', [20, 23, 19, 8]
     g.data 'Ps2', [50, 19, 99, 29]
