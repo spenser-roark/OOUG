@@ -11,8 +11,7 @@ number of consoles in your collection: <%= link_to @console_count, inventory_con
 Number of accessories in your collection: <%= link_to @accessory_count, inventory_accessories_path(current_user) %> <br />
 </p>
 
-<!-- <%= @user.alias %>, <%= @user.email %> -->
+<%= image_tag(url_for(:controller => 'users', :action => 'gruffBig'), alt: "Spider Chart of Your Collection") %>
 
-<span style="alig: center">
-<%= image_tag(url_for(:controller => 'users', :action => 'gruff'), alt: "Collection Pie Chart") %>
-</span>
+
+<%= image_tag(url_for(:controller => 'users', :action => 'gruffSmall'), alt: "Spider Chart of Your Collection") %>

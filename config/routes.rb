@@ -10,7 +10,8 @@ Ooug::Application.routes.draw do
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
 
-  get '/users/gruff' => 'users#gruff', as: 'gruff'
+  get '/users/gruffBig' => 'users#gruffBig', as: 'gruffBig'
+  get '/users/gruffSmall' => 'users#gruffSmall', as: 'gruffSmall'
 
   get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
   get '/inventory/games/:id/:console_id' => 'inventory#games'

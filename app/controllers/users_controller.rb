@@ -4,31 +4,46 @@ class UsersController < ApplicationController
 
   before_action :correct_user,   only: [:edit, :update, :show]
 
-  def gruff
+  def gruffBig
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
-    consoleNames = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
+    @consoleNames = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
 
-    g = Gruff::Pie.new(400)
-    g.title = "Console Comparison Collection"
+    g = Gruff::Spider.new(30, 800)
+    g.title = " "
 
     @ownership = Ownership.where(user_id: @user).joins(:games => :console_general)
 
-    dataset = {}
+    @consoleNames.each do |console|
+      g.data console, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count unless Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count <= 10
+    end
 
-    # dataset = Hash[ *consoleNames.collect {|v| [v, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => v})]}.flatten ]
-    # consoleNames.each do |console|
-    #  dataset[console.to_s] ||= {}
-    #  dataset[console.to_s].merge!(Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}))
-    # end
-
-    g.data 'N64', [20, 23, 19, 8]
-    g.data 'Ps2', [50, 19, 99, 29]
     g.theme = Gruff::Themes::PASTEL
-    g.hide_title = true
+    # g.legend_font_size = 12
     
     send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
   end
+
+  def gruffSmall
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+    @consoleNames = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
+
+    g = Gruff::Spider.new(30, 800)
+    g.title = " "
+
+    @ownership = Ownership.where(user_id: @user).joins(:games => :console_general)
+
+    @consoleNames.each do |console|
+      g.data console, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count unless Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count > 10
+    end
+
+    g.theme = Gruff::Themes::PASTEL
+    g.legend_font_size = 12
+    
+    send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
+  end
+
 
   def show
     @user = User.find(params[:id])
