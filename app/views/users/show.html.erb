@@ -1,17 +1,81 @@
 <% provide(:title, @user.alias + "'s profile") %>
 
 <h1 style="text-align: center">
-  <%= gravatar_for @user %>
-  <%= @user.alias %>
+	<%= gravatar_for @user %>
+	<%= @user.alias %>
 </h1>
 
 <p id="game_info">
-Number of games in your collection: <%= link_to @game_count, inventory_games_path(current_user) %> <br />
-number of consoles in your collection: <%= link_to @console_count, inventory_consoles_path(current_user) %> <br />
-Number of accessories in your collection: <%= link_to @accessory_count, inventory_accessories_path(current_user) %> <br />
+	Number of games in your collection: <%= link_to @game_count, inventory_games_path(current_user) %> <br />
+	number of consoles in your collection: <%= link_to @console_count, inventory_consoles_path(current_user) %> <br />
+	Number of accessories in your collection: <%= link_to @accessory_count, inventory_accessories_path(current_user) %> <br />
 </p>
 
-<%= image_tag(url_for(:controller => 'users', :action => 'gruffBig'), alt: "Spider Chart of Your Collection") %>
+<ul class="nav nav-tabs" id="game_count_tabs">
+	<li class="active"><a href="#above10" data-toggle="tab">Games Above 10</a></li>
+	<li><a href="#below10" data-toggle="tab"> Games Below 10 </a></li>
+	<li><a href="#accabove10" data-toggle="tab"> Accessories Above 10 </a></li>
+	<li><a href="#accbelow10" data-toggle="tab"> Accessories Below 10 </a></li>
+	<li><a href="#consoles" data-toggle="tab"> Consoles </a></li>
+</ul>
+
+<div class="tab-content">
+
+	<div class="tab-pane active" id="above10">
+		<div class="row">
+			<div class="span7 offset2">
+
+				<%= image_tag(url_for(:controller => 'users', :action => 'gruffBig'), alt: "Spider Chart of Your Largest Collection") %>
 
 
-<%= image_tag(url_for(:controller => 'users', :action => 'gruffSmall'), alt: "Spider Chart of Your Collection") %>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="tab-pane fade in" id="below10">
+		<div class="row">
+			<div class="span7 offset2">
+
+				<%= image_tag(url_for(:controller => 'users', :action => 'gruffSmall'), alt: "Spider Chart of the Rest of Your Collection") %>
+
+			</div>
+		</div>
+	</div>    
+
+	<div class="tab-pane fade in" id="accabove10">
+		<div class="row">
+			<div class="span7 offset2">
+
+				<%= image_tag(url_for(:controller => 'users', :action => 'gruffBigAcc'), alt: "Spider Chart of Your Largest Accessory Collection") %>
+
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="tab-pane fade in" id="accbelow10">
+		<div class="row">
+			<div class="span7 offset2">
+
+				<%= image_tag(url_for(:controller => 'users', :action => 'gruffSmallAcc'), alt: "Spider Chart of the Rest of Your Accessory Collection") %>
+
+			</div>
+		</div>
+	</div>    
+
+<div class="tab-pane fade in" id="consoles">
+		<div class="row">
+			<div class="span7 offset2">
+
+				<%= image_tag(url_for(:controller => 'users', :action => 'gruffConsole'), alt: "Spider Chart of your consoles") %>
+
+			</div>
+		</div>
+	</div>    
+</div>
+
+
+
+

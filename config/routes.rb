@@ -12,6 +12,9 @@ Ooug::Application.routes.draw do
 
   get '/users/gruffBig' => 'users#gruffBig', as: 'gruffBig'
   get '/users/gruffSmall' => 'users#gruffSmall', as: 'gruffSmall'
+  get '/users/gruffBigAcc' => 'users#gruffBigAcc', as: 'gruffBigAcc'
+  get '/users/gruffSmallAcc' => 'users#gruffSmallAcc', as: 'gruffSmallAcc'
+  get '/users/gruffConsole' => 'users#gruffConsole', as: 'gruffConsole'
 
   get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
   get '/inventory/games/:id/:console_id' => 'inventory#games'
