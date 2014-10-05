@@ -26,6 +26,23 @@ class WishListController < ApplicationController
 	end
 
 	def accessories
+		@remember_token = User.hash_token(cookies[:remember_token])
+		@user = User.find_by(remember_token: @remember_token)
+
+		@wish_list = AccessoriesWishList.find_by(user_id: current_user())
+		@game = AccessoriesWishList.joins(:user).where(:users => {:id => current_user()})
+
+		@gameConsoles = AccessoriesWishList.where(user_id: @user).joins(:accessories => :console_general).order("eng_name").uniq.pluck(:eng_name)
+
+		if (params.has_key?(:console_id))
+			@game = AccessoriesWishList.where(user_id: current_user().id).joins(:accessories => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+
+		else
+			@game = AccessoriesWishList.joins(:user).where(:users => {:id => current_user()})
+
+		end
+
+		@image = Image.all
 	end
 
 	private

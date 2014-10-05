@@ -4,5 +4,5 @@ class AccessoriesWishList < ActiveRecord::Base
 	belongs_to :accessories
 	belongs_to :user
 
-	AcccessoriesWishList.joins(:user, :accessories)
+	AccessoriesWishList.joins(:user, :accessories)
 end

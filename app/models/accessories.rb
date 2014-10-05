@@ -29,5 +29,5 @@ class Accessories < ActiveRecord::Base
 
   validates :jap_title, presence: true, :if => :japanese?
 
-Accessories.joins(:region, :console_general)
+  Accessories.joins(:region, :console_general)
 end
