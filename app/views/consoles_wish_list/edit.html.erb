@@ -1,0 +1,21 @@
+<% provide(:title, "Edit " + @overgame.first.consoles.eng_name) %>
+
+<div class="container inventory_games" style="background-color: white; padding-top: 60px;">
+<h1 class="game_title"><%= @overgame.first.consoles.eng_name %></h1>
+
+<div class="row offset2" style="margin-top: 50px;">
+  <div class="">
+
+    <%= form_for(@game) do |f| %>
+
+	<%= f.label :notes, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.text_area(:notes, cols: 500, rows: 3) %>
+
+	<%= f.text_field :consoles_id, value: @overgame.first.consoles.id,  class: "readonly" , style: "visibility: hidden"%>
+<br />
+      <%= f.submit "Update Wish Info", class: "btn btn-inverse btn-small" %>
+    <% end %>
+</div>
+
+</div>
+</div>

@@ -44,6 +44,26 @@ class WishListController < ApplicationController
 		@image = Image.all
 	end
 
+	def consoles
+		@remember_token = User.hash_token(cookies[:remember_token])
+		@user = User.find_by(remember_token: @remember_token)
+
+		@wish_list = ConsolesWishList.find_by(user_id: current_user())
+		@game = ConsolesWishList.joins(:user).where(:users => {:id => current_user()})
+
+		@gameConsoles = ConsolesWishList.where(user_id: @user).joins(:consoles => :console_general).order("console_general.eng_name").uniq.pluck("console_general.eng_name")
+
+		if (params.has_key?(:console_id))
+			@game = ConsolesWishList.where(user_id: current_user().id).joins(:consoles => :console_general).where(:console_general => {:eng_name => params[:console_id]})
+
+		else
+			@game = ConsolesWishList.joins(:user).where(:users => {:id => current_user()})
+
+		end
+
+		@image = Image.all
+	end
+
 	private
 	def wish_list_params
 		params.require(:games_wish_list).permit(@user.id, :games_id, :notes)

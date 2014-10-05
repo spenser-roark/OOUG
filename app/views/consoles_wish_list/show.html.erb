@@ -1,0 +1,13 @@
+<% provide(:title, @game.consoles.eng_name) %>
+
+<div class="container inventory_games" style="background-color: white; padding-top: 60px;">
+<h1 class="game_title"><%= @game.consoles.eng_name %></h1>
+<h5 class="game_title"><%= @game.consoles.jap_name %></h5>
+<h5 class="game_title"><%= @game.consoles.region.region_title %></h5>
+
+<p><%= @game.notes %></p>
+
+<%= link_to "Edit Console", edit_consoles_wish_list_path(current_consoles_wish_list_ownership(params[:id])), class: "btn btn-inverse btn-small offset2 span2" %>
+<%= link_to "Remove From Wish List", @game, :confirm => 'Remove from wish list?' , class: "btn btn-inverse btn-small span2", method: "delete" 
+%>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004160043) do
+ActiveRecord::Schema.define(version: 20141005150039) do
 
   create_table "accessories", force: true do |t|
     t.text    "accessories_ean"
@@ -47,11 +47,6 @@ ActiveRecord::Schema.define(version: 20141004160043) do
   add_index "accessories_wish_list", ["accessories_id"], name: "games_id", using: :btree
   add_index "accessories_wish_list", ["user_id"], name: "user_id", using: :btree
 
-  create_table "accessories_wish_lists", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "console_general", primary_key: "console_id", force: true do |t|
     t.text "eng_name"
     t.text "jap_name"
@@ -81,6 +76,20 @@ ActiveRecord::Schema.define(version: 20141004160043) do
 
   add_index "consoles", ["console_general_id"], name: "system", using: :btree
   add_index "consoles", ["region_id"], name: "region", using: :btree
+
+  create_table "consoles_wish_list", force: true do |t|
+    t.integer "user_id",     limit: 8, null: false
+    t.integer "consoles_id", limit: 8, null: false
+    t.text    "notes"
+  end
+
+  add_index "consoles_wish_list", ["consoles_id"], name: "games_id", using: :btree
+  add_index "consoles_wish_list", ["user_id"], name: "user_id", using: :btree
+
+  create_table "consoles_wish_lists", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
     t.text    "ean",                limit: 16777215, null: false
