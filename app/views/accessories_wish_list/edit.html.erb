@@ -1,9 +1,9 @@
-<% provide(:title, "Edit " + @overgame.first.games.eng_title) %>
+<% provide(:title, "Edit " + @overgame.first.accessories.eng_title) %>
 
 <div class="container inventory_games" style="background-color: white; padding-top: 60px;">
-<h1 class="game_title"><%= @overgame.first.games.eng_title %></h1>
+<h1 class="game_title"><%= @overgame.first.accessories.eng_title %></h1>
 
-<div class="row offset2" style="margin-top: 50px">
+<div class="row offset2" style="margin-top: 50px;">
   <div class="">
 
     <%= form_for(@game) do |f| %>
@@ -11,7 +11,7 @@
 	<%= f.label :notes, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.text_area(:notes, cols: 500, rows: 3) %>
 
-	<%= f.text_field :games_id, value: @overgame.first.games.id,  class: "readonly" , style: "visibility: hidden"%>
+	<%= f.text_field :accessories_id, value: @overgame.first.accessories.id,  class: "readonly" , style: "visibility: hidden"%>
 <br />
       <%= f.submit "Update Wish Info", class: "btn btn-inverse btn-small" %>
     <% end %>

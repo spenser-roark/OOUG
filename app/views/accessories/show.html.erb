@@ -7,16 +7,28 @@
 
 <% if signed_in? %>
 <% if !in_accessory_collection(@accessory) %>
-<%= link_to "Add To Collection", new_accessories_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
+<%= link_to "Add To Collection", new_accessories_ownership_path, class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% else %>
-<%= link_to "You Own This", accessories_ownership_path(ownership_accessory(@accessory)), class: "span2 btn btn-small btn-inverse offset2" %>
+<%= link_to "You Own This", accessories_ownership_path(ownership_accessory(@accessory)), class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% end %>
 <% end %>
 
 <% if signed_in? %>
 <%= link_to "Edit Accessory Info", edit_accessory_path, class: "span2 btn btn-small btn-inverse" %>
+<% end %>
+
+<% if signed_in? %>
+<% if (!in_accessories_wish_list(@accessory) && !in_accessory_collection(@accessory))%>
+<%= link_to "Add To Wish List", new_accessories_wish_list_path, class: "span2 btn btn-small btn-inverse" %>
+
+<% elsif wish_list_accessory(@accessory)%>
+<%= link_to "Already on your wish list", accessories_wish_list_path(wish_list_accessory(@accessory)), class: "span2 btn btn-small btn-inverse" %>
+
+<% else %>
+<%= link_to "You already own this", accessories_ownership_path(ownership_accessory(@accessory)), class: "span2 btn btn-small btn-inverse" %>
+<% end %>
 <% end %>
 
 <% if signed_in? %>    

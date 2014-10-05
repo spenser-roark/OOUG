@@ -31,3 +31,11 @@ doc/
 .idea
 .secret
 /public/assets/*
+/test
+*sublime*
+/notes.txt
+
+#MAC Files
+.DS_Store
+/Icon*
+._*

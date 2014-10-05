@@ -3,10 +3,10 @@ class AccessoriesWishListController < ApplicationController
 
   before_action :correct_user,   only: [:edit, :update, :show, :destroy, :edit]
 
-  # def show
-  #   @wish_list = AccessoriesWishList.find_by(user_id: params[:id])
-  #   @game = AccessoriesWishList.find(params[:id])
-  # end
+  def show
+    @wish_list = AccessoriesWishList.find_by(user_id: params[:id])
+    @game = AccessoriesWishList.find(params[:id])
+  end
 
   def index
     @remember_token = User.hash_token(cookies[:remember_token])
@@ -29,41 +29,41 @@ class AccessoriesWishListController < ApplicationController
 
   end
 
-  # def new
-  #   @game = AccessoriesWishList.new
-  #   @overgame = Accessories.find(params[:id])
-  # end
+  def new
+    @game = AccessoriesWishList.new
+    @overgame = Accessories.find(params[:id])
+  end
 
-  # def edit
-  #   @game = AccessoriesWishList.find(params[:id])
-  #   @overgame = AccessoriesWishList.where(id: params[:id]).joins(:accessories)
-  # end
+  def edit
+    @game = AccessoriesWishList.find(params[:id])
+    @overgame = AccessoriesWishList.where(id: params[:id]).joins(:accessories)
+  end
 
-  # def create
-  #   @user = User.find_by(remember_token: cookies[:remember_token])
+  def create
+    @user = User.find_by(remember_token: cookies[:remember_token])
 
-  #   @wishlist = AccessoriesWishList.new(user_id: current_user().id, accessories_id: params[:accessories_wish_list][:accessories_id], notes: params[:accessories_wish_list][:notes])
+    @wishlist = AccessoriesWishList.new(user_id: current_user().id, accessories_id: params[:accessories_wish_list][:accessories_id], notes: params[:accessories_wish_list][:notes])
 
-  #   if @wishlist.save
-  #     redirect_to @wishlist
-  #   else
+    if @wishlist.save
+      redirect_to @wishlist
+    else
 
-  #   end    
-  # end
+    end    
+  end
 
-  # def update
-  #   @game = AccessoriesWishList.find(params[:id])
-  #   if @game.update_attributes(user_id: current_user().id, accessories_id: params[:accessories_wish_list][:accessories_id], notes: params[:accessories_wish_list][:notes])
-  #     redirect_to @game
-  #   else
-  #     render "edit"
-  #   end    
-  # end
+  def update
+    @game = AccessoriesWishList.find(params[:id])
+    if @game.update_attributes(user_id: current_user().id, accessories_id: params[:accessories_wish_list][:accessories_id], notes: params[:accessories_wish_list][:notes])
+      redirect_to @game
+    else
+      render "edit"
+    end    
+  end
 
-  # def destroy
-  #   AccessoriesWishList.delete(params[:id])
-  #   redirect_to accessories_wish_list_index_path
-  # end
+  def destroy
+    AccessoriesWishList.delete(params[:id])
+    redirect_to wish_list_accessories_path(current_user)
+  end
 
   private
   def wish_list_params
