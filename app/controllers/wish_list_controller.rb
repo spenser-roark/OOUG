@@ -25,6 +25,9 @@ class WishListController < ApplicationController
 
 	end
 
+	def accessories
+	end
+
 	private
 	def wish_list_params
 		params.require(:games_wish_list).permit(@user.id, :games_id, :notes)
