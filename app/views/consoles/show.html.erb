@@ -7,16 +7,28 @@
 
 <% if signed_in? %>
 <% if !in_console_collection(@console) %>
-<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset2" %>
+<%= link_to "Add To Collection", new_console_ownership_path, class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% else %>
-<%= link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset2" %>
+<%= link_to "You Own This", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse offset1" %>
 
 <% end %>
 <% end %>
 
 <% if signed_in? %>
 <%= link_to "Edit Console Info", edit_console_path, class: "span2 btn btn-small btn-inverse" %>
+<% end %>
+
+<% if signed_in? %>
+<% if (!in_consoles_wish_list(@console) && !in_console_collection(@console))%>
+<%= link_to "Add To Wish List", new_consoles_wish_list_path, class: "span2 btn btn-small btn-inverse" %>
+
+<% elsif wish_list_console(@console)%>
+<%= link_to "Already on your wish list", consoles_wish_list_path(wish_list_console(@console)), class: "span2 btn btn-small btn-inverse" %>
+
+<% else %>
+<%= link_to "You already own this", console_ownership_path(ownership_console(@console)), class: "span2 btn btn-small btn-inverse" %>
+<% end %>
 <% end %>
 
 <% if signed_in? %>    

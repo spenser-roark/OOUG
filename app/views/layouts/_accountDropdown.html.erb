@@ -12,9 +12,9 @@
     </a>
 
     <ul class="dropdown-menu dropdown">
-      <li><%= link_to "Game Collection",    inventory_games_path(current_user) %></li>
-      <li><%= link_to "Console Collection",    inventory_consoles_path(current_user) %></li>
-      <li><%= link_to "Accessories Collection",    inventory_accessories_path(current_user) %></li>
+      <li><%= link_to "Games",    inventory_games_path(current_user) %></li>
+      <li><%= link_to "Consoles",    inventory_consoles_path(current_user) %></li>
+      <li><%= link_to "Accessories",    inventory_accessories_path(current_user) %></li>
     </ul>
 
     <li id="fat-menu" class="dropdown-submenu">    
@@ -24,6 +24,7 @@
 
     <ul class="dropdown-menu dropdown">
       <li><%= link_to "Games", wish_list_games_path(current_user) %></li>
+      <li><%= link_to "Consoles", wish_list_consoles_path(current_user) %></li>
       <li><%= link_to "Accessories", wish_list_accessories_path(current_user) %></li>
     </ul>
 

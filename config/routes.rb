@@ -25,6 +25,9 @@ Ooug::Application.routes.draw do
   get '/wish_list/accessories/:id' => 'wish_list#accessories', as: 'wish_list_accessories'
   get '/wish_list/accessories/:id/:console_id' => 'wish_list#accessories'
 
+  get '/wish_list/consoles/:id' => 'wish_list#consoles', as: 'wish_list_consoles'
+  get '/wish_list/consoles/:id/:console_id' => 'wish_list#consoles'
+  
   # Inventories
   get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
   get '/inventory/games/:id/:console_id' => 'inventory#games'
@@ -43,6 +46,7 @@ Ooug::Application.routes.draw do
   # Specific Wish Lists
   get '/games_wish_list/new/:id' => 'games_wish_list#new', as: 'new_games_wish_list'
   get '/accessories_wish_list/new/:id' => 'accessories_wish_list#new', as: 'new_accessories_wish_list'  
+  get '/consoles_wish_list/new/:id' => 'consoles_wish_list#new', as: 'new_consoles_wish_list'  
 
   # Resources
   resources :inventory, only: [:games, :consoles]
@@ -51,6 +55,7 @@ Ooug::Application.routes.draw do
   resources :wish_list
   resources :games_wish_list
   resources :accessories_wish_list
+  resources :consoles_wish_list
   resources :browse_consoles
   resources :browse_accessories
   resources :consoles
