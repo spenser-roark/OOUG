@@ -1,32 +1,26 @@
-<%= render 'layouts/inventoryGameSideBar' %>
+<%= render 'layouts/gamesWishListSideBar' %>
 <div class="container inventory_games" style="position: static">
 
   <% 
   if (params.has_key?(:console_id))
-    provide(:title, 'All your ' + params[:console_id] + ' games') 
+    provide(:title, 'All your wished for ' + params[:console_id] + ' games') 
 
   else
-    provide(:title, 'All Games In Your Collection') 
+    provide(:title, 'Your Wish List') 
 
   end
   %>
 
-  <% if (@ownership.empty?) %>
-
-  <p style="text-align: center">
-    No games added yet? <%= link_to "Browse The Games Collection", browse_index_path %> and add some games!
-  </p>
-  <% end %>
-
-
   <table class="game_table_info">
-    <% @ownership.each do |game| %>
+    <% @game.each do |game| %>
+
     <tr height="50px">
      <td>
      </td>
 
      <td id="game_info">
-      <%= link_to game.games.eng_title, ownership_game(game.games.id) %>
+      <%= link_to game.games.eng_title, games_wish_list_path(game.id) %>
+
     </td>
 
     <td id="console_info">
