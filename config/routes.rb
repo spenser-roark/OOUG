@@ -28,6 +28,9 @@ Ooug::Application.routes.draw do
   # Inventories
   get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
   get '/inventory/games/:id/:console_id' => 'inventory#games'
+  
+  get '/wish_list/games/:id' => 'wish_list#games', as: 'wish_list_games'
+  get '/wish_list/games/:id/:console_id' => 'wish_list#games'
 
   get '/inventory/consoles/:id' => 'inventory#consoles', as: 'inventory_consoles'
   get '/inventory/consoles/:id/:console_id' => 'inventory#consoles'
