@@ -2,6 +2,7 @@ Ooug::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main_page#home'
 
+  # Main
   match '/home', to: 'main_page#home', via: 'get'
   match '/signUp', to: 'users#new', via: 'get'
   match '/about', to: 'main_page#about', via: 'get'
@@ -10,17 +11,23 @@ Ooug::Application.routes.draw do
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
 
+  # Gruff
   get '/users/gruffBig' => 'users#gruffBig', as: 'gruffBig'
   get '/users/gruffSmall' => 'users#gruffSmall', as: 'gruffSmall'
   get '/users/gruffBigAcc' => 'users#gruffBigAcc', as: 'gruffBigAcc'
   get '/users/gruffSmallAcc' => 'users#gruffSmallAcc', as: 'gruffSmallAcc'
   get '/users/gruffConsole' => 'users#gruffConsole', as: 'gruffConsole'
 
-  get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
-  get '/inventory/games/:id/:console_id' => 'inventory#games'
-  
+  #  General Wish Lists
   get '/wish_list/games/:id' => 'wish_list#games', as: 'wish_list_games'
   get '/wish_list/games/:id/:console_id' => 'wish_list#games'
+
+  get '/wish_list/accessories/:id' => 'wish_list#accessories', as: 'wish_list_accessories'
+  get '/wish_list/accessories/:id/:console_id' => 'wish_list#accessories'
+
+  # Inventories
+  get '/inventory/games/:id' => 'inventory#games', as: 'inventory_games'
+  get '/inventory/games/:id/:console_id' => 'inventory#games'
 
   get '/inventory/consoles/:id' => 'inventory#consoles', as: 'inventory_consoles'
   get '/inventory/consoles/:id/:console_id' => 'inventory#consoles'
@@ -28,16 +35,16 @@ Ooug::Application.routes.draw do
   get '/inventory/accessories/:id' => 'inventory#accessories', as: 'inventory_accessories'
   get '/inventory/accessories/:id/:console_id' => 'inventory#accessories'
 
+  # Ownerships
   get '/ownership/new/:id' => 'ownership#new', as: 'new_ownership'
   get '/console_ownership/new/:id' => 'console_ownership#new', as: 'new_console_ownership'
-
   get '/accessories_ownership/new/:id' => 'accessories_ownership#new', as: 'new_accessories_ownership'
 
+  # Specific Wish Lists
   get '/games_wish_list/new/:id' => 'games_wish_list#new', as: 'new_games_wish_list'
-  #get '/games_wish_list/:console_id' => 'games_wish_list#index', as: 'games_wish_list'
-
   get '/accessories_wish_list/new/:id' => 'accessories_wish_list#new', as: 'new_accessories_wish_list'  
 
+  # Resources
   resources :inventory, only: [:games, :consoles]
   resources :users
   resources :games
@@ -57,7 +64,6 @@ Ooug::Application.routes.draw do
   resources :search, only: [:index]
   resources :add_game, only: [:new, :create]
   resources :stats, only: [:show, :index]
-
   resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

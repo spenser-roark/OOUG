@@ -1,0 +1,38 @@
+<%= render 'layouts/accessoriesWishListSideBar' %>
+<div class="container inventory_games" style="position: static">
+
+  <% 
+  if (params.has_key?(:console_id))
+    provide(:title, 'All your wished for ' + params[:console_id] + ' accessories') 
+
+  else
+    provide(:title, 'Your Accessories Wish List') 
+
+  end
+  %>
+
+  <table class="game_table_info">
+    <% @game.each do |game| %>
+
+    <tr height="50px">
+     <td>
+     </td>
+
+     <td id="game_info">
+      <%= link_to game.accessories.eng_title, accessories_wish_list_path(game.id) %>
+
+    </td>
+
+    <td id="console_info">
+      <%= link_to game.accessories.console_general.eng_name, console_general_path(game.accessories.console_general.id) %>
+    </td>
+
+    <td id="region_info">
+      <%= link_to game.accessories.region.region_title, region_path(game.accessories.region.region_id) %>
+    </td>
+
+  </tr>
+  <% end %>
+
+</table>
+</div>

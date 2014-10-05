@@ -63,7 +63,7 @@ class GamesWishListController < ApplicationController
 
   def destroy
     GamesWishList.delete(params[:id])
-    redirect_to games_wish_list_index_path
+    redirect_to wish_list_games_path(current_user)
   end
 
   private

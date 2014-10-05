@@ -19,7 +19,6 @@ class GamesController < ApplicationController
     @game = Games.find(params[:id])
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
-
     @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
     

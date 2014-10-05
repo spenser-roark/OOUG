@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708174321) do
+ActiveRecord::Schema.define(version: 20141004160043) do
 
   create_table "accessories", force: true do |t|
     t.text    "accessories_ean"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20140708174321) do
   end
 
   add_index "accessories_ownership", ["accessories_id"], name: "accessories_id", using: :btree
+
+  create_table "accessories_wish_list", force: true do |t|
+    t.integer "user_id",        limit: 8, null: false
+    t.integer "accessories_id", limit: 8, null: false
+    t.text    "notes"
+  end
+
+  add_index "accessories_wish_list", ["accessories_id"], name: "games_id", using: :btree
+  add_index "accessories_wish_list", ["user_id"], name: "user_id", using: :btree
+
+  create_table "accessories_wish_lists", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "console_general", primary_key: "console_id", force: true do |t|
     t.text "eng_name"
@@ -82,18 +96,13 @@ ActiveRecord::Schema.define(version: 20140708174321) do
   add_index "games", ["region_id"], name: "region", using: :btree
 
   create_table "games_wish_list", force: true do |t|
-    t.integer "users_id", limit: 8, null: false
+    t.integer "user_id",  limit: 8, null: false
     t.integer "games_id", limit: 8, null: false
     t.text    "notes"
   end
 
   add_index "games_wish_list", ["games_id"], name: "games_id", using: :btree
-  add_index "games_wish_list", ["users_id"], name: "user_id", using: :btree
-
-  create_table "games_wish_lists", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "games_wish_list", ["user_id"], name: "user_id", using: :btree
 
   create_table "image", primary_key: "image_id", force: true do |t|
     t.string   "mime_type",                                    null: false
@@ -134,7 +143,7 @@ ActiveRecord::Schema.define(version: 20140708174321) do
     t.integer "user_id",                          null: false
     t.integer "games_id",             default: 0, null: false
     t.integer "own",                  default: 0, null: false
-    t.integer "complete",             default: 0, null: false
+    t.boolean "complete"
     t.integer "box_condition",        default: 6, null: false
     t.integer "game_condition",       default: 6, null: false
     t.integer "manual_condition",     default: 6, null: false

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OOUG - <%= yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="icon" type="image/ico" href="/assets/favicon.ico">
+</head>
+
+<%= render 'layouts/inventoryHeader' %>
+	  <%= yield %>
+
+</body>
+</html>
