@@ -4,6 +4,7 @@ Ooug::Application.routes.draw do
 
   # Main
   match '/home', to: 'main_page#home', via: 'get'
+  match '/help', to: 'main_page#help', via: 'get'
   match '/signUp', to: 'users#new', via: 'get'
   match '/about', to: 'main_page#about', via: 'get'
   match '/contact', to: 'main_page#contact', via: 'get'
