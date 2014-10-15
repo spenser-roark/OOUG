@@ -5,11 +5,14 @@
 	<h3>Game FAQs</h3>
 </div>
 
-<div class="row">
-	<div class="span4 collapse-group">
-		<p class="collapse" id="viewdetails">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-<p><a class="btn" data-toggle="collapse" data-target="#viewdetails">UPC</a></p>	</div>
-</div>
+<li id="fat-menu" class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    UPC <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+		<li>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </li>
+	</ul>
+</li>
 
 <div id="FAQ" class="textcenter">
 	<h3>Accessory FAQs</h3>
@@ -26,3 +29,42 @@
 <ul>
 	<li class="help-link"><a href="#">UPC/EAN/JAN</a></li>
 </ul>
+
+<li id="fat-menu" class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    Account <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Profile", current_user %></li>
+    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+
+    <li id="fat-menu" class="dropdown-submenu">    
+    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Inventory
+    </a>
+
+    <ul class="dropdown-menu dropdown">
+      <li><%= link_to "Games",    inventory_games_path(current_user) %></li>
+      <li><%= link_to "Consoles",    inventory_consoles_path(current_user) %></li>
+      <li><%= link_to "Accessories",    inventory_accessories_path(current_user) %></li>
+    </ul>
+
+    <li id="fat-menu" class="dropdown-submenu">    
+    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Wish Lists
+    </a>
+
+    <ul class="dropdown-menu dropdown">
+      <li><%= link_to "Games", wish_list_games_path(current_user) %></li>
+      <li><%= link_to "Consoles", wish_list_consoles_path(current_user) %></li>
+      <li><%= link_to "Accessories", wish_list_accessories_path(current_user) %></li>
+    </ul>
+
+
+    <li class="divider"></li> 
+    <li><%= link_to "Logout", signOut_path, method: "delete" %></li>
+  </ul>
+
+  <script type="text/javascript">
+    $( "#accordion" ).accordion({ active: 2 });
+  </script>

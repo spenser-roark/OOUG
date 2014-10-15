@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 # Graph library
 gem 'gruff'
 
+#image library
+gem "paperclip", "~> 4.2"
+
 # Twitter bootstrap
 gem 'bootstrap-sass', '2.3.2.0'
 # gem 'twitter-bootstrap-rails' , '>= 2.1.6'
