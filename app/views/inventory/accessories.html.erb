@@ -33,7 +33,7 @@ end
     </td>
 
     <td id="console_info">
-      <%= link_to game.accessories.console_general.eng_name, console_general_path(game.accessories.console_general.id) %>
+      <%= link_to game.accessories.console_general.eng_name, inventory_accessory_path(current_user, game.accessories.console_general.eng_name) %>
     </td>
 
     <td id="region_info">
