@@ -27,7 +27,7 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :ean, "EAN",class: "control-label", style: ""%>
+      <%= f.label :ean, "UPC",class: "control-label", style: ""%>
       <div class="controls">
 	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
       </div>
@@ -56,10 +56,11 @@
       $("#games_region_id").change(function() {
       if ($("#games_region_id").val()=="1")
       {
-      $("#games_jap_title").show();
-      $("#jap_title_title").show();
-      $("#games_jap_title_div").attr('class', 'control-group pull-right');
-      $("#games_region_div").attr('class', 'control-group pull-left');
+        $(".control-label[for='games_ean']").text('JAN');
+        $("#games_jap_title").show();
+        $("#jap_title_title").show();
+        $("#games_jap_title_div").attr('class', 'control-group pull-right');
+        $("#games_region_div").attr('class', 'control-group pull-left');
       }
       else
       {
@@ -67,6 +68,15 @@
       $("#jap_title_title").hide();
       $("#games_jap_title_div").attr('class', 'control-group');
       $("#games_region_div").attr('class', 'control-group offset2');
+      }
+      if ($("#games_region_id").val()=="2") {
+        $(".control-label[for='games_ean']").text('UPC');
+      }
+      if ($("#games_region_id").val()=="3") {
+        $(".control-label[for='games_ean']").text('EAN');
+      }
+      if ($("#games_region_id").val()=="4") {
+        $(".control-label[for='games_ean']").text('EAN');
       }
       });
     </script>
