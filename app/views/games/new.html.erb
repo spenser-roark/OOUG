@@ -1,7 +1,6 @@
 <% provide(:title, "Add A New Game") %>
 <%= render 'shared/game_error_messages' %> 
 <div class="row span10" style="margin-top: 100px">
-  <div class="">
 
     <%= form_for(@game, url: games_path, :html => {:class => "form-horizontal"}) do |f| %>
 
@@ -28,8 +27,8 @@
 
     <div class="control-group">
       <%= f.label :ean, "UPC",class: "control-label", style: ""%>
-      <div class="controls">
-	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
+      <div class="controls"> 
+	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %><span class="icon-question-sign" id="new-tooltip" tooltip='This is the barcode number. Please include all numbers including the leading/trailing 0s and any letters. E.g. early SFC games include a leading T'></span>
       </div>
     </div>
 
@@ -45,18 +44,14 @@
       </div>
     <% end %>
 </div>
-</div>
 
 <script type="text/javascript">
       $("#games_jap_title").hide();
       $("#jap_title_title").hide();
-</script>
 
-    <script type="text/javascript">
       $("#games_region_id").change(function() {
       if ($("#games_region_id").val()=="1")
       {
-        $(".control-label[for='games_ean']").text('JAN');
         $("#games_jap_title").show();
         $("#jap_title_title").show();
         $("#games_jap_title_div").attr('class', 'control-group pull-right');
@@ -69,13 +64,16 @@
       $("#games_jap_title_div").attr('class', 'control-group');
       $("#games_region_div").attr('class', 'control-group offset2');
       }
-      if ($("#games_region_id").val()=="2") {
+      if ($("#games_region_id").val()=="1") {
+        $(".control-label[for='games_ean']").text('JAN');
+      }
+      else if ($("#games_region_id").val()=="2") {
         $(".control-label[for='games_ean']").text('UPC');
       }
-      if ($("#games_region_id").val()=="3") {
+      else if ($("#games_region_id").val()=="3") {
         $(".control-label[for='games_ean']").text('EAN');
       }
-      if ($("#games_region_id").val()=="4") {
+      else if ($("#games_region_id").val()=="4") {
         $(".control-label[for='games_ean']").text('EAN');
       }
       });

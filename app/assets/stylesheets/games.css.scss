@@ -12,3 +12,31 @@ body
 {
 margin-bottom: 100px;
 }
+
+#new-tooltip {
+	margin-left: 5px;
+}
+
+#new-tooltip:hover:before {
+	position: absolute;
+	content: attr(tooltip);
+	display: inline-block;
+	margin-left: 20px;
+	background: none repeat scroll #feffcd;
+	border: solid 1px black;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;    
+	color: #000;
+	padding: 10px 10px;
+	max-width: 200px;
+}
+
+#new-tooltip:hover:after {
+	content: "";
+	border-color: #f3961c;
+    border-width: 10px 50px 10px 0;
+    bottom: auto;
+    left: -50px;
+    top: 16px;
+}

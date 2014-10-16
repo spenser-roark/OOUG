@@ -14,7 +14,7 @@
       <% else %>
       <div class="control-group pull-left" id="games_region_div">
 	<% end %>
-      <%= f.label :region, class: "control-label", style: ""%>
+      <%= f.label :region, class: "control-label" %>
       <div class="controls">
 	<%= f.select( :region_id, options_for_select(@region_array, :selected => @game.region.region_id)) %>
       </div>
@@ -34,21 +34,21 @@
     </div>
 
     <div class="control-group pull-right">
-      <%= f.label :eng_title, "English Title",class: "control-label", style: ""%>
+      <%= f.label :eng_title, "English Title",class: "control-label" %>
       <div class="controls">
 	<%= f.text_field :eng_title, class: "input-medium" %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :ean, "EAN",class: "control-label", style: ""%>
+      <%= f.label :ean, "EAN",class: "control-label" %>
       <div class="controls">
-	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %>
+	<%= f.text_field :ean, class: "input-medium", :maxlength=>"14" %><span class="icon-question-sign" id="new-tooltip" tooltip='This is the barcode number. Please include all numbers including the leading/trailing 0s and any letters. E.g. early SFC games include a leading T'></span>
       </div>
     </div>
 
     <div class="control-group offset2">
-      <%= f.label :ConsoleGeneral, "Console", class: "control-label", style: ""%>
+      <%= f.label :ConsoleGeneral, "Console", class: "control-label" %>
       <div class="controls">
 	<%= f.select( :console_general_id, options_for_select(@console_array, :selected => @game.console_general.console_id)) %>
       </div>
@@ -82,6 +82,18 @@
   $("#games_jap_title_div").attr('class', 'control-group');
   $("#games_region_div").attr('class', 'control-group offset2');
   }
+  if ($("#games_region_id").val()=="1") {
+    $(".control-label[for='games_ean']").text('JAN');
+  }
+  else if ($("#games_region_id").val()=="2") {
+    $(".control-label[for='games_ean']").text('UPC');
+  }
+  else if ($("#games_region_id").val()=="3") {
+    $(".control-label[for='games_ean']").text('EAN');
+  }
+  else if ($("#games_region_id").val()=="4") {
+    $(".control-label[for='games_ean']").text('EAN');
+  }
   });
 
   $("#games_region_id").ready(function() {
@@ -104,8 +116,24 @@
 
 <% if @game.region.region_id == 1 %>
 
-<script>
+<script type="text/javascript">
   $("#games_jap_title").show();
   $("#jap_title_title").show();
+  $(".control-label[for='games_ean']").text('JAN');
+</script>
+
+<% elsif @game.region.region_id == 2  %>
+<script type="text/javascript">
+    $(".control-label[for='games_ean']").text('UPC');
+</script>
+
+<% elsif @game.region.region_id == 3  %>
+  <script type="text/javascript">
+  $(".control-label[for='games_ean']").text('EAN');
+  </script>
+
+<% elsif @game.region.region_id == 4 %>
+<script type="text/javascript">
+    $(".control-label[for='games_ean']").text('EAN');
 </script>
 <% end %>
