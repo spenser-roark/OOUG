@@ -1,7 +1,7 @@
 <% provide(:title, @console_name.eng_name) %>
 
 <% if signed_in? %>
-<%= link_to "Can't find an accessory?", new_accessory_path, class: "pull-right" %>
+<%= link_to "Can't find an accessory?", new_accessory_path, class: "top-link" %>
 <% end %>
 
 <h1 style="text-align: center"><%= params[:id] %> Accessories</h1>
