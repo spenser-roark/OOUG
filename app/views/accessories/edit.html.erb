@@ -82,6 +82,18 @@
   $("#accessories_jap_title_div").attr('class', 'control-group');
   $("#accessories_region_div").attr('class', 'control-group offset2');
   }
+  if ($("#accessories_region_id").val()=="1") {
+        $(".control-label[for='accessories_accessories_ean']").text('JAN');
+      }
+      else if ($("#accessories_region_id").val()=="2") {
+        $(".control-label[for='accessories_accessories_ean']").text('UPC');
+      }
+      else if ($("#accessories_region_id").val()=="3") {
+        $(".control-label[for='accessories_accessories_ean']").text('EAN');
+      }
+      else if ($("#accessories_region_id").val()=="4") {
+        $(".control-label[for='accessories_accessories_ean']").text('EAN');
+      }
   });
 
   $("#accessories_region_id").ready(function() {
@@ -107,5 +119,20 @@
 <script>
   $("#accessories_jap_title").show();
   $("#jap_title_title").show();
+  $(".control-label[for='accessories_accessories_ean']").text('JAN');
+</script>
+<% elsif @accessory.region.region_id == 2  %>
+<script type="text/javascript">
+    $(".control-label[for='accessories_accessories_ean']").text('UPC');
+</script>
+
+<% elsif @accessory.region.region_id == 3  %>
+  <script type="text/javascript">
+  $(".control-label[for='accessories_accessories_ean']").text('EAN');
+  </script>
+
+<% elsif @accessory.region.region_id == 4 %>
+<script type="text/javascript">
+    $(".control-label[for='accessories_accessories_ean']").text('EAN');
 </script>
 <% end %>

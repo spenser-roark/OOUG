@@ -27,9 +27,9 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :accessories_ean, "EAN",class: "control-label", style: ""%>
+      <%= f.label :accessories_ean, "UPC",class: "control-label", style: ""%>
       <div class="controls">
-	<%= f.text_field :accessories_ean, class: "input-medium", :maxlength=>"14" %>
+	<%= f.text_field :accessories_ean, class: "input-medium", :maxlength=>"14" %><span class="icon-question-sign" id="new-tooltip" tooltip='This is the barcode number. Please include all numbers including the leading/trailing 0s and any letters. E.g. early SFC accessories include a leading T'></span>
       </div>
     </div>
 
@@ -50,9 +50,7 @@
 <script type="text/javascript">
       $("#accessories_jap_title").hide();
       $("#jap_name_name").hide();
-</script>
 
-    <script type="text/javascript">
       $("#accessories_region_id").change(function() {
       if ($("#accessories_region_id").val()=="1")
       {
@@ -67,6 +65,18 @@
       $("#jap_name_name").hide();
       $("#accessories_jap_name_div").attr('class', 'control-group');
       $("#accessories_region_div").attr('class', 'control-group offset2');
+      }
+      if ($("#accessories_region_id").val()=="1") {
+        $(".control-label[for='accessories_accessories_ean']").text('JAN');
+      }
+      else if ($("#accessories_region_id").val()=="2") {
+        $(".control-label[for='accessories_accessories_ean']").text('UPC');
+      }
+      else if ($("#accessories_region_id").val()=="3") {
+        $(".control-label[for='accessories_accessories_ean']").text('EAN');
+      }
+      else if ($("#accessories_region_id").val()=="4") {
+        $(".control-label[for='accessories_accessories_ean']").text('EAN');
       }
       });
     </script>
