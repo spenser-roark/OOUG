@@ -473,3 +473,18 @@ margin-bottom: 10%;
         outline-width: 0;
     }
 }
+
+.image-list {
+    text-align: center;
+    & li {
+    list-style: none;
+    }
+}
+
+.image-list-title {
+    margin-top: 20px;
+}
+
+.question-block {
+    border-top: 1px solid black;
+}
