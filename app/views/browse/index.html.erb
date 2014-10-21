@@ -2,11 +2,11 @@
 
 <h1 style="text-align: center">All Games</h1>
 
-<div class="browse_list offset3" id="game_info">
+<div class="browse_list" id="game_info" style="">
 <ul>
   <% @console.each_with_index do |console, i| %>
 
-<li><%= link_to console + " games", browse_path(console), class: i >= 15 ? "" : ""%></li>
+<li><%= link_to console + " games", browse_path(console), style: i >= 15 ? "" : ""%></li>
 
 <% end %>
 

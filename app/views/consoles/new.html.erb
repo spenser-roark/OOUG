@@ -1,12 +1,12 @@
 <% provide(:title, "Add A New Console") %>
 <%= render 'shared/console_error_messages' %> 
-<div class="row span10" style="margin-top: 100px">
+<div class="row span10 new-body">
   <div class="">
 
     <%= form_for(@console, url: {action: "create"}, :html => {:class => "form-horizontal"}) do |f| %>
 
     <div class="control-group offset2" id="consoles_region_div">
-      <%= f.label :region, class: "control-label", style: ""%>
+      <%= f.label :region, class: "control-label"%>
       <div class="controls">
 	<%= f.select( :region_id, options_for_select(@region_array, :selected => "")) %>
       </div>
@@ -20,21 +20,21 @@
     </div>
 
     <div class="control-group pull-right">
-      <%= f.label :eng_name, "English Name",class: "control-label", style: ""%>
+      <%= f.label :eng_name, "English Name",class: "control-label"%>
       <div class="controls">
 	<%= f.text_field :eng_name, class: "input-medium" %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :console_ean, "EAN",class: "control-label", style: ""%>
+      <%= f.label :console_ean, "UPC",class: "control-label"%>
       <div class="controls">
-	<%= f.text_field :console_ean, class: "input-medium", :maxlength=>"14" %>
+	<%= f.text_field :console_ean, class: "input-medium", :maxlength=>"14" %><span class="icon-question-sign" id="new-tooltip" tooltip='This is the barcode number. Please include all numbers including the leading/trailing 0s and any letters. E.g. Game Boy console barcodes include a leading T'></span>
       </div>
     </div>
 
     <div class="control-group offset2">
-      <%= f.label :ConsoleGeneral, "Console", class: "control-label", style: ""%>
+      <%= f.label :ConsoleGeneral, "Console", class: "control-label"%>
       <div class="controls">
 	<%= f.select( :console_general_id, options_for_select(@console_array)) %>
       </div>
@@ -50,9 +50,7 @@
 <script type="text/javascript">
       $("#consoles_jap_name").hide();
       $("#jap_name_name").hide();
-</script>
 
-    <script type="text/javascript">
       $("#consoles_region_id").change(function() {
       if ($("#consoles_region_id").val()=="1")
       {
@@ -67,6 +65,18 @@
       $("#jap_name_name").hide();
       $("#consoles_jap_name_div").attr('class', 'control-group');
       $("#consoles_region_div").attr('class', 'control-group offset2');
+      }
+       if ($("#consoles_region_id").val()=="1") {
+        $(".control-label[for='consoles_console_ean']").text('JAN');
+      }
+      else if ($("#consoles_region_id").val()=="2") {
+        $(".control-label[for='consoles_console_ean']").text('UPC');
+      }
+      else if ($("#consoles_region_id").val()=="3") {
+        $(".control-label[for='consoles_console_ean']").text('EAN');
+      }
+      else if ($("#consoles_region_id").val()=="4") {
+        $(".control-label[for='consoles_console_ean']").text('EAN');
       }
       });
     </script>

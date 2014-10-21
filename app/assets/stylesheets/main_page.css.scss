@@ -326,6 +326,10 @@ img.bg
     top: -20px;
 }
 
+.help-link {
+    list-style-type: none;
+}
+
 .navi li
 {
     /*padding: 10px;*/
@@ -436,4 +440,55 @@ font-weight: bold;
 body
 {
 margin-bottom: 100px;
+}
+
+#ooug {
+    text-align: center;
+    font-family: Arial Black;
+    margin-top: 15%;
+}
+
+#help-ooug {
+text-align: center;
+font-family: Arial Black;
+margin-top: 15%;
+margin-bottom: 10%;   
+}
+
+.faq-line {
+    padding-top: 5px;
+}
+
+.question-title {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        @extend .question-title;
+        font-weight: bold;
+    }
+
+    &:focus {
+        @extend .question-title;
+        outline-width: 0;
+    }
+}
+
+.image-list {
+    text-align: center;
+    & li {
+    list-style: none;
+    }
+}
+
+.image-list-title {
+    margin-top: 20px;
+}
+
+.question-block {
+    margin-top: 5px;
+    border: 1px solid black;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
 }

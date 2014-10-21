@@ -30,7 +30,7 @@
     </td>
 
     <td id="console_info">
-      <%= link_to game.games.console_general.eng_name, console_general_path(game.games.console_general.id) %>
+      <%= link_to game.games.console_general.eng_name, inventory_game_path(current_user, game.games.console_general.eng_name) %>
     </td>
 
     <td id="region_info">

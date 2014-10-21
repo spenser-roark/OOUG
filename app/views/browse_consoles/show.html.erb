@@ -1,12 +1,12 @@
 <% provide(:title, @console_name.eng_name) %>
 
 <% if signed_in? %>
-<%= link_to "Can't find a console?", new_console_path, class: "pull-right" %>
+<%= link_to "Can't find a console?", new_console_path, class: "top-link" %>
 <% end %>
 
 <h1 style="text-align: center"><%= params[:id] %> Consoles</h1>
 
-<div class="browse_list offset3" id="game_info">
+<div class="browse_list" id="game_info">
 <ul>
   <% @console_games.each do |game| %>
 

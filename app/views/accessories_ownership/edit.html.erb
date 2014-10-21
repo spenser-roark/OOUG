@@ -16,19 +16,19 @@
 
   <div class="tab-pane active" id="condition">
     <div class="row">
-      <div class="span4 offset2">
+      <div class="span4 offset2 field-entry">
 
 
-	<%= f.label :item_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label :item_condition, class: "col-sm-2 control-label" %>
 	<%= f.select( :item_condition, options_for_select(@quality_array, selected = @ownership.item_condition)) %>
 
-	<%= f.label :manual_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label :manual_condition, class: "col-sm-2 control-label" %>
 	<%= f.select( :manual_condition, options_for_select(@quality_array, selected = @ownership.manual_condition)) %>
 
-	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label :inserts_condition, class: "col-sm-2 control-label" %>
 	<%= f.select( :inserts_condition, options_for_select(@quality_array, selected = @ownership.inserts_condition)) %>
 
-	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label :box_condition, class: "col-sm-2 control-label" %>
 	<%= f.select( :box_condition, options_for_select(@quality_array, selected = @ownership.box_condition)) %>
 
       </div>
@@ -39,11 +39,11 @@
     <div class="row">
       <div class="span4 offset2">
 
-	<%= f.label :notes, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label :notes, class: "col-sm-2 control-label" %>
 	<%= f.text_area(:notes, cols: 500, rows: 5) %>
 
 	
-	<%= f.label "Images to be implemented later, sorry :(", class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label "Images to be implemented later, sorry :(", class: "col-sm-2 control-label" %>
 	<span class="disabled btn btn-sm">Browse<spana>
       </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="row">
       <div class="span4 offset2">
 	<% complete = (@ownership.complete ? 1 : 0) %>
-	<%= f.label :complete, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
+	<%= f.label :complete, class: "col-sm-2 control-label" %>
 <%= f.select( :complete, options_for_select([["Incomplete", 0], ["Complete", 1]], selected = complete)) %>
 
 	<br />
