@@ -17,3 +17,4 @@
 //= require bootstrap-tab
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-collapse

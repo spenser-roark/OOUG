@@ -441,3 +441,35 @@ body
 {
 margin-bottom: 100px;
 }
+
+#ooug {
+    text-align: center;
+    font-family: Arial Black;
+    margin-top: 15%;
+}
+
+#help-ooug {
+text-align: center;
+font-family: Arial Black;
+margin-top: 15%;
+margin-bottom: 10%;   
+}
+
+.faq-line {
+    padding-top: 5px;
+}
+
+.question-title {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        @extend .question-title;
+        font-weight: bold;
+    }
+
+    &:focus {
+        @extend .question-title;
+        outline-width: 0;
+    }
+}

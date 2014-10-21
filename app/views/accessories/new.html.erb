@@ -1,12 +1,12 @@
 <% provide(:title, "Add A New Accessory") %>
 <%= render 'shared/accessory_error_messages' %> 
-<div class="row span10" style="margin-top: 100px">
+<div class="row span10 new-body">
   <div class="">
 
     <%= form_for(@accessory, url: {action: "create"}, :html => {:class => "form-horizontal"}) do |f| %>
 
     <div class="control-group offset2" id="accessories_region_div">
-      <%= f.label :region, class: "control-label", style: ""%>
+      <%= f.label :region, class: "control-label"%>
       <div class="controls">
 	<%= f.select( :region_id, options_for_select(@region_array, :selected => "")) %>
       </div>
@@ -20,21 +20,21 @@
     </div>
 
     <div class="control-group pull-right">
-      <%= f.label :eng_title, "English Name",class: "control-label", style: ""%>
+      <%= f.label :eng_title, "English Name",class: "control-label"%>
       <div class="controls">
 	<%= f.text_field :eng_title, class: "input-medium" %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :accessories_ean, "UPC",class: "control-label", style: ""%>
+      <%= f.label :accessories_ean, "UPC",class: "control-label"%>
       <div class="controls">
 	<%= f.text_field :accessories_ean, class: "input-medium", :maxlength=>"14" %><span class="icon-question-sign" id="new-tooltip" tooltip='This is the barcode number. Please include all numbers including the leading/trailing 0s and any letters. E.g. early SFC accessories include a leading T'></span>
       </div>
     </div>
 
     <div class="control-group offset2">
-      <%= f.label :console_general_id, "Console", class: "control-label", style: ""%>
+      <%= f.label :console_general_id, "Console", class: "control-label"%>
       <div class="controls">
 	<%= f.select( :console_general_id, options_for_select(@console_array)) %>
       </div>

@@ -1,18 +1,33 @@
-
-<h1 style="text-align: center; font-family: Arial Black; margin-top: 15%">OOUG</h1>
-
 <div id="FAQ" class="textcenter">
 	<h3>Game FAQs</h3>
 </div>
 
-<li id="fat-menu" class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    UPC <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu">
-		<li>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </li>
-	</ul>
-</li>
+                <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">  
+                  UPC/EAN/JAN
+                </a>  
+              <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">  
+                <div class="accordion-inner">  
+                  <p>This refers to the barcode the game is referenced by. The barcode is useful for two reasons.</p>
+                  <p>First, barcodes are used in checkout automation at any store worldwide. This automated identification data capture allows us to feel very confident in the barcodes uniqueness and universality.</p>
+                  <p>Second, we don't want to reinvent the wheel. Each video game, and every product for that matter, has a unique barcode. Even a PsOne Books version and a black label version game have different barcodes. Utilizing this feature allows us to easily search for the game and allows us to ensure the game is unique to our database.</p>
+                </div>  
+              </div>  
+                <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">  
+                 Click me to expand. Click me again to collapse. Part II.  
+                </a>  
+              <div id="collapseTwo" class="accordion-body collapse">  
+                <div class="accordion-inner">  
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
+                </div>  
+              </div>  
+                <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">  
+                  Click me to exapand. Click me again to collapse. Part III.  
+                </a>  
+              <div id="collapseThree" class="accordion-body collapse">  
+                <div class="accordion-inner">  
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
+                </div>  
+              </div>  
 
 <div id="FAQ" class="textcenter">
 	<h3>Accessory FAQs</h3>
@@ -29,42 +44,3 @@
 <ul>
 	<li class="help-link"><a href="#">UPC/EAN/JAN</a></li>
 </ul>
-
-<li id="fat-menu" class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    Account <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu">
-    <li><%= link_to "Profile", current_user %></li>
-    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-
-    <li id="fat-menu" class="dropdown-submenu">    
-    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Inventory
-    </a>
-
-    <ul class="dropdown-menu dropdown">
-      <li><%= link_to "Games",    inventory_games_path(current_user) %></li>
-      <li><%= link_to "Consoles",    inventory_consoles_path(current_user) %></li>
-      <li><%= link_to "Accessories",    inventory_accessories_path(current_user) %></li>
-    </ul>
-
-    <li id="fat-menu" class="dropdown-submenu">    
-    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Wish Lists
-    </a>
-
-    <ul class="dropdown-menu dropdown">
-      <li><%= link_to "Games", wish_list_games_path(current_user) %></li>
-      <li><%= link_to "Consoles", wish_list_consoles_path(current_user) %></li>
-      <li><%= link_to "Accessories", wish_list_accessories_path(current_user) %></li>
-    </ul>
-
-
-    <li class="divider"></li> 
-    <li><%= link_to "Logout", signOut_path, method: "delete" %></li>
-  </ul>
-
-  <script type="text/javascript">
-    $( "#accordion" ).accordion({ active: 2 });
-  </script>
