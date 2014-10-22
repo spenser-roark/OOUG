@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005150039) do
+ActiveRecord::Schema.define(version: 20141022151556) do
 
   create_table "accessories", force: true do |t|
     t.text    "accessories_ean"
@@ -176,6 +176,17 @@ ActiveRecord::Schema.define(version: 20141005150039) do
   create_table "region", primary_key: "region_id", force: true do |t|
     t.text "region_title"
     t.text "region_country"
+  end
+
+  create_table "spine_card_exist", force: true do |t|
+    t.integer "has_card", limit: 8, null: false
+  end
+
+  add_index "spine_card_exist", ["has_card"], name: "has_card", using: :btree
+
+  create_table "spine_card_exists", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

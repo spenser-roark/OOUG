@@ -15,6 +15,7 @@ class OwnershipController < ApplicationController
     @game = Games.find_by(id: params[:id])
     @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
     @quality_array.insert(0, "")
+    @spine_card_exists = SpineCardExist.joins(:console_general).where(:console_general => {:console_id => 1}).empty?
   end
   
   def create
