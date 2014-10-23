@@ -28,9 +28,10 @@
 	<%= f.label :inserts_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :inserts_condition, options_for_select(@quality_array)) %>
 
+<% if @spine_card_exists %>
 	<%= f.label :spine_card_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :spine_card_condition, options_for_select(@quality_array)) %>
-
+<% end %>
 	<%= f.label :box_condition, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
 	<%= f.select( :box_condition, options_for_select(@quality_array)) %>
 	

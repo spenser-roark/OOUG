@@ -7,7 +7,10 @@
 <p>Manual Condition: <%= @game.manual_qualities.quality %></p>
 <p>Inserts Condition: <%= @game.inserts_qualities.quality %></p>
 <p>Game Condition: <%= @game.game_qualities.quality %></p>
+
+<% if @spine_card_exists %>
 <p>Spine Card Condition: <%= @game.spine_card_qualities.quality %></p>
+<% end %>
 
 <h5 class="game_title">You marked this game as <%= (@game.complete == 1 ? "complete" : "Incomplete")%></h5>
 
