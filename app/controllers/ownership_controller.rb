@@ -4,10 +4,13 @@ class OwnershipController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
+  # protected  @user = User.find_by(remember_token: cookies[:remember_token])
+
   def show
     @game = Ownership.find_by(id: params[:id])
     @user = User.find_by(remember_token: cookies[:remember_token])
     # @box_condition = Ownership.where(id: params[:id]).joins(:quality)
+    @spine_card_exists = !SpineCardExist.joins(:console_general).where(:console_general => {:console_id => Ownership.find_by(id: params[:id]).games.console_general.console_id}).empty?
   end
 
   def new
@@ -15,12 +18,14 @@ class OwnershipController < ApplicationController
     @game = Games.find_by(id: params[:id])
     @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
     @quality_array.insert(0, "")
+    @spine_card_exists = !SpineCardExist.joins(:console_general).where(:console_general => {:console_id => Games.find_by(id: params[:id]).console_general.console_id}).empty?
   end
   
   def create
+    @spine_card_exists = !SpineCardExist.joins(:console_general).where(:console_general => {:console_id => Games.find_by(id: params[:ownership][:games_id]).console_general.console_id}).empty?
     @user = User.find_by(remember_token: cookies[:remember_token])
 
-    @ownership = Ownership.new(user_id: current_user().id, games_id: params[:ownership][:games_id], own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: params[:ownership][:spine_card_condition], count: 1)
+    @ownership = Ownership.new(user_id: current_user().id, games_id: params[:ownership][:games_id], own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: (@spine_card_exists ? params[:ownership][:spine_card_condition] : 6), count: 1)
 
     if @ownership.save
       redirect_to @ownership
@@ -31,15 +36,17 @@ class OwnershipController < ApplicationController
 
   def edit
     @ownership = Ownership.find(params[:id])
+    @spine_card_exists = !SpineCardExist.joins(:console_general).where(:console_general => {:console_id => Ownership.find_by(id: params[:id]).games.console_general.console_id}).empty?
     @game = Games.find(Ownership.find(params[:id]).games_id)
     @quality_array = Quality.all.map {|quality| [quality.quality, quality.id]}
     @quality_array.insert(0, "")
   end
 
   def update
+    @spine_card_exists = !SpineCardExist.joins(:console_general).where(:console_general => {:console_id => Ownership.find_by(id: params[:id]).games.console_general.console_id}).empty?
     @ownership = Ownership.find(params[:id])
     @game = Games.find(Ownership.find(params[:id]).games_id)
-    if @ownership.update_attributes(user_id: current_user().id, games_id: Ownership.find(params[:id]).games_id, own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: params[:ownership][:spine_card_condition], count: 1)
+    if @ownership.update_attributes(user_id: current_user().id, games_id: Ownership.find(params[:id]).games_id, own: 1, complete: params[:ownership][:complete], box_condition: params[:ownership][:box_condition], game_condition: params[:ownership][:game_condition], manual_condition: params[:ownership][:manual_condition], inserts_condition: params[:ownership][:inserts_condition], notes: params[:ownership][:notes], spine_card_condition: (@spine_card_exists ? params[:ownership][:spine_card_condition] : 6) , count: 1)
       flash[:success] = @game.eng_title + " Successfully Updated"
       redirect_to @ownership
    else
