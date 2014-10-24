@@ -1,80 +1,136 @@
+<!-- General FAQs -->
 <div class="textcenter" id="games-barcode" >
-	<h3>Game FAQs</h3>
+	<h3>General FAQs</h3>
 </div>
 
+
+
 <div class="question-block">
-  <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#gamesCollapseOne">  
+  <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#generalCollapseOne">  
     What is UPC/EAN/JAN?
   </a>
-  <div id="gamesCollapseOne" class="accordion-body collapse" style="height: 0px; ">  
+  <div id="generalCollapseOne" class="accordion-body collapse" style="height: 0px; ">  
     <div class="accordion-inner">  
-      <p>This refers to the barcode the game is referenced by. The barcode is useful for two reasons.</p>
+      <p>This refers to the barcode the item is referenced by. The barcode is useful for two reasons.</p>
       <p>First, barcodes are used in checkout automation at any store worldwide. This automated identification data capture allows us to feel very confident in the barcodes uniqueness and universality.</p>
-      <p>Second, we don't want to reinvent the wheel. Each video game, and every product for that matter, has a unique barcode. A PsOne Books version and a black label version game have different barcodes. Utilizing this feature allows us to easily search for the game and allows us to ensure the game is unique to our database.</p>
+      <p>Second, we don't want to reinvent the wheel. Each item, and every product for that matter, has a unique barcode. A PsOne Books version and a black label version game have different barcodes, a green N64 controller has a different barcode than a red N64 controller. Utilizing this feature allows us to easily search for the game and allows us to ensure the game is unique to our database.</p>
     </div>
-  </div>
-  </div>
-
-  <div class="question-block" id="barcode-faq">
-    <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion2" href="#gamesCollapseTwo">  
-      Barcode adding procedure
-    </a>
-    <div id="gamesCollapseTwo" class="accordion-body collapse">  
-      <div class="accordion-inner">  
-        <p>When adding a barcode to an item please add all numbers and/or letters given in the barcode. Here are some examples of barcodes and circled is the portion of the barcode that needs to be added to the database.</p>
-        <ul class="image-list">
-
-          <li class="image-list-title">Leading letter example:</li>
-          <li><a href="/assets/help/leading-letter.jpg"> <img src="/assets/help/leading-letter.jpg" alt="Barcode with leading letter" height="50px" width="150px"/></a></li>
-
-          <li class="image-list-title">Leading 0 example:</li>
-          <li><a href="/assets/help/leading-0.jpg"><img src="/assets/help/leading-0.jpg" alt="Barcode with leading/trailing 0" height="50px" width="150px" /></a></li>
-
-          <li class="image-list-title">Every other example:</li>
-          <li><a href="/assets/help/normal.jpg"><img src="/assets/help/normal.jpg" alt="Every other kind of barcode" height="50px" width="150px" /></a></li>
-        </ul>
-
-        <p>As you can see, all numbers in the barcode need to be added. This allows it to be indexed properly, it will also benefit mobile users, as they will be able to scan their barcode and add it to their collection, an incorrect barcode means incorrect indexing.</p>
-
-        <p><b>tl;dr</b> Please add the whole barcode and do it right.</p>
-      </div>  
-    </div>  
-  </div>
-
-<div class="question-block">
-  <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion3" href="#gamesCollapseThree">  
-    Console association  
-  </a>  
-  <div id="gamesCollapseThree" class="accordion-body collapse">  
-    <div class="accordion-inner">  
-      <p>Every game is associated with a console of some kind. We need to associate every game with a console in order to keep the database organized.<p>
-        <p>On a side note, I feel like this shouldn't have to be explained. Mistakes happen, but if this becomes a regular offense then the user will have creation privileges revoked. </p>
-        <p><b>tl;dr</b> <span style="color: red">Don't screw this up</span> please.<p>
-    </div>  
   </div>
 </div>
 
+
+
+<div class="question-block" id="barcode-faq">
+  <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion2" href="#generalCollapseTwo">  
+    Barcode adding procedure
+  </a>
+  <div id="generalCollapseTwo" class="accordion-body collapse">  
+    <div class="accordion-inner">  
+      <p>When adding a barcode to an item please add all numbers and/or letters given in the barcode. Here are some examples of barcodes and circled is the portion of the barcode that needs to be added to the database.</p>
+      <ul class="image-list">
+
+        <li class="image-list-title">Leading letter example:</li>
+        <li><a href="/assets/help/leading-letter.jpg"> <img src="/assets/help/leading-letter.jpg" alt="Barcode with leading letter" height="50px" width="150px"/></a></li>
+
+        <li class="image-list-title">Leading 0 example:</li>
+        <li><a href="/assets/help/leading-0.jpg"><img src="/assets/help/leading-0.jpg" alt="Barcode with leading/trailing 0" height="50px" width="150px" /></a></li>
+
+        <li class="image-list-title">Every other example:</li>
+        <li><a href="/assets/help/normal.jpg"><img src="/assets/help/normal.jpg" alt="Every other kind of barcode" height="50px" width="150px" /></a></li>
+      </ul>
+
+      <p>All numbers in the barcode need to be added, this includes any leading characters and any leading/trailing 0s. This allows a game to be indexed properly, it will also benefit mobile users, as they will be able to scan their barcode and add it to their collection, an incorrect barcode means incorrect indexing.</p>
+
+      <p><b>tl;dr</b> Please add the whole barcode and do it right.</p>
+    </div>  
+  </div>  
+</div>
+
+
+
+<div class="question-block">
+  <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion3" href="#generalCollapseThree">  
+    Console association  
+  </a>  
+  <div id="generalCollapseThree" class="accordion-body collapse">  
+    <div class="accordion-inner">  
+      <p>Every item is associated with a console of some kind, this also means consoles in the database. There needs to be some connection between the DK Jungle Green N64 and a first-release gray N64. We need to associate every item with a console in order to keep the database organized. This also means those who collect different consoles, accessories, and games will be able to sort them by their overarching category, i.e. consoles.<p>
+        <p>On a side note, I feel like this shouldn't have to be explained. Mistakes happen, but if this becomes a regular offense then the user will have creation privileges revoked. </p>
+        <p>In short, <span style="color: red">Don't screw this up</span> please.<p>
+        </div>  
+      </div>
+    </div>
+
+    <!-- End General FAQs -->
+
+
+
+
+
+    <!-- Game FAQs -->
+    <div class="textcenter">
+      <h3>Game FAQs</h3>
+    </div>
+
+    <div class="question-block">
+     <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#gamesCollapseOne">
+      Cosmetic Condition
+    </a>
+    <div id="gamesCollapseOne" class="accordion-body collapse">  
+    <div class="accordion-inner">
+      <p>This is whatever you want it to be, but here are some tips that might help:</p>
+      <ol>
+        <li>Perfect - This should be reserved for complete perfection, whatever that means to you.</li>
+        <li>Good - If it's so close to being perfect, but there's that one thing that you just can't get over.</li>
+        <li>Fair - Bearable, but there are too many issues to call it good.</li>
+        <li>Bad - As a collector, you need a new one. It wasn't as described, it looked better online than when you got it in the mail, etc.</li>
+        <li>None - Should be there, but you don't have it.</li>
+        <li>N/A - Doesn't exist.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+  <!-- End Game FAQs -->
+
+
+
+
+
+
+
+  <!-- Accessory FAQs -->
   <div class="textcenter">
    <h3>Accessory FAQs</h3>
  </div>
 
-  <div class="question-block" id="barcode-faq">
- <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#accCollapseOne">
-  UPC/EAN/JAN
- </a>
+ <div class="question-block">
+   <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#accCollapseOne">
+    Cosmetic Condition
+  </a>
 
- <div id="accCollapseOne" class="accordion-body collapse">  
+  <div id="accCollapseOne" class="accordion-body collapse">  
     <div class="accordion-inner">
-   See <a data-toggle="collapse" href="#gamesCollapseOne">games</a>
     </div>
+  </div>
 </div>
-</div>
- <div lass="textcenter">
-   <h3>Console FAQs</h3>
- </div>
 
-  <div class="question-block" id="barcode-faq">
- <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-   <li class="help-link">UPC/EAN/JAN</li>
-</a>
+<!-- End Accessory FAQs -->
+
+
+
+
+
+
+
+<!-- Console FAQs -->
+<div lass="textcenter">
+ <h3>Console FAQs</h3>
 </div>
+
+<div class="question-block">
+ <a class="accordion-toggle question-title" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+   Cosmetic Condition
+ </a>
+</div>
+<!-- End Console FAQs
