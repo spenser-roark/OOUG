@@ -11,7 +11,7 @@ class GamesController < ApplicationController
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
   end
 
@@ -19,16 +19,16 @@ class GamesController < ApplicationController
     @game = Games.find(params[:id])
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
-    @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
-    
+
   end
 
   def update
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
 
     @game = Games.find(params[:id])
@@ -45,7 +45,7 @@ class GamesController < ApplicationController
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|consoles| [consoles.eng_name, consoles.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|consoles| [consoles.eng_name, consoles.console_id]}
     @console_array.insert(0, "")
 
     @game = Games.new(game_params)    

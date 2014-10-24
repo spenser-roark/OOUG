@@ -14,7 +14,7 @@ class AccessoriesController < ApplicationController
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|console| [console.eng_name, console.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|console| [console.eng_name, console.console_id]}
     @console_array.insert(0, "")
   end
 
@@ -23,7 +23,7 @@ class AccessoriesController < ApplicationController
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|console| [console.eng_name, console.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|console| [console.eng_name, console.console_id]}
     @console_array.insert(0, "")
     
   end
@@ -32,7 +32,7 @@ class AccessoriesController < ApplicationController
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|console| [console.eng_name, console.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|console| [console.eng_name, console.console_id]}
     @console_array.insert(0, "")
 
     @accessory = Accessories.find(params[:id])
@@ -49,7 +49,7 @@ class AccessoriesController < ApplicationController
     @region_array = Region.all.map {|region| [region.region_title, region.region_id]}
     @region_array.insert(0, "")
 
-    @console_array = ConsoleGeneral.all.map {|console| [console.eng_name, console.console_id]}
+    @console_array = ConsoleGeneral.all.order("eng_name").map {|console| [console.eng_name, console.console_id]}
     @console_array.insert(0, "")
 
     @accessory = Accessories.new(accessory_params)
