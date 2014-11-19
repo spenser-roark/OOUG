@@ -11,6 +11,7 @@ Ooug::Application.routes.draw do
   match '/inventory/test', to: 'inventory#test', via: 'get'
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
+  match '/forgot', to: 'main_page#forgot_password', via: 'get'
 
   # Gruff
   get '/users/gruffBig' => 'users#gruffBig', as: 'gruffBig'

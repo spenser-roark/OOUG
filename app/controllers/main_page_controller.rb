@@ -3,6 +3,9 @@ class MainPageController < ApplicationController
     @search
   end
 
+  def forgot_password
+  end
+
   def contact
   end
 

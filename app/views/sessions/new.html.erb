@@ -10,11 +10,13 @@
       <%= f.text_field :email, placeholder: "name@domain.tld"%>
 
       <%= f.label :password, class: "col-sm-2 control-label", style: "padding-right: 5px"%>
-      <%= f.password_field :password%>
+      <%= f.password_field :password%> 
       <br />
       <%= f.submit "Sign In", class: "btn btn-primary btn-sm" %>
+       <span style="display: inline-block; font-size: 10px; float: right"><%= link_to "Forgot password?", forgot_path %></span>
     <% end %>
 
 </div>
-<p>New user? <%= link_to "Sign up now!", signUp_path %></p>
+	<p>New user? <%= link_to "Sign up now!", signUp_path %></p>
 </div>
+
