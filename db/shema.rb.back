@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20141022151556) do
   create_table "image_location", primary_key: "image_location_id", force: true do |t|
     t.string   "image_path", default: ""
     t.string   "image_name", default: ""
-    t.integer  "upld_by_id",              null: false 
+    t.integer  "upld_by_id",              null: false
     t.datetime "upld_on",                 null: false
   end
 
