@@ -29,11 +29,17 @@ class InventoryController < ApplicationController
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
+    if (params.has_key?(:order))
+      if (params[:order] != "eng_title" || params[:order] != "")
+        params[:order] = ""
+      end
+    end
+    
     if (params.has_key?(:console_id))
-      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order("eng_title").where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order("eng_title").all
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).all
 
     end
     @image = Image.all
@@ -60,11 +66,18 @@ class InventoryController < ApplicationController
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
+    if (params.has_key?(:order))
+      if (params[:order] != "eng_title" || params[:order] != "")
+        params[:order] = ""
+      end
+    end
+
+
     if (params.has_key?(:console_id))
-      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order("eng_name").where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order("eng_name").all
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).all
 
     end
     @image = Image.all

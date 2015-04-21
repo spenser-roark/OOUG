@@ -18,7 +18,11 @@
   </p>
   <% end %>
 
-
+<div id="order">
+  <span>Order By: </span>
+  <%= link_to "Name", request.path + "?order=eng_title"%>
+  <%= link_to "Date Added", request.path + "?order=" %>
+</div>
   <table class="game_table_info">
     <% @ownership.each do |game| %>
     <tr height="50px">
