@@ -30,7 +30,7 @@ class InventoryController < ApplicationController
     @user = User.find_by(remember_token: @remember_token)
 
     if (params.has_key?(:order))
-      if (params[:order] != "eng_title" || params[:order] != "")
+      if (params[:order] != "eng_title" && params[:order] != "")
         params[:order] = ""
       end
     end
@@ -67,7 +67,7 @@ class InventoryController < ApplicationController
     @user = User.find_by(remember_token: @remember_token)
 
     if (params.has_key?(:order))
-      if (params[:order] != "eng_title" || params[:order] != "")
+      if (params[:order] != "eng_title" && params[:order] != "")
         params[:order] = ""
       end
     end
