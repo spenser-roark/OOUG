@@ -33,7 +33,7 @@ def gruffConsole
     @ownership = Ownership.where(user_id: @user).joins(:games => :console_general)
 
     @consoleNames.each do |console|
-      g.data console, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count unless Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count <= 10
+      g.data console, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count
     end
 
     g.theme = Gruff::Themes::PASTEL
@@ -72,7 +72,7 @@ def gruffBigAcc
     @ownership = AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general)
 
     @consoleNames.each do |console|
-      g.data console, AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general).where(:console_general => {:eng_name => console}).count unless Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count <= 10
+      g.data console, AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general).where(:console_general => {:eng_name => console}).count
     end
 
     g.theme = Gruff::Themes::PASTEL
