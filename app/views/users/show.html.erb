@@ -12,11 +12,9 @@
 </p>
 
 <ul class="nav nav-tabs" id="game_count_tabs">
-	<li class="active"><a href="#above10" data-toggle="tab">Games Above 10</a></li>
-	<li><a href="#below10" data-toggle="tab"> Games Below 10 </a></li>
-	<li><a href="#accabove10" data-toggle="tab"> Accessories Above 10 </a></li>
-	<li><a href="#accbelow10" data-toggle="tab"> Accessories Below 10 </a></li>
-	<li><a href="#consoles" data-toggle="tab"> Consoles </a></li>
+	<li class="active"><a href="#above10" data-toggle="tab">Game Chart</a></li>
+	<li><a href="#accabove10" data-toggle="tab"> Accessory Chart</a></li>
+	<li><a href="#consoles" data-toggle="tab"> Console Chart </a></li>
 </ul>
 
 <div class="tab-content">
@@ -33,16 +31,6 @@
 		</div>
 	</div>
 
-	<div class="tab-pane fade in" id="below10">
-		<div class="row">
-			<div class="span7 offset2">
-
-				<%= image_tag(url_for(:controller => 'users', :action => 'gruffSmall'), alt: "Spider Chart of the Rest of Your Collection") %>
-
-			</div>
-		</div>
-	</div>    
-
 	<div class="tab-pane fade in" id="accabove10">
 		<div class="row">
 			<div class="span7 offset2">
@@ -54,16 +42,6 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="tab-pane fade in" id="accbelow10">
-		<div class="row">
-			<div class="span7 offset2">
-
-				<%= image_tag(url_for(:controller => 'users', :action => 'gruffSmallAcc'), alt: "Spider Chart of the Rest of Your Accessory Collection") %>
-
-			</div>
-		</div>
-	</div>    
 
 <div class="tab-pane fade in" id="consoles">
 		<div class="row">
