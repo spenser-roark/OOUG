@@ -2,6 +2,10 @@ Ooug::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main_page#home'
 
+  if Rails.env.production?
+    get '/not_found', :to => 'application#page_not_found'
+  end
+
   # Main
   match '/home', to: 'main_page#home', via: 'get'
   match '/help', to: 'main_page#help', via: 'get'
@@ -72,6 +76,7 @@ Ooug::Application.routes.draw do
   resources :add_game, only: [:new, :create]
   resources :stats, only: [:show, :index]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :application, only: [:page_not_found]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -124,4 +129,7 @@ Ooug::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  if Rails.env.production?
+    get '*path' => redirect('/not_found')
+  end
 end
