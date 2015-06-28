@@ -18,6 +18,7 @@ Ooug::Application.routes.draw do
   get '/users/gruffBigAcc' => 'users#gruffBigAcc', as: 'gruffBigAcc'
   get '/users/gruffSmallAcc' => 'users#gruffSmallAcc', as: 'gruffSmallAcc'
   get '/users/gruffConsole' => 'users#gruffConsole', as: 'gruffConsole'
+  get '/users/gruffWish' => 'users#gruffWish', as: 'gruffWish'
 
   #  General Wish Lists
   get '/wish_list/games/:id' => 'wish_list#games', as: 'wish_list_games'

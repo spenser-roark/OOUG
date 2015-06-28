@@ -23,6 +23,25 @@ def gruffConsole
     send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
   end
 
+def gruffWish
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
+    @consoleNames = GamesWishList.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
+
+    g = Gruff::Spider.new(10, 800)
+
+    @ownership = GamesWishList.where(user_id: @user).joins(:games => :console_general)
+
+    @consoleNames.each do |console|
+      g.data console, ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).where(:console_general => {:eng_name => console}).count
+    end
+
+    g.theme = Gruff::Themes::PASTEL
+    # g.legend_font_size = 12
+    
+    send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
+  end
+
   def gruffBig
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
@@ -42,26 +61,6 @@ def gruffConsole
     send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
   end
 
-  def gruffSmall
-    @remember_token = User.hash_token(cookies[:remember_token])
-    @user = User.find_by(remember_token: @remember_token)
-    @consoleNames = Ownership.where(user_id: @user).joins(:games => :console_general).uniq.pluck(:eng_name)
-
-    g = Gruff::Spider.new(30, 800)
-    g.title = " "
-
-    @ownership = Ownership.where(user_id: @user).joins(:games => :console_general)
-
-    @consoleNames.each do |console|
-      g.data console, Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count unless Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count > 10
-    end
-
-    g.theme = Gruff::Themes::PASTEL
-    g.legend_font_size = 12
-    
-    send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
-  end
-
 def gruffBigAcc
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
@@ -77,26 +76,6 @@ def gruffBigAcc
 
     g.theme = Gruff::Themes::PASTEL
     # g.legend_font_size = 12
-    
-    send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
-  end
-
-  def gruffSmallAcc
-    @remember_token = User.hash_token(cookies[:remember_token])
-    @user = User.find_by(remember_token: @remember_token)
-    @consoleNames = AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general).uniq.pluck(:eng_name)
-
-    g = Gruff::Spider.new(30, 800)
-    g.title = " "
-
-    @ownership = AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general)
-
-    @consoleNames.each do |console|
-      g.data console, AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general).where(:console_general => {:eng_name => console}).count unless Ownership.where(user_id: @user).joins(:games => :console_general).where(:console_general => {:eng_name => console}).count > 10
-    end
-
-    g.theme = Gruff::Themes::PASTEL
-    g.legend_font_size = 12
     
     send_data(g.to_blob, :filename => "pie.png", :type => 'image/png', :disposition=> 'inline')
   end

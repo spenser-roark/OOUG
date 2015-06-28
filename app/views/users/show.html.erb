@@ -15,6 +15,7 @@
 	<li class="active"><a href="#above10" data-toggle="tab">Game Chart</a></li>
 	<li><a href="#accabove10" data-toggle="tab"> Accessory Chart</a></li>
 	<li><a href="#consoles" data-toggle="tab"> Console Chart </a></li>
+	<li><a href="#wish" data-toggle="tab"> Wish List Chart </a></li>
 </ul>
 
 <div class="tab-content">
@@ -43,15 +44,26 @@
 		</div>
 	</div>
 
-<div class="tab-pane fade in" id="consoles">
-		<div class="row">
-			<div class="span7 offset2">
-
-				<%= image_tag(url_for(:controller => 'users', :action => 'gruffConsole'), alt: "Spider Chart of your consoles") %>
-
-			</div>
-		</div>
+	<div class="tab-pane fade in" id="consoles">
+	  <div class="row">
+	    <div class="span7 offset2">
+	      
+	      <%= image_tag(url_for(:controller => 'users', :action => 'gruffConsole'), alt: "Spider Chart of your consoles") %>
+	      
+	    </div>
+	  </div>
 	</div>    
+	
+	<div class="tab-pane fade in" id="wish">
+	  <div class="row">
+	    <div class="span7 offset2">
+	      
+	      <%= image_tag(url_for(:controller => 'users', :action => 'gruffWish'), alt: "Spider Chart of your wish list") %>
+	      
+	    </div>
+	  </div>
+	</div>    
+	
 </div>
 
 
