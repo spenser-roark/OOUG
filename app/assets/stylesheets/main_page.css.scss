@@ -492,3 +492,14 @@ margin-bottom: 10%;
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
+#search-container {
+     max-width: 750px;
+     background-color: white;
+     padding-top: 60px;
+     padding-bottom: 60px;
+}
+@media (max-width: 979px) { 
+    #domain-head {
+    padding-left: 10px;
+}
+}

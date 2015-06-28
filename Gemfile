@@ -11,6 +11,7 @@ gem "paperclip", "~> 4.2"
 
 # Twitter bootstrap
 gem 'bootstrap-sass', '2.3.2.0'
+gem "twitter-bootstrap-rails"
 # gem 'twitter-bootstrap-rails' , '>= 2.1.6'
 gem 'sprockets', '2.11.0'
 

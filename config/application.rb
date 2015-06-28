@@ -21,6 +21,7 @@ module Ooug
     # config.i18n.default_locale = :de
 
     # Precompile additional assets
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
     config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)

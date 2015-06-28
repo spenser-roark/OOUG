@@ -6,7 +6,8 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+   
     <link rel="icon" type="image/ico" href="/assets/favicon.ico">
   </head> 
   
@@ -14,7 +15,7 @@
 
 <%= render 'layouts/mainPageHeader' %>
  
-    <div class="container" style="max-width: 750px; background-color: white; padding-top: 60px; padding-bottom: 60px">
+    <div class="container">
 
       <%= yield %>
 
