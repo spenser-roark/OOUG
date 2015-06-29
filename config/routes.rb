@@ -3,7 +3,7 @@ Ooug::Application.routes.draw do
   root 'main_page#home'
 
   if Rails.env.production?
-    get '/not_found', :to => 'application#page_not_found'
+    get '/not_found', :to => 'errors#page_not_found'
   end
 
   # Main
