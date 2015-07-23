@@ -20,7 +20,6 @@
 					<% @num = 0 %>
 					<% if !@results1.blank? %>
 
-					<div class="tab-pane active" id="condition">
 						<table class="search_results">
 							<% @results1.each do |result| %>
 							<% @num+=1 %>
@@ -54,9 +53,7 @@
 							<% end %>
 							<% end %>
 						</table>
-					</div>
 
-				</div>
 				<% else %>
 				<h6>Sorry, we couldn't find anything</h6>
 
@@ -68,6 +65,8 @@
 				<% end %>
 				<% end %>
 			</div>
+				</div>
+
 		</div>
 
 <div class="tab-pane fade in" id="accessory-search-results">
@@ -77,7 +76,6 @@
 					<% @num = 0 %>
 					<% if !@results2.blank? %>
 
-					<div class="tab-pane" id="condition">
 						<table class="search_results">
 							<% @results2.each do |result| %>
 							<% @num+=1 %>
@@ -88,7 +86,7 @@
 
 									<td id="game_info">
 										<% if signed_in? %>
-										<% if in_collection(result) %>
+										<% if in_acc_collection(result) %>
 										<span class="icon-ok-sign" title="You Own This"></span>  
 										<% end %>
 										<% end %>
@@ -111,9 +109,7 @@
 							<% end %>
 							<% end %>
 						</table>
-					</div>
 
-				</div>
 				<% else %>
 				<h6>Sorry, we couldn't find anything</h6>
 
@@ -126,7 +122,8 @@
 				<% end %>
 			</div>
 		</div>
-</div>
+				</div>
+
 <div class="tab-pane fade in" id="console-search-results">
 			<div class="row">
 				<div class="span7 offset2">
@@ -134,7 +131,6 @@
 					<% @num = 0 %>
 					<% if !@results3.blank? %>
 
-					<div class="tab-pane" id="condition">
 						<table class="search_results">
 							<% @results3.each do |result| %>
 							<% @num+=1 %>
@@ -145,7 +141,7 @@
 
 									<td id="game_info">
 										<% if signed_in? %>
-										<% if in_collection(result) %>
+										<% if in_console_collection(result) %>
 										<span class="icon-ok-sign" title="You Own This"></span>  
 										<% end %>
 										<% end %>
@@ -168,11 +164,11 @@
 							<% end %>
 							<% end %>
 						</table>
-					</div>
 
-				</div>
 				<% else %>
 				<h6>Sorry, we couldn't find anything</h6>
+
+					</div>
 
 				<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
 				<div class="input-prepend">
