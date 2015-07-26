@@ -20,166 +20,165 @@
 					<% @num = 0 %>
 					<% if !@results1.blank? %>
 
-						<table class="search_results">
-							<% @results1.each do |result| %>
-							<% @num+=1 %>
-							<% if @num % 10 == 0 %>
-							<div class="tab-pane" id="<%=@num/10%>">
-								<% end %>
-								<tr>
-
-									<td id="game_info">
-										<% if signed_in? %>
-										<% if in_collection(result) %>
-										<span class="icon-ok-sign" title="You Own This"></span>  
-										<% end %>
-										<% end %>
-
-
-										<%= link_to result.eng_title,  result%>
-									</td>
-
-									<td id="console_info">
-										<%= result.console_general.eng_name %>
-									</td>
-
-									<td id="region_info">
-										<%= link_to result.region.region_title, region_path(result.region.region_id) %>
-									</td>
-
-								</tr>
-								<% if @num + 2 % 10 == 0%>
-							</div>
+					<table class="search_results">
+						<% @results1.each do |result| %>
+						<% @num+=1 %>
+						<% if @num % 10 == 0 %>
+						<div class="tab-pane" id="<%=@num/10%>">
 							<% end %>
-							<% end %>
-						</table>
+							<tr>
 
-				<% else %>
-				<h6>Sorry, we couldn't find anything</h6>
+								<td id="game_info">
+									<% if signed_in? %>
+									<% if in_collection(result) %>
+									<span class="icon-ok-sign" title="You Own This"></span>  
+									<% end %>
+									<% end %>
 
-				<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
-				<div class="input-prepend">
-					<span class="icon-search"></span>  
-					<%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
+
+									<%= link_to result.eng_title,  result%>
+								</td>
+
+								<td id="console_info">
+									<%= result.console_general.eng_name %>
+								</td>
+
+								<td id="region_info">
+									<%= link_to result.region.region_title, region_path(result.region.region_id) %>
+								</td>
+
+							</tr>
+							<% if @num + 2 % 10 == 0%>
+						</div>
+						<% end %>
+						<% end %>
+					</table>
+
+					<% else %>
+					<h6>Sorry, we couldn't find anything</h6>
+
+					<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
+					<div class="input-prepend">
+						<span class="icon-search"></span>  
+						<%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
+					</div>
+					<% end %>
+					<% end %>
 				</div>
-				<% end %>
-				<% end %>
 			</div>
-				</div>
 
 		</div>
 
-<div class="tab-pane fade in" id="accessory-search-results">
+		<div class="tab-pane fade in" id="accessory-search-results">
 			<div class="row">
 				<div class="span7 offset2">
 
 					<% @num = 0 %>
 					<% if !@results2.blank? %>
 
-						<table class="search_results">
-							<% @results2.each do |result| %>
-							<% @num+=1 %>
-							<% if @num % 10 == 0 %>
-							<div class="tab-pane" id="<%=@num/10%>">
-								<% end %>
-								<tr>
-
-									<td id="game_info">
-										<% if signed_in? %>
-										<% if in_acc_collection(result) %>
-										<span class="icon-ok-sign" title="You Own This"></span>  
-										<% end %>
-										<% end %>
-
-
-										<%= link_to result.eng_title,  result%>
-									</td>
-
-									<td id="console_info">
-										<%= result.console_general.eng_name %>
-									</td>
-
-									<td id="region_info">
-										<%= link_to result.region.region_title, region_path(result.region.region_id) %>
-									</td>
-
-								</tr>
-								<% if @num + 2 % 10 == 0%>
-							</div>
+					<table class="search_results">
+						<% @results2.each do |result| %>
+						<% @num+=1 %>
+						<% if @num % 10 == 0 %>
+						<div class="tab-pane" id="<%=@num/10%>">
 							<% end %>
-							<% end %>
-						</table>
+							<tr>
 
-				<% else %>
-				<h6>Sorry, we couldn't find anything</h6>
+								<td id="game_info">
+									<% if signed_in? %>
+									<% if in_acc_collection(result) %>
+									<span class="icon-ok-sign" title="You Own This"></span>  
+									<% end %>
+									<% end %>
 
-				<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
-				<div class="input-prepend">
-					<span class="icon-search"></span>  
-					<%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
+
+									<%= link_to result.eng_title,  result%>
+								</td>
+
+								<td id="console_info">
+									<%= result.console_general.eng_name %>
+								</td>
+
+								<td id="region_info">
+									<%= link_to result.region.region_title, region_path(result.region.region_id) %>
+								</td>
+
+							</tr>
+							<% if @num + 2 % 10 == 0%>
+						</div>
+						<% end %>
+						<% end %>
+					</table>
+
+					<% else %>
+					<h6>Sorry, we couldn't find anything</h6>
+
+					<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
+					<div class="input-prepend">
+						<span class="icon-search"></span>  
+						<%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
+					</div>
+					<% end %>
+					<% end %>
 				</div>
-				<% end %>
-				<% end %>
 			</div>
 		</div>
-				</div>
 
-<div class="tab-pane fade in" id="console-search-results">
+		<div class="tab-pane fade in" id="console-search-results">
 			<div class="row">
 				<div class="span7 offset2">
 
 					<% @num = 0 %>
 					<% if !@results3.blank? %>
 
-						<table class="search_results">
-							<% @results3.each do |result| %>
-							<% @num+=1 %>
-							<% if @num % 10 == 0 %>
-							<div class="tab-pane" id="<%=@num/10%>">
-								<% end %>
-								<tr>
-
-									<td id="game_info">
-										<% if signed_in? %>
-										<% if in_console_collection(result) %>
-										<span class="icon-ok-sign" title="You Own This"></span>  
-										<% end %>
-										<% end %>
-
-
-										<%= link_to result.eng_name,  result%>
-									</td>
-
-									<td id="console_info">
-										<%= result.console_general.eng_name %>
-									</td>
-
-									<td id="region_info">
-										<%= link_to result.region.region_title, region_path(result.region.region_id) %>
-									</td>
-
-								</tr>
-								<% if @num + 2 % 10 == 0%>
-							</div>
+					<table class="search_results">
+						<% @results3.each do |result| %>
+						<% @num+=1 %>
+						<% if @num % 10 == 0 %>
+						<div class="tab-pane" id="<%=@num/10%>">
 							<% end %>
-							<% end %>
-						</table>
+							<tr>
 
-				<% else %>
-				<h6>Sorry, we couldn't find anything</h6>
+								<td id="game_info">
+									<% if signed_in? %>
+									<% if in_console_collection(result) %>
+									<span class="icon-ok-sign" title="You Own This"></span>  
+									<% end %>
+									<% end %>
 
+
+									<%= link_to result.eng_name,  result%>
+								</td>
+
+								<td id="console_info">
+									<%= result.console_general.eng_name %>
+								</td>
+
+								<td id="region_info">
+									<%= link_to result.region.region_title, region_path(result.region.region_id) %>
+								</td>
+
+							</tr>
+							<% if @num + 2 % 10 == 0%>
+						</div>
+						<% end %>
+						<% end %>
+					</table>
+
+					<% else %>
+					<h6>Sorry, we couldn't find anything</h6>
+
+
+					<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
+					<div class="input-prepend">
+						<span class="icon-search"></span>  
+						<%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
 					</div>
-
-				<%= form_tag search_index_path, class: "navbar-form navbar-left", style: "text-align: center", method: "get" do %>
-				<div class="input-prepend">
-					<span class="icon-search"></span>  
-					<%= text_field_tag :search, params[:search],  class: "span2 search-query", placeholder: "Search for a game"%>
+					<% end %>
+					<% end %>
 				</div>
-				<% end %>
-				<% end %>
 			</div>
+
 		</div>
 
 	</div>
-
-</div>
