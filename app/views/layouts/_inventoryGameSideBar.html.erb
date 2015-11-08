@@ -1,5 +1,5 @@
 <% if (!@ownership.empty?) %>
-<div class="sidebar pull-right">
+<div class="sidebar pull-right visible-desktop">
   <div class="sideConsole">
 
 <div class="content .navbar-inverse">
@@ -17,4 +17,15 @@
 </div>  
 </div>
 </div>
+
+<div class="hidden-desktop">
+<select id="game-list">
+	<option value="all">All Games</option>
+  <% @gameConsoles.each do |game| %>
+	<option value="<%=game%>"><%=game%></option>
+<% end %>
+
+</select>
+</div>
+
 <% end %>
