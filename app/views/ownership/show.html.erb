@@ -2,7 +2,7 @@
 <h5 class="game_title"><%= @game.games.jap_title %></h5>
 <h5 class="game_title"><%= @game.games.region.region_title %></h5>
 
-<p><%= @game.notes %></p>
+<p id="game-notes"><%= @game.notes %></p>
 <p>Box Condition: <%= @game.box_qualities.quality %></p>
 <p>Manual Condition: <%= @game.manual_qualities.quality %></p>
 <p>Inserts Condition: <%= @game.inserts_qualities.quality %></p>

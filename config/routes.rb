@@ -16,7 +16,7 @@ Ooug::Application.routes.draw do
   match '/signIn',  to: 'sessions#new',         via: 'get'
   match '/signOut', to: 'sessions#destroy',     via: 'delete'
 
-  # Gruff
+# Gruff
   get '/users/gruffBig' => 'users#gruffBig', as: 'gruffBig'
   get '/users/gruffSmall' => 'users#gruffSmall', as: 'gruffSmall'
   get '/users/gruffBigAcc' => 'users#gruffBigAcc', as: 'gruffBigAcc'
