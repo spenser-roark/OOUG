@@ -40,3 +40,5 @@ doc/
 .DS_Store
 /Icon*
 ._*
+
+Gemfile.lock
