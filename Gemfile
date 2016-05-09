@@ -9,6 +9,9 @@ gem 'gruff'
 #image library
 gem "paperclip", "~> 4.2"
 
+#pagination library
+gem 'will_paginate'
+
 # Twitter bootstrap
 gem 'bootstrap-sass', '2.3.2.0'
 # gem 'twitter-bootstrap-rails' , '>= 2.1.6'

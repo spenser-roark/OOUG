@@ -40,9 +40,10 @@
     <td id="region_info">
       <%= link_to game.games.region.region_title, region_path(game.games.region.region_id) %>
     </td>
-
   </tr>
+
   <% end %>
 
 </table>
+  <%= will_paginate @ownership %>
 </div>
