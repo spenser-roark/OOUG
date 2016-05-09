@@ -10,7 +10,7 @@ gem 'gruff'
 gem "paperclip", "~> 4.2"
 
 #pagination library
-gem 'will_paginate'
+#gem 'will_paginate'
 
 # Twitter bootstrap
 gem 'bootstrap-sass', '2.3.2.0'

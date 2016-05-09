@@ -36,10 +36,10 @@ class InventoryController < ApplicationController
     end
     
     if (params.has_key?(:console_id))
-      @ownership = Ownership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = Ownership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).all
+      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).all
 
     end
     @image = Image.all
@@ -52,10 +52,10 @@ class InventoryController < ApplicationController
     @user = User.find_by(remember_token: @remember_token)
 
     if (params.has_key?(:console_id))
-      @ownership = ConsoleOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = ConsoleOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").all
+      @ownership = ConsoleOwnership.where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").all
 
     end
     @image = Image.all
@@ -75,10 +75,10 @@ class InventoryController < ApplicationController
 
 
     if (params.has_key?(:console_id))
-      @ownership = AccessoriesOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = AccessoriesOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).all
+      @ownership = AccessoriesOwnership.where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).all
 
     end
     @image = Image.all
