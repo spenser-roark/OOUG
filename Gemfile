@@ -9,6 +9,8 @@ gem 'gruff'
 #image library
 gem "paperclip", "~> 4.2"
 
+gem 'actionpack'
+
 #pagination library
 #gem 'will_paginate'
 
@@ -18,7 +20,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '0.3.20'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -39,7 +41,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
+
+gem 'json', '>= 1.8.3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -57,3 +61,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
