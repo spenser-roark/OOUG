@@ -41,5 +41,4 @@ doc/
 /Icon*
 ._*
 
-Gemfile.lock
-Gemfile
+./Gemfile.lock
