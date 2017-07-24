@@ -39,7 +39,7 @@ class InventoryController < ApplicationController
       @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).all
+      @ownership = Ownership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).all
 
     end
     @image = Image.all
