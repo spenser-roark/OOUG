@@ -4,13 +4,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Graph library
-gem 'gruff'
+# gem 'gruff'
 
 #image library
 gem "paperclip", "~> 4.2"
 
 #pagination library
-gem 'will_paginate'
+# gem 'will_paginate'
 
 # Twitter bootstrap
 gem 'bootstrap-sass', '2.3.2.0'
@@ -18,7 +18,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
