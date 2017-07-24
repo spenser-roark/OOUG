@@ -6,7 +6,7 @@ gem 'rails', '4.0.2'
 # Graph library
 # gem 'gruff'
 
-gem 'rmagick'
+# gem 'rmagick'
 
 #image library
 gem "paperclip", "~> 4.2"
