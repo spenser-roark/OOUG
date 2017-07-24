@@ -14,7 +14,7 @@ gem "paperclip", "~> 4.2"
 gem 'actionpack'
 
 #pagination library
-# gem 'will_paginate'
+gem 'will_paginate'
 
 # Twitter bootstrap
 gem 'bootstrap-sass', '2.3.2.0'
