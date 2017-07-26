@@ -16,6 +16,7 @@
 /public/assets/*
 
 # Ignore all logfiles and tempfiles.
+/log
 /log/*.log
 /tmp
 
@@ -45,3 +46,4 @@ Gemfile.lock
 /Gemfile.lock
 
 /public/assets
+/vendor
