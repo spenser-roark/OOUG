@@ -2,49 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sidebar
-{
-   color: #CCCCCC;
-   # position: fixed;
-   background: none repeat scroll 0 0 #1E1E1E;
-   height: 100%;
-   right: 0;
-   top: 0;
-   padding-left: 1%;
-   padding-right: 1%;
-   padding-top: 5%;
+.sidebar {
+    color: #CCCCCC;
+    background: none repeat scroll 0 0 #1E1E1E;
+    height: 37.5rem;
+    overflow: auto;
+    right: 0;
+    top: 0;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 5%;
 
+    & .console-filters {
+        height: 100%;
+        position: relative;
+
+        & ul {
+        list-style: none outside none;
+            & li {
+                padding-top: 8px;
+                & a {
+                    color: #999999;
+                    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+                    &:hover {
+                        color: #FFFFFF;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
-.sidebar ul
-{
-	list-style: none outside none;	
-}
 
-.sidebar ul li
-{
-	padding-top: 8px;
-	// line-height: 25px;
-
-}
-
-.sidebar a
-{
-	color: #999999;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-
-.sidebar a:hover
-{
-	color: #FFFFFF;
-	text-decoration: none;
-}
-
-.sideConsole
-{
-	height: 100%;
-	position: relative;
-}
 
 #game_info a, #console_info a, #region_info a
 {
@@ -52,26 +42,19 @@
 	color: black;
 	line-height: 2;
 	font-family: "Courier New", Courier, monospace;
-}
-
-#game_info a:hover, #console_info a:hover, #region_info a:hover
-{
-	font-weight: bold;
-}
-
-#game_info {
-// padding-right: 10%;
+    &:hover {
+        font-weight: bold;
+    }
 }
 
 .inventory_games {
-max-width: 750px; 
-background-color: white; 
-padding-top: 60px; 
-/* padding-bottom: 60px; */
+    max-width: 750px;
+    background-color: white;
+    padding-top: 60px;
 }
 
 #game_info {
-width: 75%;
+    width: 75%;
 }
 
 #console_info {
@@ -81,10 +64,10 @@ width: 60%;
 div#order {
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
-}
-div#order span {
-	font-size: 16px;
-}
-div#order a {
-	margin-right: 5px;
+    & span {
+        font-size: 16px;
+    }
+    & a {
+        margin-right: 5px;
+    }
 }

@@ -1,20 +1,15 @@
 <% if (!@ownership.empty?) %>
-<div class="sidebar pull-right">
-  <div class="sideConsole">
-
-<div class="content .navbar-inverse">
-<ul>
-
-<li><%= link_to "All Games",  inventory_games_path(current_user) %></li>
-
-  <% @gameConsoles.each do |game| %>
-
-<li><%= link_to game, inventory_game_path(current_user, game) %> </li>
-
-<% end %>
-
-</ul>
-</div>  
-</div>
-</div>
+    <div class="sidebar pull-right">
+        <div class="console-filters">
+            <div class="content .navbar-inverse">
+                <div class="">Select to filter by console:</div>
+                <ul>
+                    <li><%= link_to "All Games",  inventory_games_path(current_user) %></li>
+                        <% @gameConsoles.each do |game| %>
+                    <li><%= link_to game, inventory_game_path(current_user, game) %> </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
 <% end %>
