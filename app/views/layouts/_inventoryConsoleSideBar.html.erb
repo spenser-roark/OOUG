@@ -1,15 +1,8 @@
-<% if (!@ownership.empty?) %>
-    <div class="sidebar pull-right">
-        <div class="console-filters">
-            <div class="content .navbar-inverse">
-                <div class="console-filter-explanation">Select to filter by console:</div>
-                <ul>
-                    <li><%= link_to "All Consoles",  inventory_consoles_path(current_user) %></li>
-                    <% @consoleConsoles.each do |game| %>
-                        <li><%= link_to game, inventory_consoles_path(current_user) + '/' + game %> </li>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
-    </div>
+<%= render layout: 'layouts/inventorySideBar' do %>
+    <% if (!@ownership.empty?) %>
+        <li><%= link_to "All Consoles",  inventory_consoles_path(current_user) %></li>
+        <% @consoleConsoles.each do |game| %>
+            <li><%= link_to game, inventory_consoles_path(current_user) + '/' + game %> </li>
+        <% end %>
+    <% end %>
 <% end %>
