@@ -1,3 +1,10 @@
+@import '../../Constants/Colors';
+
 body {
     margin-bottom: 0;
+}
+
+.main-container {
+    width: 100%;
+    background-color: $main-page-white;
 }
