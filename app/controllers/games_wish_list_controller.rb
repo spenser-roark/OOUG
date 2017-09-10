@@ -22,7 +22,7 @@ class GamesWishListController < ApplicationController
       @game = GamesWishList.where(user_id: current_user().id).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @game = GamesWishList.joins(:user).where(:users => {:id => current_user()})
+      @game = GamesWishList.where(:users => {:id => current_user()}).joins(:user)
 
     end
     
