@@ -2,17 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.browse_list ul {
-
-list-style: none outside none;
-columns: 2;
--webkit-columns: 2;
--moz-columns: 2;
+.browse_list {
+    & ul {
+        list-style: none outside none;
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
 }
 
-.browse_list ul li {
-font-size: 16px;
-padding-top: 10px;
+.browse_list {
+    margin-bottom: 3rem;
+    & ul {
+        & li {
+            font-size: 16px;
+            padding-top: 10px;
+        }
+    }
 }
 
 .browse_list {
@@ -21,12 +27,14 @@ padding-top: 10px;
 	max-width: 50%;
 }
 
-.browse_list a {
-	text-decoration: none;
-	color: black;
-	line-height: 2;
-font-family: "Comic Sans MS", cursive, sans-serif;
-	}
+.browse_list {
+    & a {
+    	text-decoration: none;
+    	color: black;
+    	line-height: 2;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+}
 
 .top-link {
 	margin-left: 75%;

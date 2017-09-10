@@ -9,19 +9,19 @@
 *********************/
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    line-height: 1;
 }
 
 .infoLeft {
-width: 635px;
+    width: 635px;
 }
 
 .infoLeft .infoRight {
@@ -51,8 +51,7 @@ width: 635px;
     width: 980px;
 }
 
-#body
-{
+#body {
     background-image: url('../pics/blback2.png');
     background-size: 100%;
     /*background-position: bottom;
@@ -65,25 +64,23 @@ width: 635px;
     background-repeat: no-repeat;
 }
 
-.bg
-{
+.bg {
     height: auto;
     left: 0;
     min-height: 100%;
     min-width: 768px;
     position: fixed;
     top: 0;
-
 }
 
-#information h3
-{
-/*color: ;*/
-padding-left: 10px;
+#information {
+    & h3 {
+        /*color: ;*/
+        padding-left: 10px;
+    }
 }
 
-#title
-{
+#title {
     background-image: url('pics/name.png');
     background-repeat: no-repeat;
     position: fixed;
@@ -92,28 +89,29 @@ padding-left: 10px;
     top: 25%;
 }
 
-#aboutMe p
-{
-    font-weight: bold;
-    font-size: 14px;
-    padding-left: 10px;
+#aboutMe {
+    & p {
+        font-weight: bold;
+        font-size: 14px;
+        padding-left: 10px;
+    }
 }
 
-#aboutMe h4
-{
-    border-radius: 8px;
-    background-color: #bd9778;
-    text-decoration: none;
-    letter-spacing: 2px;
-    font-family: sans-serif;
-    font-size: 16px;
-    text-align: center;
-    min-width: 100px;
-    margin-top: 0px;
+#aboutMe {
+    & h4 {
+        border-radius: 8px;
+        background-color: #bd9778;
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-family: sans-serif;
+        font-size: 16px;
+        text-align: center;
+        min-width: 100px;
+        margin-top: 0px;
+    }
 }
 
-#aboutMe
-{
+#aboutMe {
     position: fixed;
     left: 10%;
     top: 50%;
@@ -122,19 +120,20 @@ padding-left: 10px;
     width: 20%;
 }
 
-#nav a:hover
-{
-    background-color: white;
-    color: black;    
+#nav {
+    & a:hover {
+        background-color: white;
+        color: black;
+    }
 }
 
-#information p
-{
-    padding: 0px 0px 0px 20px;
+#information {
+    & p {
+        padding: 0px 0px 0px 20px;
+    }
 }
 
-#information
-{
+#information {
     border-radius: 8px;
     border-radius: 8px;
     position: absolute;
@@ -147,8 +146,7 @@ padding-left: 10px;
     margin: 0px 20px 0px 20px;
 }
 
-#nav
-{
+#nav {
     background-color: black;
     display: block;
     height: 30px;
@@ -162,34 +160,36 @@ padding-left: 10px;
     /*z-index: 100;*/
 }
 
-#nav li
-{
-
-    color: white;
-    display: inline;
-    /*font-size: 15px;*/
-    font-weight: bold;
-    margin-left: -15px;
+#nav {
+    & li {
+        color: white;
+        display: inline;
+        /*font-size: 15px;*/
+        font-weight: bold;
+        margin-left: -15px;
+    }
 }
 
-#nav li a
-{
-    font-family: "sans serif";
-    color: white;
-    border-right: #646464 solid 1px;
-    /*letter-spacing: 2px;*/
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 10px;
-    padding-left: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
+#nav {
+    & li {
+        & a {
+            font-family: "sans serif";
+            color: white;
+            border-right: #646464 solid 1px;
+            /*letter-spacing: 2px;*/
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-right: 10px;
+            padding-left: 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
 }
 
 
 
-img.bg
-{
+img.bg {
     /*height: auto;*/
     left: 0;
     /*min-height: 100%;
@@ -200,42 +200,38 @@ img.bg
     height: 100%;
 }
 
-.updates
-{
+.updates {
     margin-left: 100px;
     margin-right: 100px;
     text-indent: 35px;
 }
 
-.tab
-{
+.tab {
     text-indent: 35px;
 }
 
-.games a
-{
-    /*letter-spacing: 5px;*/
-    margin-left: 5px;
-    margin-right: 5px;
-
+.games {
+    & a {
+        /*letter-spacing: 5px;*/
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 
-.index a
-{
-    /*letter-spacing: 5px;*/
-    margin-left: 5px;
-    margin-right: 5px;
-
+.index {
+    & a {
+        /*letter-spacing: 5px;*/
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 
 
-.textcenter
-{
+.textcenter {
     text-align: center;
 }
 
-.gameInfo
-{
+.gameInfo {
     position: relative;
     width: 300px;
     margin-left: auto;
@@ -245,29 +241,27 @@ img.bg
     border-radius: 8px;
     top: 30px;
     /*bottom: 50px;*/
-}
-.gameInfo p
-{
-    padding-right: 5px;
-    padding-left: 5px;
+    & p {
+        padding-right: 5px;
+        padding-left: 5px;       
+    }
 }
 
-.center
-{
+.center {
     margin-left: auto;
     margin-right: auto;
 }
 
-.paragraph
-{
+.paragraph {
     font-family: "Times New Roman";
 }
 
-.gray table
-{ 
-    margin-left: auto;
-    margin-right: auto;
-    background: #C0C0C0;
+.gray {
+    & table {
+        margin-left: auto;
+        margin-right: auto;
+        background: #C0C0C0;
+    }
 }
 
 .block
