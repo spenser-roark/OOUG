@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.navbar-inner {
+    border-bottom: 1px solid gray;
+}
+
 .inventory-games {
     max-width: 750px;
     background-color: white;

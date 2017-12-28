@@ -1,0 +1,9 @@
+<% if signed_in? %>
+    <% if admin? %>
+        <%= render 'layouts/adminDropdown' %>
+    <% end %>
+    <%= render 'layouts/accountDropdown' %>
+<% else %>
+    <li><%= link_to "Sign in", signIn_path %></li>
+    <li><%= link_to "Sign up", signUp_path %></li>
+<% end %>

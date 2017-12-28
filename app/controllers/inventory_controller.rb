@@ -27,7 +27,6 @@ class InventoryController < ApplicationController
     end
     @image = Image.all
     @gameConsoles = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
-
   end
 
   def consoles
@@ -45,7 +44,7 @@ class InventoryController < ApplicationController
     end
     @image = Image.all
 
-@consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
+    @consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
   end
 
   def accessories
@@ -72,8 +71,9 @@ class InventoryController < ApplicationController
 
   def test
     @user = User.find_by(params[:id])
-    @ownership = Ownership.where(user_id: 1).all
+    @ownership = Ownership.where(user_id: User.find_by(remember_token: @remember_token)).all
     @image = Image.all
+    @consoles = Consoles.all;
   end
 
 

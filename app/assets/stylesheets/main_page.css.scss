@@ -264,30 +264,26 @@ img.bg {
     }
 }
 
-.block
-{
+.block {
     margin-right: 400px;
     left: 20px;
     background: #66FF00;
     border: solid;
 }
 
-.data
-{
+.data {
     position:relative;
     
     width: 350px;
 }
 
-.links
-{
+.links {
     position:fixed; 
     
     width: 250px;
 }
 
-.formbuttons
-{
+.formbuttons {
     background-color: gray;
     border-radius: 30px;
     width: 250px;
@@ -295,15 +291,13 @@ img.bg {
     padding-top: 10px;
 }
 
-.register
-{
+.register {
     background-color: #33BBDD;
     border-radius: 8px;
     width: 1000px;
 }
 
-.navi
-{
+.navi {
     background-color: black;
     display: block;
     position: fixed;
@@ -324,29 +318,25 @@ img.bg {
     list-style-type: none;
 }
 
-.navi li
-{
+.navi li {
     /*padding: 10px;*/
     border-right: #646464 solid 1px;
     display: inline;
     text-decoration: none;
 }
 
-.navi a:visited
-{
+.navi a:visited {
     color: white;
     text-decoration: none;
 }
 
-.navi a:link
-{
+.navi a:link {
     color: white;
     text-decoration: none;
 }
 
 /*
-.navi a
-{
+.navi a {
     border-right: #646464 solid 1px;
     color: white;
     letter-spacing: 2px;
@@ -360,13 +350,11 @@ img.bg {
 }
 */
 /*
-  input.button
-{
+  input.button {
 background: #ffff00;
 }*/
 
-/*input:hover
-{
+/*input:hover {
     font-size: 11px;
     background: #FFFFFF;
 }*/
@@ -377,8 +365,7 @@ line-height: 125%;
 
 }*/
 
-#About h3 
-{
+#About h3  {
     background-image:url('pics/aboutLine.png');
     background-size: 100%;
     /*background-repeat: no-repeat;
@@ -387,13 +374,11 @@ line-height: 125%;
     font-size: 16px;
 }
 
-.indent
-{
+.indent {
     text-indent: 3em;
 }
 
-#banner 
-{
+#banner  {
 margin-top: 40px;
   background-color: #000000;
  /* text-align: center;*/
@@ -405,14 +390,12 @@ margin-top: 40px;
       color: black;
     }
 
-#gameList a:hover
-{
+#gameList a:hover {
     color: #664400;
     font-size: 14px;
 }
 
-#gameList 
-{
+#gameList  {
     font-size: small;
     width: 50%;
     letter-spacing: 3px;
@@ -421,21 +404,12 @@ margin-top: 40px;
     padding-right: 50px;
 }
 
-#gameList a
-{
+#gameList a {
 color: #330099;
 }
 
-address
-{
+address {
 font-weight: bold;    
-}
-
-
-#ooug {
-    text-align: center;
-    font-family: Arial Black;
-    margin-top: 15%;
 }
 
 #help-ooug {
