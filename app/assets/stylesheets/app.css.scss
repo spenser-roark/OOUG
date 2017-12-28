@@ -1,3 +1,20 @@
+@import '../../Constants/Colors';
+
 body {
     margin-bottom: 0;
+}
+
+.main-container {
+    width: 100%;
+    background-color: $main-page-white;
+}
+
+.centered-header {
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+    font-family: Arial Black;
+    margin-top: 15%;
 }

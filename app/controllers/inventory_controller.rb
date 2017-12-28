@@ -1,84 +1,67 @@
 class InventoryController < ApplicationController
   before_action :signed_in_user, only: [:edit, :show, :update, :games]
 
-  before_action :correct_user,   only: [:edit, :update, :show, :games]
+  before_action :correct_user, only: [:edit, :update, :show, :games]
 
-  def home
-    @games = Games.all
-    @test = params[:console] 
-  end
-
-  def inventory
-    @user = User.all
-  end
-
-  def show
-
-    if (params.has_key?(:console_id))
-      @ownership = Ownership.where(user_id: params[:id]).joins(:games => :console_general).where(:console_general => {:eng_name => params[:console_id]})
-
-    else
-      @ownership = Ownership.where(user_id: params[:id]).all
-
-    end
-    
-    @image = Image.all
-  end
-
+  ##
+  # This is the games controller
+  ##
   def games
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
-    if (params.has_key?(:order))
-      if (params[:order] != "eng_title" && params[:order] != "")
-        params[:order] = ""
-      end
+    # defaultParams.merge(params) Will keep defaults and new ones will overwrite dup keys
+
+    if (!params[:order])
+      params[:order] = ""
     end
-    
+
+    games = getInventoryFromSelector(Ownership, :games)
+
     if (params.has_key?(:console_id))
-      @ownership = Ownership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = games.where(:console_general => {:eng_name => params[:console_id]})
 
     else # Make some config or user set results per page
-      @ownership = Ownership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:games => :console_general).order(params[:order]).all
+      @ownership = games.all
 
     end
     @image = Image.all
     @gameConsoles = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
-
   end
 
   def consoles
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
+    consoles = getInventoryFromSelector(ConsoleOwnership, :consoles)
+
     if (params.has_key?(:console_id))
-      @ownership = ConsoleOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = consoles.where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = ConsoleOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:consoles => :console_general).order("consoles.eng_name").all
+      @ownership = consoles.all
 
     end
     @image = Image.all
 
-@consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
+    @consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
   end
 
   def accessories
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
-    if (params.has_key?(:order))
-      if (params[:order] != "eng_title" && params[:order] != "")
-        params[:order] = ""
-      end
+    if (!params[:order])
+      params[:order] = ""
     end
 
+    accessories = getInventoryFromSelector(AccessoriesOwnership, :accessories)
 
     if (params.has_key?(:console_id))
-      @ownership = AccessoriesOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).where(:console_general => {:eng_name => params[:console_id]})
+      @ownership = accessories.where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = AccessoriesOwnership.paginate(:page => params[:page], :per_page => 10).where(user_id: params[:id]).joins(:accessories => :console_general).order(params[:order]).all
+      @ownership = accessories.all
 
     end
     @image = Image.all
@@ -88,8 +71,9 @@ class InventoryController < ApplicationController
 
   def test
     @user = User.find_by(params[:id])
-    @ownership = Ownership.where(user_id: 1).all
+    @ownership = Ownership.where(user_id: User.find_by(remember_token: @remember_token)).all
     @image = Image.all
+    @consoles = Consoles.all;
   end
 
 
