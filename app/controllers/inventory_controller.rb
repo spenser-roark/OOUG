@@ -1,97 +1,106 @@
 class InventoryController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :show, :update, :games]
+    before_action :signed_in_user, only: [:edit, :show, :update, :games]
 
-  before_action :correct_user, only: [:edit, :update, :show, :games]
+    before_action :correct_user, only: [:edit, :update, :show, :games]
 
-  ##
-  # This is the games controller
-  ##
-  def games
+##
+# This is the games controller
+##
+def games
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
-    # defaultParams.merge(params) Will keep defaults and new ones will overwrite dup keys
+# defaultParams.merge(params) Will keep defaults and new ones will overwrite dup keys
+
+if (!params[:order])
+    params[:order] = ""
+end
+
+games = getInventoryFromSelector(Ownership, :games)
+
+if (params.has_key?(:console_id))
+    @ownership = games.where(:console_general => {:eng_name => params[:console_id]})
+
+else # Make some config or user set results per page
+    @ownership = games.all
+
+end
+@image = Image.all
+@gameConsoles = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
+end
+
+def consoles
+    @remember_token = User.hash_token(cookies[:remember_token])
+    @user = User.find_by(remember_token: @remember_token)
 
     if (!params[:order])
-      params[:order] = ""
+        params[:order] = ""
+    else
+        if (params[:order] == "eng_title")
+            # TODO: Fix the db names, I don't remember why I made this different but its' only caused problems
+            params[:order] = "consoles.eng_name"
+        end
     end
-
-    games = getInventoryFromSelector(Ownership, :games)
-
-    if (params.has_key?(:console_id))
-      @ownership = games.where(:console_general => {:eng_name => params[:console_id]})
-
-    else # Make some config or user set results per page
-      @ownership = games.all
-
-    end
-    @image = Image.all
-    @gameConsoles = Ownership.where(user_id: @user).joins(:games => :console_general).order("eng_name").uniq.pluck(:eng_name)
-  end
-
-  def consoles
-    @remember_token = User.hash_token(cookies[:remember_token])
-    @user = User.find_by(remember_token: @remember_token)
 
     consoles = getInventoryFromSelector(ConsoleOwnership, :consoles)
 
     if (params.has_key?(:console_id))
-      @ownership = consoles.where(:console_general => {:eng_name => params[:console_id]})
+        @ownership = consoles.where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = consoles.all
+        @ownership = consoles.all
 
     end
     @image = Image.all
 
     @consoleConsoles = ConsoleOwnership.where(user_id: @user).joins(:consoles => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
-  end
+end
 
-  def accessories
+def accessories
     @remember_token = User.hash_token(cookies[:remember_token])
     @user = User.find_by(remember_token: @remember_token)
 
     if (!params[:order])
-      params[:order] = ""
+        params[:order] = ""
     end
 
     accessories = getInventoryFromSelector(AccessoriesOwnership, :accessories)
 
     if (params.has_key?(:console_id))
-      @ownership = accessories.where(:console_general => {:eng_name => params[:console_id]})
+        @ownership = accessories.where(:console_general => {:eng_name => params[:console_id]})
 
     else
-      @ownership = accessories.all
+        @ownership = accessories.all
 
     end
     @image = Image.all
 
     @accessoryConsoles = AccessoriesOwnership.where(user_id: @user).joins(:accessories => :console_general).order("eng_name").uniq.pluck("console_general.eng_name")
-  end
+end
 
-  def test
+def test
     @user = User.find_by(params[:id])
     @ownership = Ownership.where(user_id: User.find_by(remember_token: @remember_token)).all
     @image = Image.all
     @consoles = Consoles.all;
-  end
+end
 
 
 
 private 
 
- # Before filters
-    def signed_in_user
-      unless signed_in?
+# Before filters
+def signed_in_user
+    unless signed_in?
         store_location
         redirect_to signIn_url, notice: "Please sign in."
-      end
     end
+end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to current_user, notice: "There is no " + current_user.alias + " only Zool."  unless current_user?(@user)
-    end 
+def correct_user
+    @user = User.find(params[:id])
+    redirect_to current_user, notice: "There is no " + current_user.alias + " only Zool."  unless current_user?(@user)
+end 
 
 
 end

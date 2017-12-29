@@ -1,46 +1,41 @@
 <%= render 'layouts/inventoryConsoleSideBar' %>
 
-<div class="container inventory_games" style="position: static">
-<% 
-if (params.has_key?(:console_id))
-provide(:title, 'All your ' + params[:console_id] + ' games') 
+<div class="container inventory-games" style="position: static">
+    <%
+        if (params.has_key?(:console_id))
+            provide(:title, 'All your ' + params[:console_id] + ' games') 
+        else
+            provide(:title, 'All consoles In Your Collection') 
+        end
+    %>
+    
+    <% if (@ownership.empty?) %>
+        <p style="text-align: center">
+            No consoles added yet? <%= link_to "Browse The Console Collection", browse_consoles_path %> and add some consoles!
+        </p>
+    <% end %>
 
-else
-provide(:title, 'All consoles In Your Collection') 
-
-end
-
-%>
-<% if (@ownership.empty?) %>
-
-<p style="text-align: center">
-  No consoles added yet? <%= link_to "Browse The Collection Collection", browse_consoles_path %> and add some consoles!
-</p>
-<% end %>
-
-<table class="">
-<% @ownership.each do |game| %>
-
-<tr>
- <td class="">
-<%= # game.games.image
-%>
-    </td>
-
-    <td id="game_info">
-      <%= link_to game.consoles.eng_name, ownership_console(game.consoles.id) %>
-    </td>
-
-    <td id="console_info">
-      <%= link_to game.consoles.console_general.eng_name, console_general_path(game.consoles.console_general.id) %>
-    </td>
-
-    <td id="region_info">
-      <%= link_to game.consoles.region.region_title, region_path(game.consoles.region.region_id) %>
-    </td>
-
-</tr>
-<% end %>
-</table>
-<%= will_paginate @ownership %>
+    <div id="order">
+        <span>Order By: </span>
+        <%= link_to "Name", request.path + "?order=eng_title"%>
+        <%= link_to "Date Added", request.path + "?order=" %>
+    </div>
+    
+    <table class="games-table">
+        <% @ownership.each do |game| %>
+            <tr>
+                <td class=""><%# game.games.image %></td>
+                <td class="game-title" id="game_info">
+                    <%= link_to truncate(game.consoles.eng_name), ownership_console(game.consoles.id) %>
+                </td>
+                <td class="game-console" id="console_info">
+                    <%= link_to truncate(game.consoles.console_general.eng_name, :length => 22), console_general_path(game.consoles.console_general.id) %>
+                </td>
+                <td class="game-region" id="region_info">
+                    <%= link_to game.consoles.region.region_title, region_path(game.consoles.region.region_id) %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    <%= will_paginate @ownership %>
 </div>

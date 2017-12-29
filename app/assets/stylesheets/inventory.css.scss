@@ -20,14 +20,19 @@
                 font-weight: bold;
             }
         }
-        & .game-title {
-            width: 75%;
+        & tr {
+            height: 50px;
         }
-        & .game-console {
-            width: 60%;
-        }
-        & .game-region {
-            min-width: 3.5rem;
+        @media screen and (min-width: 1024px) {
+            & .game-title {
+                min-width: 22rem;
+            }
+            & .game-console {
+                min-width: 14rem;
+            }
+            & .game-region {
+                min-width: 3.5rem;
+            }
         }
     }
 }
@@ -85,15 +90,10 @@
 }
 
 /* Deprecated, as soon as we transfer the other pages over this is dead*/
-#game_info {
-    width: 75%;
-}
-
-/* Deprecated, as soon as we transfer the other pages over this is dead*/
-#console_info {
+/* #console_info {
     width: 60%;
 }
-
+ */
 div#order {
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
