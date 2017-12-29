@@ -3,12 +3,9 @@
 <h1 class="centered-header">All Games</h1>
 
 <div class="browse-list browse-list__consoles" id="game_info">
-<ul>
-  <% @console.each_with_index do |console, i| %>
-
-<li><%= link_to console + " games", browse_path(console), style: i >= 15 ? "" : ""%></li>
-
-<% end %>
-
-</ul>
+    <ul>
+        <% @console.each_with_index do |console, i| %>
+            <li><%= link_to console + " games", browse_path(console), style: i >= 15 ? "" : ""%></li>
+        <% end %>
+    </ul>
 </div>

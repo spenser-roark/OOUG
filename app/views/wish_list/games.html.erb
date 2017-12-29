@@ -1,38 +1,28 @@
 <%= render 'layouts/gamesWishListSideBar' %>
-<div class="container inventory_games" style="position: static">
+<div class="container inventory-games" style="position: static">
+    <% 
+        if (params.has_key?(:console_id))
+            provide(:title, 'All your wished for ' + params[:console_id] + ' games') 
+        else
+            provide(:title, 'Your Wish List') 
+        end
+    %>
 
-  <% 
-  if (params.has_key?(:console_id))
-    provide(:title, 'All your wished for ' + params[:console_id] + ' games') 
+    <table class="games-table">
+        <% @game.each do |game| %>
+            <tr height="50px">
+                <td></td>
+                <td class="game-title" id="game_info">
+                    <%= link_to truncate(game.games.eng_title), games_wish_list_path(game.id) %>
+                </td>
+                <td class="game-console" id="console_info">
+                    <%= link_to truncate(game.games.console_general.eng_name, :length => 22), console_general_path(game.games.console_general.id) %>
+                </td>
+                <td class="game-region" id="region_info">
+                    <%= link_to game.games.region.region_title, region_path(game.games.region.region_id) %>
+                </td>
+            </tr>
+        <% end %>
 
-  else
-    provide(:title, 'Your Wish List') 
-
-  end
-  %>
-
-  <table class="game_table_info">
-    <% @game.each do |game| %>
-
-    <tr height="50px">
-     <td>
-     </td>
-
-     <td id="game_info">
-      <%= link_to game.games.eng_title, games_wish_list_path(game.id) %>
-
-    </td>
-
-    <td id="console_info">
-      <%= link_to game.games.console_general.eng_name, console_general_path(game.games.console_general.id) %>
-    </td>
-
-    <td id="region_info">
-      <%= link_to game.games.region.region_title, region_path(game.games.region.region_id) %>
-    </td>
-
-  </tr>
-  <% end %>
-
-</table>
+    </table>
 </div>

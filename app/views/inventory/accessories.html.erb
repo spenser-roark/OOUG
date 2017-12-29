@@ -1,53 +1,41 @@
 <%= render 'layouts/inventoryAccessorySideBar' %>
 
-<div class="container inventory_games" style="position: static">
-<% 
-if (params.has_key?(:console_id))
-provide(:title, 'All your ' + params[:console_id] + ' games') 
+<div class="container inventory-games" style="position: static">
+    <% 
+        if (params.has_key?(:console_id))
+            provide(:title, 'All your ' + params[:console_id] + ' games') 
+        else
+            provide(:title, 'All accessories In Your Collection') 
+        end
+    %>
 
-else
-provide(:title, 'All accessories In Your Collection') 
+    <% if (@ownership.empty?) %>
+        <p style="text-align: center">
+            No accessories added yet? <%= link_to "Browse The Accessories Collection", browse_accessories_path %> and add some accessories!
+        </p>
+    <% end %>
 
-end
+    <div id="order">
+        <span>Order By: </span>
+        <%= link_to "Name", request.path + "?order=eng_title"%>
+        <%= link_to "Date Added", request.path + "?order=" %>
+    </div>
 
-%>
-
-<% if (@ownership.empty?) %>
-
-<p style="text-align: center">
-  No accessories added yet? <%= link_to "Browse The Accessories Collection", browse_accessories_path %> and add some accessories!
-</p>
-<% end %>
-
-<div id="order">
-  <span>Order By: </span>
-  <%= link_to "Name", request.path + "?order=eng_title"%>
-  <%= link_to "Date Added", request.path + "?order=" %>
-</div>
-
-<table class="">
-<% @ownership.each do |game| %>
-
-<tr>
- <td class="">
-<%= # game.games.image
-%>
-    </td>
-
-    <td id="game_info">
-      <%= link_to game.accessories.eng_title, ownership_accessory(game.accessories.id) %>
-    </td>
-
-    <td id="console_info">
-      <%= link_to game.accessories.console_general.eng_name, inventory_accessory_path(current_user, game.accessories.console_general.eng_name) %>
-    </td>
-
-    <td id="region_info">
-      <%= link_to game.accessories.region.region_title, region_path(game.accessories.region.region_id) %>
-    </td>
-
-</tr>
-<% end %>
-</table>
-  <%= will_paginate @ownership %>
+    <table class="games-table">
+        <% @ownership.each do |game| %>
+            <tr>
+                <td class=""><%# game.games.image %></td>
+                <td class="game-title" id="game_info">
+                    <%= link_to truncate(game.accessories.eng_title), ownership_accessory(game.accessories.id) %>
+                </td>
+                <td class="game-console" id="console_info">
+                    <%= link_to truncate(game.accessories.console_general.eng_name, :length => 22), inventory_accessory_path(current_user, game.accessories.console_general.eng_name) %>
+                </td>
+                <td class="game-region" id="region_info">
+                    <%= link_to game.accessories.region.region_title, region_path(game.accessories.region.region_id) %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    <%= will_paginate @ownership %>
 </div>
