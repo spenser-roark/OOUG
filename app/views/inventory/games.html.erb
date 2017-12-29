@@ -24,10 +24,10 @@
             <tr height="50px">
                 <td></td>
                 <td class="game-title" id="game_info">
-                    <%= link_to game.games.eng_title, ownership_game(game.games.id) %>
+                    <%= link_to truncate(game.games.eng_title), ownership_game(game.games.id) %>
                 </td>
                 <td class="game-console" id="console_info">
-                    <%= link_to game.games.console_general.eng_name, inventory_game_path(current_user, game.games.console_general.eng_name) %>
+                    <%= link_to truncate(game.games.console_general.eng_name, :length => 22), inventory_game_path(current_user, game.games.console_general.eng_name) %>
                 </td>
                 <td class="game-region" id="region_info">
                     <%= link_to game.games.region.region_title, region_path(game.games.region.region_id) %>
