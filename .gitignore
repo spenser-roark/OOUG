@@ -11,7 +11,7 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /db/migrate
-/db/*
+db/
 
 #ignore assets
 /public/assets/*

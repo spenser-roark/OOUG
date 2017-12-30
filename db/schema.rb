@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022151556) do
+ActiveRecord::Schema.define(version: 20141005150039) do
 
   create_table "accessories", force: true do |t|
     t.text    "accessories_ean"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20141022151556) do
   add_index "image_location", ["image_name"], name: "search_index", using: :btree
   add_index "image_location", ["upld_by_id"], name: "upld_by_id", using: :btree
 
-  create_table "one_hundred_percent", id: false, force: true do |t|
+  create_table "one_hundred_percent", force: true do |t|
     t.integer "user_id", default: 0, null: false
     t.integer "game_id", default: 0, null: false
     t.text    "notes"
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20141022151556) do
     t.integer "user_id",                          null: false
     t.integer "games_id",             default: 0, null: false
     t.integer "own",                  default: 0, null: false
-    t.boolean "complete"
+    t.integer "complete",             default: 0, null: false
     t.integer "box_condition",        default: 6, null: false
     t.integer "game_condition",       default: 6, null: false
     t.integer "manual_condition",     default: 6, null: false
@@ -179,15 +179,10 @@ ActiveRecord::Schema.define(version: 20141022151556) do
   end
 
   create_table "spine_card_exist", force: true do |t|
-    t.integer "has_card", limit: 8, null: false
+    t.integer "console_general_id", limit: 8, null: false
   end
 
-  add_index "spine_card_exist", ["has_card"], name: "has_card", using: :btree
-
-  create_table "spine_card_exists", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "spine_card_exist", ["console_general_id"], name: "has_card", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "alias"
